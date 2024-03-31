@@ -12,6 +12,9 @@ import FYPRecord from './FYPRecord'
 import AchievementsRecord from './AchievementsRecord'
 import NewsandJobsPost from './NewsandJobsPost'
 import AddAchievementsRecord from './AddAchievementsRecord'
+import AddFypRecord from './AddFypRecord'
+import UpdateAchievementsRecord from './UpdateAchievementsRecord'
+import UpdateFypRecord from './UpdateFypRecord'
 function App() {
   return (
     <BrowserRouter>
@@ -28,6 +31,9 @@ function App() {
       <Route path='/achievementsrecord' element={<AchievementsRecord/>}></Route>
       <Route path='/newsandjobspost' element={<NewsandJobsPost/>}></Route>
       <Route path='/addachievement' element={<AddAchievementsRecord/>}></Route>
+      <Route path='/addfyp' element={<AddFypRecord/>}></Route>
+      <Route path='/updateachievement' element={<UpdateAchievementsRecord/>}></Route>
+      <Route path='/updatefyp' element={<UpdateFypRecord/>}></Route>
     </Routes>
     </BrowserRouter>
   )

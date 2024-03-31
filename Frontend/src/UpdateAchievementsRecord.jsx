@@ -1,15 +1,12 @@
 import React from 'react'
 import Sidebar from '../Components/Sidebar'
-import './AddAchievementsRecord.css'
-
-
-function AddAchievementsRecord() {
+function UpdateAchievementsRecord() {
   return (
     <>
     <Sidebar></Sidebar>
     <div id="ALine"></div>
-    <div id="AAR"><p>Add Achievements Record</p></div>
-    <div id="Arecord"><h1>Add Record</h1></div>
+    <div id="AAR"><p>Update Achievements Record</p></div>
+    <div id="Arecord"><h1>Update Record</h1></div>
     <div id="RecordForm">
     <form >
     <label id='Label1' htmlFor="AchievementTitle">Achievement Title:</label>
@@ -24,7 +21,7 @@ function AddAchievementsRecord() {
     <input type="text" id="Description" name="Description" placeholder='Description'/>
     <label id='Label6' htmlFor="mediaUpload">Upload Media:</label>
     <input type="file" id="Upload" name="Upload"/>
-    <div id="SubmitRecord"><button type="submit">Add Record</button></div>
+    <div id="SubmitRecord"><button type="submit">Update Record</button></div>
     </form>
     </div>
 
@@ -32,4 +29,4 @@ function AddAchievementsRecord() {
   )
 }
 
-export default AddAchievementsRecord
+export default UpdateAchievementsRecord
