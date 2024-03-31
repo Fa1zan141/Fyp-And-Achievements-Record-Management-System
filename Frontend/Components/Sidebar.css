@@ -1,0 +1,103 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,body {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+#stddashboardNav{
+    height: 100px;
+    width: 100%;
+    display: flex;
+}
+#left{
+    height: 100px;
+    width: 50%;
+    display: flex;
+}
+#right{
+    height: 100px;
+    width: 50%;
+    display: flex;
+}
+#Msgbtn{
+    height: 40px;
+    width: 50px;
+    position: absolute;
+    left: 1150px;
+    top: 35px;
+    font-size: 36px;
+    font-weight: bolder;
+}
+#Prfbtn{
+    height: 35px;
+    width: 50px;
+    position: absolute;
+    left: 1200px;
+    top: 35px;
+    font-size: 36px;
+    font-weight: bolder;
+}
+#Navlogo{
+    position: absolute;
+    height: 70px;
+    width:  150px;
+    background-image: url(logo.png);
+    background-size: cover;
+    background-position: center;
+    border-radius: 25px;
+    left: 30px;
+    top: 10px;
+    box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
+}
+#StdDashboardsidebar{
+    height: 507px;
+    width: 100%;
+}
+#leftSide{
+    height: 100%;
+    width: 250px;
+    font-size: 24px;
+    font-weight: 700;
+    padding-left: 30px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+#bar{
+    position: absolute;
+    width: 4px; 
+    height: 55px; 
+    background-color: rgb(0, 0, 255); 
+    transform: rotate(90deg);
+    top: 110px;
+    left: 55px;
+}
+#Sbar{
+    position: absolute;
+    width: 4px; 
+    height: 55px; 
+    background-color: rgb(0, 0, 255); 
+    transform: rotate(90deg);
+    top: 360px;
+    left: 55px;
+}
+#longline{
+    position: absolute;
+    width: 2px; 
+    height: 505px; 
+    top: 102px;
+    left: 250px;
+    background-color: black;
+}
+a{
+    font-size: 18px;
+    font-weight: 700;
+    padding-left: 5px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+a:hover {
+    border-bottom: 2px solid blue; 
+    text-decoration: none; 
+}

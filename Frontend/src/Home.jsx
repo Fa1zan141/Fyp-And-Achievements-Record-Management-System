@@ -124,7 +124,7 @@ const Alumnidata = [
                     <Link to="/alumni">Alumni</Link>
                     </li>
                 </ul> 
-                <button id="Hpbtn" onClick={()=>{Navigate("/StudentDashboard")}}><CgProfile/></button>
+                <button id="Hpbtn" onClick={()=>{Navigate("/studentdashboard")}}><CgProfile/></button>
             </div>
         </nav>
         <div id="Hero">

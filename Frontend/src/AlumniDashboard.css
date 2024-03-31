@@ -1,0 +1,213 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,body {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+#job{
+    position: absolute;
+    font-size: 26px;
+    font-weight: 700;
+    top: 200px;
+    left: 320px;
+    text-decoration: underline;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+#news{
+    position: absolute;
+    font-size: 26px;
+    font-weight: 700;
+    top: 400px;
+    left: 320px;
+    text-decoration: underline;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+#Jobpostbtn{
+    height: 30px;
+    width: 100px;
+    border-radius: 50px;
+    background-color: blue;
+    position: absolute;
+    top: 170px;
+    left: 330px;
+}
+#Jobpostbtn > :first-child {
+    position: absolute;
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    top: 0px;
+    left: 10px;
+}
+#NewsPostbtn{
+    height: 30px;
+    width: 120px;
+    border-radius: 50px;
+    background-color: blue;
+    position: absolute;
+    top: 170px;
+    left: 450px;
+}
+#NewsPostbtn > :first-child {
+    position: absolute;
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    top: 0px;
+    left: 10px;
+}
+#UpdateAccountbtn{
+    height: 30px;
+    width: 200px;
+    border-radius: 50px;
+    background-color: blue;
+    position: absolute;
+    top: 170px;
+    left: 750px;
+}
+#UpdateAccountbtn > :first-child {
+    position: absolute;
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    top: 0px;
+    left: 10px;
+}
+#JobForm #Label1 {
+    position: absolute;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    top: 250px;
+    left: 350px;
+}
+#JobForm #jobTitle {
+    position: absolute;
+    font-size: 18px;
+    color: black;
+    top: 250px;
+    left: 500px;
+    background-color: rgb(241, 238, 238);
+    height: 30px;
+    border-radius: 10px;
+}
+#JobForm #Label2 {
+    position: absolute;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    top: 290px;
+    left: 350px;
+}
+#JobForm #joblocation {
+    position: absolute;
+    font-size: 18px;
+    color: black;
+    top: 290px;
+    left: 500px;
+    background-color: rgb(241, 238, 238);
+    height: 30px;
+    border-radius: 10px;
+}
+#JobForm #Label3 {
+    position: absolute;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    top: 330px;
+    left: 350px;
+}
+#JobForm #joblink {
+    position: absolute;
+    font-size: 18px;
+    color: black;
+    top: 330px;
+    left: 500px;
+    background-color: rgb(241, 238, 238);
+    height: 30px;
+    border-radius: 10px;
+}
+#NewsForm #NLabel1 {
+    position: absolute;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    top: 440px;
+    left: 350px;
+}
+#NewsForm #newsTitle {
+    position: absolute;
+    font-size: 18px;
+    color: black;
+    top: 440px;
+    left: 500px;
+    background-color: rgb(241, 238, 238);
+    height: 30px;
+    border-radius: 10px;
+}
+#NewsForm #NLabel2 {
+    position: absolute;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    top: 490px;
+    left: 350px;
+}
+#NewsForm #newsdescription {
+    position: absolute;
+    font-size: 18px;
+    color: black;
+    top: 490px;
+    left: 500px;
+    background-color: rgb(241, 238, 238);
+    height: 30px;
+    border-radius: 10px;
+}
+#jobsubmit{
+    height: 30px;
+    width: 100px;
+    border-radius: 50px;
+    background-color: blue;
+    position: absolute;
+    top: 370px;
+    left: 330px;
+}
+#jobsubmit > :first-child {
+    position: absolute;
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    top: 0px;
+    left: 10px;
+}
+#newssubmit{
+    height: 30px;
+    width: 100px;
+    border-radius: 50px;
+    background-color: blue;
+    position: absolute;
+    top: 530px;
+    left: 330px;
+}
+#newssubmit > :first-child {
+    position: absolute;
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    top: 0px;
+    left: 10px;
+}
