@@ -9,6 +9,9 @@ import TeachersDashboard from './TeachersDashboard'
 import AdminDashboard from './AdminDashboard'
 import AlumniDashboard from './AlumniDashboard'
 import FYPRecord from './FYPRecord'
+import AchievementsRecord from './AchievementsRecord'
+import NewsandJobsPost from './NewsandJobsPost'
+import AddAchievementsRecord from './AddAchievementsRecord'
 function App() {
   return (
     <BrowserRouter>
@@ -22,6 +25,9 @@ function App() {
       <Route path='/admindashboard' element={<AdminDashboard/>}></Route>
       <Route path='/alumnidashboard' element={<AlumniDashboard/>}></Route>
       <Route path='/fyprecord' element={<FYPRecord/>}></Route>
+      <Route path='/achievementsrecord' element={<AchievementsRecord/>}></Route>
+      <Route path='/newsandjobspost' element={<NewsandJobsPost/>}></Route>
+      <Route path='/addachievement' element={<AddAchievementsRecord/>}></Route>
     </Routes>
     </BrowserRouter>
   )
