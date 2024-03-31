@@ -15,6 +15,7 @@ import AddAchievementsRecord from './AddAchievementsRecord'
 import AddFypRecord from './AddFypRecord'
 import UpdateAchievementsRecord from './UpdateAchievementsRecord'
 import UpdateFypRecord from './UpdateFypRecord'
+import AdminProfile from './AdminProfile'
 function App() {
   return (
     <BrowserRouter>
@@ -34,6 +35,7 @@ function App() {
       <Route path='/addfyp' element={<AddFypRecord/>}></Route>
       <Route path='/updateachievement' element={<UpdateAchievementsRecord/>}></Route>
       <Route path='/updatefyp' element={<UpdateFypRecord/>}></Route>
+      <Route path='/adminprofile' element={<AdminProfile/>}></Route>
     </Routes>
     </BrowserRouter>
   )

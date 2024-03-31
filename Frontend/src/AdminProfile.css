@@ -1,0 +1,215 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,body {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+#PLine{
+    position: absolute;
+    width: 4px; 
+    height: 45px; 
+    background-color: rgb(0, 0, 255); 
+    top: 100px;
+    left: 280px;
+}
+#MP{
+    position: absolute;
+    font-size: 24px;
+    font-weight: 700;
+    top: 100px;
+    left: 290px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+#general{
+    position: absolute;
+    font-size: 20px;
+    font-weight: 700;
+    top: 150px;
+    left: 320px;
+    text-decoration: underline;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+#updateacc{
+    position: absolute;
+    font-size: 20px;
+    font-weight: 700;
+    top: 380px;
+    left: 320px;
+    text-decoration: underline;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+#Generalform #Label1 {
+    position: absolute;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    top: 200px;
+    left: 350px;
+}
+#Generalform #name {
+    position: absolute;
+    font-size: 18px;
+    color: black;
+    top: 200px;
+    left: 500px;
+    border-color: transparent;
+    background-color: rgb(241, 238, 238);
+    height: 30px;
+    border-radius: 10px;
+}
+#Generalform #Label2 {
+    position: absolute;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    top: 250px;
+    left: 350px;
+}
+#Generalform #email {
+    position: absolute;
+    font-size: 18px;
+    color: black;
+    top: 250px;
+    left: 500px;
+    border-color: transparent;
+    background-color: rgb(241, 238, 238);
+    height: 30px;
+    border-radius: 10px;
+}
+#Generalform #Label3 {
+    position: absolute;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    top: 300px;
+    left: 350px;
+}
+#Generalform #password {
+    position: absolute;
+    font-size: 18px;
+    color: black;
+    top: 300px;
+    left: 500px;
+    border-color: transparent;
+    background-color: rgb(241, 238, 238);
+    height: 30px;
+    border-radius: 10px;
+}
+#Generalform #Label4 {
+    position: absolute;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    top: 350px;
+    left: 350px;
+}
+#Generalform #role {
+    position: absolute;
+    font-size: 18px;
+    color: black;
+    top: 350px;
+    left: 500px;
+    border-color: transparent;
+    background-color: rgb(241, 238, 238);
+    height: 30px;
+    border-radius: 10px;
+}
+#UpdateaccForm #NLabel1 {
+    position: absolute;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    top: 420px;
+    left: 350px;
+}
+#UpdateaccForm #Changename {
+    position: absolute;
+    font-size: 18px;
+    color: black;
+    top: 420px;
+    left: 500px;
+    border-color: transparent;
+    background-color: rgb(241, 238, 238);
+    height: 30px;
+    border-radius: 10px;
+}
+#UpdateaccForm #NLabel2 {
+    position: absolute;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    top: 470px;
+    left: 350px;
+}
+#UpdateaccForm #changeemail {
+    position: absolute;
+    font-size: 18px;
+    color: black;
+    top: 470px;
+    left: 500px;
+    border-color: transparent;
+    background-color: rgb(241, 238, 238);
+    height: 30px;
+    border-radius: 10px;
+}
+#UpdateaccForm #NLabel3 {
+    position: absolute;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    top: 520px;
+    left: 350px;
+}
+#UpdateaccForm #changepassword {
+    position: absolute;
+    font-size: 18px;
+    color: black;
+    top: 520px;
+    left: 500px;
+    border-color: transparent;
+    background-color: rgb(241, 238, 238);
+    height: 30px;
+    border-radius: 10px;
+}
+#UA{
+    height: 20px;
+    width: 150px;
+    border-radius: 50px;
+    background-color: blue;
+    position: absolute;
+    top: 560px;
+    left: 730px;
+}
+#UA > :first-child {
+    position: absolute;
+    text-align: center;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    top: 0px;
+    left: 10px;
+}
+#DA{
+    height: 20px;
+    width: 150px;
+    border-radius: 50px;
+    background-color: blue;
+    position: absolute;
+    top: 560px;
+    left: 530px;
+}
+#DA > :first-child {
+    position: absolute;
+    text-align: center;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    top: 0px;
+    left: 10px;
+}
