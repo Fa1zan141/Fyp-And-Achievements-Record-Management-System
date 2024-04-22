@@ -18,6 +18,10 @@ import UpdateFypRecord from './UpdateFypRecord'
 import AdminProfile from './AdminProfile'
 import StudentProfile from './StudentProfile'
 import TeachersProfile from './TeachersProfile'
+import CreateAlumniProfile from './CreateAlumniProfile'
+import UpdateAlumniProfile from './UpdateAlumniProfile'
+import AlumniProfiles from './AlumniProfiles'
+import AProfile from './AProfile'
 function App() {
   return (
     <BrowserRouter>
@@ -40,6 +44,10 @@ function App() {
       <Route path='/adminprofile' element={<AdminProfile/>}></Route>
       <Route path='/studentprofile' element={<StudentProfile/>}></Route>
       <Route path='/teachersprofile' element={<TeachersProfile/>}></Route>
+      <Route path='/createalumniprofile' element={<CreateAlumniProfile/>}></Route>
+      <Route path='/updatealumniprofile' element={<UpdateAlumniProfile/>}></Route>
+      <Route path='/alumniprofiles' element={<AlumniProfiles/>}></Route>
+      <Route path='CurrentAlumniProfile' element={<AProfile/>}></Route>
     </Routes>
     </BrowserRouter>
   )

@@ -20,10 +20,6 @@ mongoose.connect("mongodb+srv://muhammadfaizan:124@cluster0.gm5sg1g.mongodb.net/
 // Registration Route
 app.post('/register', async (req, res) => {
 
-    /*EmployeeModel.create(req.body)
-    .then(employees=> res.json(employees))
-    .catch(err => res.json(err)) */
-
  try {
 
     const newEmployee = new EmployeeModel(req.body);
