@@ -49,7 +49,7 @@ function App() {
       <Route path='/alumniprofiles' element={<AlumniProfiles/>}></Route>
       <Route path='/CurrentAlumniProfile' element={<AProfile/>}></Route>
       <Route path='/logout' element={<Splash/>}></Route>
-      <Route path="*" element={<div>Invalid route</div>} />
+      <Route path="*" element={<div>Page Not Found</div>} />
     </Routes>
     </BrowserRouter>
   )

@@ -7,7 +7,13 @@ const jwt= require('jsonwebtoken');
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-app.use(cors());
+
+app.use(cors({
+  origin:"*"
+}));
+
+const post_route= require('./Routes/postRoute');
+app.use('/api', post_route);
 
 
 /*
