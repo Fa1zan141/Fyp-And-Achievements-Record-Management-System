@@ -12,8 +12,9 @@ function Register() {
   const [role, setrole] = useState('Student');
   const [password, setpassword] = useState('');
   
-
   const navigate= useNavigate();
+
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();

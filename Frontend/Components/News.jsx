@@ -4,7 +4,7 @@ function News({Newsjobs}) {
   return (
     <>
     <div>
-    <Link to="/News&Jobs" style={{color:'rgb(24, 24, 58)',textDecoration:'underline', display:'list-item', marginLeft:30,marginTop:30, fontSize:'large', fontWeight:700}}>{Newsjobs.title}</Link>
+    <Link to="/newsandjobspost" style={{color:'rgb(24, 24, 58)',textDecoration:'underline', display:'list-item', marginLeft:30,marginTop:30, fontSize:'large', fontWeight:700}}>{Newsjobs.title}</Link>
     </div>
     </>
   )

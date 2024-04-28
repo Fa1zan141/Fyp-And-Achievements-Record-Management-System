@@ -27,18 +27,21 @@ html,body {
     height: 40px;
     width: 50px;
     position: absolute;
-    left: 1150px;
+    left: 1050px;
     top: 35px;
     font-size: 36px;
     font-weight: bolder;
 }
 #Prfbtn{
     height: 35px;
-    width: 50px;
+    width: 100px;
+    color: rgb(24, 24, 58);
+    border-radius: 5px;
+    background-color: rgb(218, 204, 187);
     position: absolute;
-    left: 1200px;
+    left: 1210px;
     top: 35px;
-    font-size: 36px;
+    font-size: 22px;
     font-weight: bolder;
 }
 #Navlogo{

@@ -72,6 +72,7 @@ function Login() {
                 <select name="role" id="role" form="role" required onChange={(e) => setrole(e.target.value)}>
                     <option value="Student">Student</option>
                     <option value="Teacher">Teacher</option>
+                    <option value="Admin">Admin</option>
                   </select>
                   <button type="submit" id="Lbutton">Login</button>
             </form>

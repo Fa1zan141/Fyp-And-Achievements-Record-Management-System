@@ -1,15 +1,28 @@
-
 const express = require("express");
 const mongoose = require('mongoose');
 const cors = require('cors');
 const EmployeeModel = require('./Models/Employee');
+const jwt= require('jsonwebtoken');
 
 const app = express();
 app.use(express.json());
+app.use(express.urlencoded({extended:true}));
 app.use(cors());
 
+
+/*
+EmployeeModel.create({
+  
+  FirstName :"Reema",
+  LastName: "Choudhary",
+  email: "Admin@gmail.com",
+  role: "Admin",
+  password: "admin123"
+  })
+  */
+
 // Connect to MongoDB
-mongoose.connect("mongodb+srv://muhammadfaizan:124@cluster0.gm5sg1g.mongodb.net/Employee")
+mongoose.connect("mongodb+srv://muhammadfaizan:124@cluster0.gm5sg1g.mongodb.net/FYP")
   .then(() => {
     console.log("Connected to MongoDB");
   })
@@ -31,6 +44,7 @@ app.post('/register', async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 })
+//for login
 app.post('/login', async (req, res) => {
 
     const{email, password,role}=req.body;
@@ -49,9 +63,24 @@ app.post('/login', async (req, res) => {
       console.error("Error during login:", error);
       res.status(500).json({ status: 'error', message: 'Internal Server Error' });
     }
+    let token = jwt.sign({email}, 'Faizan');
+    res.cookie("Token",token);
   });
+  //For Logout
+  app.get("/logout", function(req, res){
+    res.cookie("Token","");
+    res.redirect("/splash");
+  });
+
+  //For Dynamic Role Routing
+ 
+
+
 
 // Start the server
 app.listen(3000, () => {
   console.log(`Server is running on port 3000`);
 });
+
+
+

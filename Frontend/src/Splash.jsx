@@ -24,19 +24,19 @@ function Splash() {
             <div id="navr">
             <ul>
                     <li>
-                    <Link to="">Home</Link>
+                    <Link to="/login">Home</Link>
                     </li>
                     <li>
-                    <Link to="">FYP</Link>
+                    <Link to="/login">FYP</Link>
                     </li>
                     <li>
-                    <Link to="">Achievements</Link>
+                    <Link to="/login">Achievements</Link>
                     </li>
                     <li>
-                    <Link to="">News & Jobs</Link>
+                    <Link to="/login">News & Jobs</Link>
                     </li>
                     <li>
-                    <Link to="">Alumni</Link>
+                    <Link to="/login">Alumni</Link>
                     </li>
                 </ul> 
                 <motion.button animate={{x:[-100,0], move:1}} transition={{type:"tween", duration:4}}id="Sbtn" onClick={()=>{Navigate("/login")}}>Login</motion.button>

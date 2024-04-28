@@ -68,23 +68,37 @@ ul li a:hover {
 }
 #Hpbtn {
     height: 35px;
-    width: 50px;
+    width: 100px;
+    color: rgb(24, 24, 58);
+    border-radius: 5px;
+    background-color: #63c02e;
+    position: absolute;
+    left: 1200px;
+    top: 35px;
+    font-size: 22px;
+    font-weight: bolder;
+}
+#Hpbtn:hover{
+    height: 35px;
+    width:100px;
+    background-color: rgb(27, 27, 78);
+    border-radius: 5px;
+    color:aliceblue;
+    position: absolute;
+    left: 1200px;
+    top: 35px;
+    font-weight: bolder;
+}
+#username{
+    height: 35px;
+    width: 100px;
     color: rgb(24, 24, 58);
     position: absolute;
     left: 1100px;
     top: 35px;
-    font-size: 36px;
+    font-size: 16px;
     font-weight: bolder;
-}
-#Hpbtn:hover{
-    height: 40px;
-    width:50px;
-    color: rgb(27, 27, 78);
-    position: absolute;
-    left: 1100px;
-    top: 40px;
-    font-size: 38px;
-    font-weight: bolder;
+    font-stretch: normal;
 }
 #Hero{
     position: absolute;

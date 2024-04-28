@@ -47,7 +47,9 @@ function App() {
       <Route path='/createalumniprofile' element={<CreateAlumniProfile/>}></Route>
       <Route path='/updatealumniprofile' element={<UpdateAlumniProfile/>}></Route>
       <Route path='/alumniprofiles' element={<AlumniProfiles/>}></Route>
-      <Route path='CurrentAlumniProfile' element={<AProfile/>}></Route>
+      <Route path='/CurrentAlumniProfile' element={<AProfile/>}></Route>
+      <Route path='/logout' element={<Splash/>}></Route>
+      <Route path="*" element={<div>Invalid route</div>} />
     </Routes>
     </BrowserRouter>
   )

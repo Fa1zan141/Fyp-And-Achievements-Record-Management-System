@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState }  from 'react'
 import { Link } from 'react-router-dom'
 import './Home.css'
 import { Typewriter } from 'react-simple-typewriter'
@@ -9,10 +9,13 @@ import News from '../Components/News'
 import Supervisors from '../Components/Supervisors'
 import AlumniProfile from '../Components/AlumniProfile'
 import { FaRegCopyright } from "react-icons/fa6";
-import { CgProfile } from "react-icons/cg";
 import {useNavigate} from 'react-router-dom'
 
+
 function Home() {
+  
+
+
   //FYP Card Data Object
   const Fypdata=[{
     title:"Title",
@@ -89,7 +92,7 @@ const Alumnidata = [
     Name: "Qudsia",
   },
 ];
-
+const Navigate= useNavigate();
   const handleType = (char) => {
     console.log(`Typing character ${char}`);
   };
@@ -97,7 +100,7 @@ const Alumnidata = [
     console.log(`Typing animation done after 5 loops!`);
   };
 
-  const Navigate= useNavigate();
+ 
 
   return (
     <>
@@ -112,19 +115,21 @@ const Alumnidata = [
                     <Link to="/home">Home</Link>
                     </li>
                     <li>
-                    <Link to="/fyp">FYP</Link>
+                    <Link to="/fyprecord">FYP</Link>
                     </li>
                     <li>
-                    <Link to="/achievements">Achievements</Link>
+                    <Link to="/achievementsrecord">Achievements</Link>
                     </li>
                     <li>
-                    <Link to="news&jobs">News & Jobs</Link>
+                    <Link to="/newsandjobspost">News & Jobs</Link>
                     </li>
                     <li>
-                    <Link to="/alumni">Alumni</Link>
+                    <Link to="/alumniprofiles">Alumni</Link>
                     </li>
                 </ul> 
-                <button id="Hpbtn" onClick={()=>{Navigate("/studentdashboard")}}><CgProfile/></button>
+                <button id="username" >Muhammad Faizan</button>
+                <button id="Hpbtn" onClick={()=>{Navigate("/logout")}}>Logout</button>
+                
             </div>
         </nav>
         <div id="Hero">

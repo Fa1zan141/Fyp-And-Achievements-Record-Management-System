@@ -2,7 +2,10 @@ import React from 'react'
 import './Sidebar.css'
 import { CgProfile } from "react-icons/cg";
 import { FaRegMessage } from "react-icons/fa6";
+import {useNavigate} from 'react-router-dom'
 function Sidebar() {
+
+  const Navigate= useNavigate();
   return (
     <>
     <div id="stddashboardNav">
@@ -11,7 +14,8 @@ function Sidebar() {
     </div>
     <div id="right">
     <button id="Msgbtn" onClick={()=>{Navigate("/ChatBox")}}><FaRegMessage/></button>
-    <button id="Prfbtn" onClick={()=>{Navigate("/StudentProfile")}}><CgProfile/></button>
+    <button id="username" onClick={()=>{Navigate("/studentdashboard")}}>Muhammad Faizan</button>
+    <button id="Prfbtn" onClick={()=>{Navigate("/logout")}}>Logout</button>
     </div>
     </div>
     <div id="StdDashboardsidebar">
