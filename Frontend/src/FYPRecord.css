@@ -111,3 +111,34 @@ td{
     overflow: hidden;
     border-collapse: collapse;
 }
+#editbtn{
+    width: 50px;
+    height: 30px;
+    margin-top: 2px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 5px;
+    background-color: #b80000c0;
+}
+#viewbtn{
+    width: 50px;
+    height: 30px;
+    margin-top: 2px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 5px;
+    background-color: #0e00d3bd;
+}
+#deletebtn{
+    width: 50px;
+    height: 30px;
+    margin-top: 2px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 5px;
+    background-color: #037003c5;
+}
+#buttons{
+    display: flex;
+    gap: 10px;
+}

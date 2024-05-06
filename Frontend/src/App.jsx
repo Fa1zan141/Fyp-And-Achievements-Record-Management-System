@@ -22,6 +22,7 @@ import CreateAlumniProfile from './CreateAlumniProfile'
 import UpdateAlumniProfile from './UpdateAlumniProfile'
 import AlumniProfiles from './AlumniProfiles'
 import AProfile from './AProfile'
+import FypFullRecord from './FypFullRecord'
 function App() {
   return (
     <BrowserRouter>
@@ -40,7 +41,7 @@ function App() {
       <Route path='/addachievement' element={<AddAchievementsRecord/>}></Route>
       <Route path='/addfyp' element={<AddFypRecord/>}></Route>
       <Route path='/updateachievement' element={<UpdateAchievementsRecord/>}></Route>
-      <Route path='/updatefyp' element={<UpdateFypRecord/>}></Route>
+      <Route path='/updatefyp/:id' element={<UpdateFypRecord/>}></Route>
       <Route path='/adminprofile' element={<AdminProfile/>}></Route>
       <Route path='/studentprofile' element={<StudentProfile/>}></Route>
       <Route path='/teachersprofile' element={<TeachersProfile/>}></Route>
@@ -48,6 +49,7 @@ function App() {
       <Route path='/updatealumniprofile' element={<UpdateAlumniProfile/>}></Route>
       <Route path='/alumniprofiles' element={<AlumniProfiles/>}></Route>
       <Route path='/CurrentAlumniProfile' element={<AProfile/>}></Route>
+      <Route path='/fullrecord/:id' element={<FypFullRecord/>}></Route>
       <Route path='/logout' element={<Splash/>}></Route>
       <Route path="*" element={<div>Page Not Found</div>} />
     </Routes>

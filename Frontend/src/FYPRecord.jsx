@@ -1,14 +1,39 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Sidebar from '../Components/Sidebar'
 import './FYPRecord.css'
 import { FaSearch } from "react-icons/fa";
-import { FaEye } from "react-icons/fa";
-
-const FypRecorddata = [
-    { Title: "FYP&Achievements Record", Supervisor: "Mam Hafsa Shreef Dar", Domain: "web3", Year: 2002, Summary: "Summary", FullView: <FaEye/>}
-]
+import {useNavigate} from 'react-router-dom'
+import axios from 'axios'
 
 function FYPRecord() {
+    const Navigate= useNavigate();
+
+    const [FYPRecord, setFYPRecord]= useState([])
+    
+    useEffect(() => {
+      const fetchData = async () => {
+            try {
+                const result = await axios.get("http://localhost:3000/");
+                setFYPRecord(result.data);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+    
+        fetchData();
+    }, []);
+
+    const handleDelete = async (id) => {
+        try {
+            const res = await axios.delete('http://localhost:3000/deletefpyrecord/' + id);
+            console.log(res);
+            window.location.reload();
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    
+
   return (
     <>
     <Sidebar></Sidebar>
@@ -22,26 +47,37 @@ function FYPRecord() {
     <div id="Sicon"><button type="submit"><FaSearch /></button></div>
     <div id="table">
     <table>
-                <tr>
+        <thead>
+        <tr>
                     <th>Title</th>
                     <th>Supervisor</th>
                     <th>Domain</th>
                     <th>Year</th>
                     <th>Summary</th>
-                    <th>Full View</th>
+                    <th>Action</th>
                 </tr>
-                {FypRecorddata.map((val, key) => {
-                    return (
-                        <tr key={key}>
-                            <td>{val.Title}</td>
-                            <td>{val.Supervisor}</td>
-                            <td>{val.Domain}</td>
-                            <td>{val.Year}</td>
-                            <td>{val.Summary}</td>
-                            <td>{val.FullView}</td>
-                        </tr>
-                    )
+        </thead>
+        <tbody>
+        { FYPRecord == null
+            ? ""
+            : FYPRecord.map((fyprecord) => {
+            return(
+                <tr>
+                <td>{fyprecord.Fyptitle}</td>
+                <td>{fyprecord.Supervisor}</td>
+                <td>{fyprecord.Domain}</td>
+                <td>{fyprecord.Year}</td>
+                <td>{fyprecord.Shortsummary}</td>
+                <td id="buttons">
+                <button id="editbtn" onClick={() => {Navigate(`/updatefyp/${fyprecord._id}`)}}>Edit</button> 
+                <button id="deletebtn" onClick={(e) => handleDelete(fyprecord._id)}>Delete</button> 
+                <button id="viewbtn" onClick={() => {Navigate(`/fullrecord/${fyprecord._id}`)}}>View</button>
+
+                </td>
+            </tr>
+            )        
                 })}
+        </tbody>    
             </table>
     </div>
     

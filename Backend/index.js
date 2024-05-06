@@ -1,8 +1,11 @@
 const express = require("express");
 const mongoose = require('mongoose');
 const cors = require('cors');
-const EmployeeModel = require('./Models/Employee');
 const jwt= require('jsonwebtoken');
+const multer = require('multer');
+//Mongo Db Models
+const EmployeeModel = require('./Models/Employee');
+const FypRecordModel = require('./Models/FypRecord');
 
 const app = express();
 app.use(express.json());
@@ -12,8 +15,23 @@ app.use(cors({
   origin:"*"
 }));
 
-const post_route= require('./Routes/postRoute');
-app.use('/api', post_route);
+app.use("/uploads", express.static(__dirname + "/public/uploads"));
+
+
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "./public/uploads");
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now();
+    cb(null, uniqueSuffix + file.originalname);
+  },
+});
+
+require("./Models/FypRecord");
+const FypRecordSchema = mongoose.model("FypRecord");
+const upload = multer({ storage: storage });
 
 
 /*
@@ -77,9 +95,92 @@ app.post('/login', async (req, res) => {
     res.cookie("Token","");
     res.redirect("/splash");
   });
+  //For FypRecord
 
-  //For Dynamic Role Routing
- 
+/*
+  app.post('/addfyp', async (req, res) => {
+    try {
+   
+       const newfyprecord = new FypRecordModel(req.body);
+       await newfyprecord.save();
+       res.status(201).json({ message: 'Record Added successfully' });
+     } catch (error) {
+       console.error("Error Whipe Adding Record:", error);
+       res.status(500).json({ error: 'Internal Server Error' });
+     }
+   })
+*/
+   app.post('/addfyp', upload.single("Upload"), async (req, res) => {
+    console.log(req.Upload);
+    const Fyptitle = req.body.Fyptitle;
+    const Supervisor = req.body.Supervisor;
+    const Domain = req.body.Domain;
+    const Year = req.body.Year;
+    const Shortsummary = req.body.ShortSummary;
+    const Upload = req.file;
+    try {
+      const newfyprecord = new FypRecordModel({
+        Fyptitle,
+        Supervisor,
+        Domain,
+        Year,
+        Shortsummary,
+        Upload: req.file.filename// Assigning the file to the Upload field
+      } );
+      await newfyprecord.save();
+      res.status(201).json({ message: 'Record Added successfully' });
+    } catch (error) {
+      console.error("Error Whipe Adding Record:", error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+   app.get('/', async (req, res) => {
+    try {
+        const fypRecords = await FypRecordModel.find({});
+        res.json(fypRecords);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+app.get('/updaterecord/:id', async (req, res) => {
+  try {
+      const id = req.params.id;
+      const fypRecordsid = await FypRecordModel.findById({_id:id});
+      res.json(fypRecordsid);
+  } catch (error) {
+      res.status(500).json({ message: error.message });
+  }
+});
+
+app.put('/updatedrecord/:id', async (req, res) => {
+  try {
+      const id = req.params.id;
+      const updatefypRecordsid = await FypRecordModel.findByIdAndUpdate({_id:id},{ Fyptitle: req.body.Fyptitle, Supervisor: req.body.Supervisor, Domain: req.body.Domain, Year: req.body.Year, Shortsummary: req.body.Shortsummary, Upload: req.body.Upload});
+      res.json(updatefypRecordsid);
+  } catch (error) {
+      res.status(500).json({ message: error.message });
+  }
+});
+
+app.delete('/deletefpyrecord/:id', async (req, res) => {
+  try {
+      const id = req.params.id;
+      const updatefypRecordsid = await FypRecordModel.findByIdAndDelete({_id:id},{ Fyptitle: req.body.Fyptitle, Supervisor: req.body.Supervisor, Domain: req.body.Domain, Year: req.body.Year, Shortsummary: req.body.Shortsummary, Upload: req.body.Upload});
+      res.json(updatefypRecordsid);
+  } catch (error) {
+      res.status(500).json({ message: error.message });
+  }
+});
+
+app.get('/fullrecord/:id', async (req, res) => {
+  try {
+      const id = req.params.id;
+      const viewfypRecordsid = await FypRecordModel.findById({_id:id});
+      res.json(viewfypRecordsid);
+  } catch (error) {
+      res.status(500).json({ message: error.message });
+  }
+});
 
 
 
