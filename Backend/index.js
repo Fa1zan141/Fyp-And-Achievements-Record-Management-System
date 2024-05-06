@@ -116,7 +116,7 @@ app.post('/login', async (req, res) => {
     const Supervisor = req.body.Supervisor;
     const Domain = req.body.Domain;
     const Year = req.body.Year;
-    const Shortsummary = req.body.ShortSummary;
+    const Shortsummary = req.body.Shortsummary;
     const Upload = req.file;
     try {
       const newfyprecord = new FypRecordModel({
@@ -125,7 +125,7 @@ app.post('/login', async (req, res) => {
         Domain,
         Year,
         Shortsummary,
-        Upload: req.file.filename// Assigning the file to the Upload field
+        Upload: req.file.filename
       } );
       await newfyprecord.save();
       res.status(201).json({ message: 'Record Added successfully' });
@@ -155,7 +155,7 @@ app.get('/updaterecord/:id', async (req, res) => {
 app.put('/updatedrecord/:id', async (req, res) => {
   try {
       const id = req.params.id;
-      const updatefypRecordsid = await FypRecordModel.findByIdAndUpdate({_id:id},{ Fyptitle: req.body.Fyptitle, Supervisor: req.body.Supervisor, Domain: req.body.Domain, Year: req.body.Year, Shortsummary: req.body.Shortsummary, Upload: req.body.Upload});
+      const updatefypRecordsid = await FypRecordModel.findByIdAndUpdate({_id:id},{ Fyptitle: req.body.Fyptitle, Supervisor: req.body.Supervisor, Domain: req.body.Domain, Year: req.body.Year, Shortsummary: req.body.Shortsummary, Upload: req.file.Upload});
       res.json(updatefypRecordsid);
   } catch (error) {
       res.status(500).json({ message: error.message });
