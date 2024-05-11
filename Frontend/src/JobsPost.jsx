@@ -10,50 +10,40 @@ function JobsPost() {
     const [joblink, setjoblink]= useState()
     const [skill, setskill]= useState()
     const [experience, setexperience]= useState()
+    
     const Navigate= useNavigate();
 
     const handleSubmit = async (e) => {
-    
-    axios.post('http://localhost:3000/jobpost', { jobTitle, joblocation, joblink, skill, experience})
-    .then(result => {
-      console.log(result);
-      if (result.data.status != "fail"){
-        Toastify({
-          text: result.data.message,
-          duration: 3000,
-          gravity: "top",
-          style: {
-            background: "linear-gradient(to right, blue, green)",
-            borderRadius: "10px",
-          },     
-        }).showToast();
-        Navigate('/newsandjobspost'); 
+      e.preventDefault();
+      
+      try {
+          const result = await axios.post('http://localhost:3000/jobpost', { jobTitle, joblocation, joblink, skill, experience });
+
+          if (result.data.status !== "fail") {
+              showToast(result.data.message, "linear-gradient(to right, blue, green)");
+              Navigate('/newsandjobspost');
+          } else {
+              showToast(result.data.message, "linear-gradient(to right, yellow, blue)");
+          }
+      } catch (error) {
+          console.error('ERROR WHILE Adding Record', error);
+          showToast('An error occurred during Adding Record', "red");
       }
-      else {
-        Toastify({
-          text: result.data.message,
-          duration: 3000,
-          gravity: "top",
-          style: {
-            background: "linear-gradient(to right, yellow, blue)",
-            borderRadius: "10px",
-          },
-        }).showToast();
-      }
-    })
-    .catch(error => {
-      console.error('ERROR WHILE Adding Record', error);
-      // Handle the error, e.g., display an error message to the user
+  };
+
+  const showToast = (text, background) => {
       Toastify({
-        text: 'An error occurred during Adding Record',
-        duration: 3000,
-        gravity: "top",
-        backgroundColor: "red",
+          text,
+          duration: 3000,
+          gravity: "top",
+          style: {
+              background,
+              borderRadius: "10px",
+          },
       }).showToast();
-    }); 
+  };
     
-    
-}
+
 
 
   return (

@@ -13,45 +13,35 @@ function Addnews() {
 
   const navigate= useNavigate();
 
-  const newshandleSubmit= async (e) => {
-    axios.post('http://localhost:3000/addnews', { newsTitle, newsdescription, newsType, newsDate})
-    .then(result => {
-      console.log(result);
-      if (result.data.status != "fail"){
-        Toastify({
-          text: result.data.message,
-          duration: 3000,
-          gravity: "top",
-          style: {
-            background: "linear-gradient(to right, blue, green)",
-            borderRadius: "10px",
-          },     
-        }).showToast();
-        navigate('/news'); 
-      }
-      else {
-        Toastify({
-          text: result.data.message,
-          duration: 3000,
-          gravity: "top",
-          style: {
-            background: "linear-gradient(to right, yellow, blue)",
-            borderRadius: "10px",
-          },
-        }).showToast();
-      }
-    })
-    .catch(error => {
-      console.error('ERROR WHILE Adding Record', error);
-      // Handle the error, e.g., display an error message to the user
-      Toastify({
-        text: 'An error occurred during Adding Record',
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    try {
+        const result = await axios.post('http://localhost:3000/addnews', { newsTitle, newsdescription, newsType, newsDate });
+
+        if (result.data.status !== "fail") {
+            showToast(result.data.message, "linear-gradient(to right, blue, green)");
+            navigate('/news');
+        } else {
+            showToast(result.data.message, "linear-gradient(to right, yellow, blue)");
+        }
+    } catch (error) {
+        console.error('ERROR WHILE Adding Record', error);
+        showToast('An error occurred during Adding Record', "red");
+    }
+};
+
+const showToast = (text, background) => {
+    Toastify({
+        text,
         duration: 3000,
         gravity: "top",
-        backgroundColor: "red",
-      }).showToast();
-    })
-  };
+        style: {
+            background,
+            borderRadius: "10px",
+        },
+    }).showToast();
+};
 
 
 
@@ -61,7 +51,7 @@ function Addnews() {
     <div id="VLine"></div>
     <div id="welcome"><p>Add Record</p></div>
     <div id="NewsForm">
-    <form onSubmit={newshandleSubmit} >
+    <form onSubmit={handleSubmit} >
     <label id='NLabel1' htmlFor="newsTitle">News Title:</label>
     <input type="text" id="newsTitle" name="newsTitle" placeholder='News Title' required onChange={(e) => setnewsTitle(e.target.value)}/>
     <label id='NLabel2' htmlFor="newsdescription">Description:</label>
