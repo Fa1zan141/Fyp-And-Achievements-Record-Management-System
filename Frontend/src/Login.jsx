@@ -73,6 +73,7 @@ function Login() {
                     <option value="Student">Student</option>
                     <option value="Teacher">Teacher</option>
                     <option value="Admin">Admin</option>
+                    <option value="Alumni">Alumni</option>
                   </select>
                   <button type="submit" id="Lbutton">Login</button>
             </form>

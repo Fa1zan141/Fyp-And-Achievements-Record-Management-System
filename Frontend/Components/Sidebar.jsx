@@ -22,20 +22,22 @@ function Sidebar() {
         <div id="leftSide">
             <h1>Main Menu</h1>
             <div id="bar"></div>
-          <a href="/">Dashboard</a>
+          <a href="/home">Home</a>
           <br />
-          <a href="/fyp">FYP</a>
+          <a href="/fyprecord">FYP</a>
           <br />
-          <a href="/achievements">Achievements</a>
+          <a href="/achievementsrecord">Achievements</a>
           <br />
-          <a href="/news-jobs">News & Jobs</a>
+          <a href="/newsandjobspost">Jobs Post</a>
           <br />
-          <a href="/alumni-connect">Alumni Connect</a>
+          <a href="/news">News Post</a>
+          <br />
+          <a href="/alumniprofiles">Alumni Connect</a>
           <br />
           <br />
           <h1>Settings</h1>
           <div id="Sbar"></div>
-            <a href="/general">General</a>
+            <a href="/studentprofile">General</a>
             <br />
             <a href="/logout">Logout</a>
         </div>

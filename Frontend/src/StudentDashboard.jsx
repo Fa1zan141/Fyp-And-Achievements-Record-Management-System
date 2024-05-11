@@ -15,11 +15,9 @@ function StudentDashboard() {
     <div id="VerticalLane"></div>
     <div id="VLine2"></div>
     <div id="AddRecord"><p>Add Record</p></div>
-    <div id="addrecordbtn"><button onClick={()=>{Navigate("/addfyp")}}><p> Add Record <div id="addicon"><CiCirclePlus /> </div></p></button></div>
-    <div id="addachievementbtn"><button onClick={()=>{Navigate("/addachievement")}}><p> Add Achievement <div id="achicon"><CiCirclePlus /> </div></p></button></div>
-    <div id="VLine3"></div>
-    <div id="Addalumniprofile"><p>Add Alumni Profile</p></div>
-    <div id="AlumniProfilebtn"><button  onClick={()=>{Navigate("/createalumniprofile")}}><p> Register Alumni Profile </p></button></div>
+    <div id="addrecordbtn"><button onClick={()=>{Navigate("/addfyp")}}><p> FYP  <div id="addicon"><CiCirclePlus /> </div></p></button></div>
+    <div id="addachievementbtn"><button onClick={()=>{Navigate("/addachievement")}}><p> Achievement <div id="achicon"><CiCirclePlus /> </div></p></button></div>
+    
     
     </>
    

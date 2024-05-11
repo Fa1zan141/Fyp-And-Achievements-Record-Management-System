@@ -18,7 +18,7 @@ html,body {
 #detailsoffyp{
     height: 100%;
     width: 100%;
-    background-color: rgba(139, 138, 138, 0.616);
+    
 }
 #detailsoffyp h1{
     font-size: large;
@@ -45,4 +45,11 @@ html,body {
     color: white;
     font-weight: 700;
     margin-left: 630px;
+}
+#media{
+    height: 200px;
+    width: 500px;
+    align-items: center;
+    margin-left: 400px;
+    
 }

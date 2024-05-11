@@ -1,14 +1,37 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Sidebar from '../Components/Sidebar'
 import { FaSearch } from "react-icons/fa";
-import { FaEye } from "react-icons/fa";
-
-
-const FypRecorddata = [
-    { Title: "FYP&Achievements Record", Domain: "web3", Date:"20-02-2024", Year: 2002, Summary: "Summary", FullView: <FaEye/>}
-]
+import {useNavigate} from 'react-router-dom'
+import axios from 'axios'
 
 function AchievementsRecord() {
+    const Navigate= useNavigate();
+
+    const [AchievementsRecord, setAchievementsRecord]= useState([])
+    
+    useEffect(() => {
+      const fetchData = async () => {
+            try {
+                const result = await axios.get("http://localhost:3000/doneachievement");
+                setAchievementsRecord(result.data);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+    
+        fetchData();
+    }, []);
+
+    const handleDelete = async (id) => {
+        try {
+            const res = await axios.delete('http://localhost:3000/deleteachievementrecord/' + id);
+            console.log(res);
+            window.location.reload();
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
   return (
     <>
     <Sidebar></Sidebar>
@@ -22,6 +45,7 @@ function AchievementsRecord() {
     <div id="Sicon"><button type="submit"><FaSearch /></button></div>
     <div id="table">
     <table>
+                <thead>
                 <tr>
                     <th>Title</th>
                     <th>Domain</th>
@@ -30,18 +54,27 @@ function AchievementsRecord() {
                     <th>Summary</th>
                     <th>Full View</th>
                 </tr>
-                {FypRecorddata.map((val, key) => {
-                    return (
-                        <tr key={key}>
-                            <td>{val.Title}</td>
-                            <td>{val.Domain}</td>
-                            <td>{val.Date}</td>
-                            <td>{val.Year}</td>
-                            <td>{val.Summary}</td>
-                            <td>{val.FullView}</td>
+                </thead>
+                <tbody>
+                { AchievementsRecord == null
+                        ? ""
+                        : AchievementsRecord.map((achievementsRecords) => {
+                        return(
+                            <tr>
+                            <td>{achievementsRecords.AchievementTitle}</td>
+                            <td>{achievementsRecords.Domain}</td>
+                            <td>{achievementsRecords.Date}</td>
+                            <td>{achievementsRecords.Year}</td>
+                            <td>{achievementsRecords.Description}</td>
+                            <td id="buttons">
+                            <button id="editbtn" onClick={() => {Navigate(`/updateachievement/${achievementsRecords._id}`)}}>Edit</button> 
+                            <button id="deletebtn" onClick={(e) => handleDelete(achievementsRecords._id)}>Delete</button> 
+                            <button id="viewbtn" onClick={() => {Navigate(`/achievementfullrecord/${achievementsRecords._id}`)}}>View</button>
+                            </td>
                         </tr>
                     )
                 })}
+                </tbody>
             </table>
     </div>
     

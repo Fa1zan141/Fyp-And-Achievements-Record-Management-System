@@ -1,9 +1,9 @@
 import React from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Splash from './Splash'
 import Register from './Register'
 import Login from './Login'
 import Home from './Home'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import StudentDashboard from './StudentDashboard'
 import TeachersDashboard from './TeachersDashboard'
 import AdminDashboard from './AdminDashboard'
@@ -23,6 +23,10 @@ import UpdateAlumniProfile from './UpdateAlumniProfile'
 import AlumniProfiles from './AlumniProfiles'
 import AProfile from './AProfile'
 import FypFullRecord from './FypFullRecord'
+import AchievementsFullRecord from './AchievementsFullRecord'
+import News from './News'
+import Addnews from './Addnews'
+import JobsPost from './JobsPost'
 function App() {
   return (
     <BrowserRouter>
@@ -38,9 +42,11 @@ function App() {
       <Route path='/fyprecord' element={<FYPRecord/>}></Route>
       <Route path='/achievementsrecord' element={<AchievementsRecord/>}></Route>
       <Route path='/newsandjobspost' element={<NewsandJobsPost/>}></Route>
+      <Route path='/news' element={<News/>}></Route>
       <Route path='/addachievement' element={<AddAchievementsRecord/>}></Route>
       <Route path='/addfyp' element={<AddFypRecord/>}></Route>
-      <Route path='/updateachievement' element={<UpdateAchievementsRecord/>}></Route>
+      <Route path='/addnews' element={<Addnews/>}></Route>
+      <Route path='/updateachievement/:id' element={<UpdateAchievementsRecord/>}></Route>
       <Route path='/updatefyp/:id' element={<UpdateFypRecord/>}></Route>
       <Route path='/adminprofile' element={<AdminProfile/>}></Route>
       <Route path='/studentprofile' element={<StudentProfile/>}></Route>
@@ -50,6 +56,8 @@ function App() {
       <Route path='/alumniprofiles' element={<AlumniProfiles/>}></Route>
       <Route path='/CurrentAlumniProfile' element={<AProfile/>}></Route>
       <Route path='/fullrecord/:id' element={<FypFullRecord/>}></Route>
+      <Route path='/achievementfullrecord/:id' element={<AchievementsFullRecord/>}></Route>
+      <Route path='/jobspost' element={<JobsPost/>}></Route>
       <Route path='/logout' element={<Splash/>}></Route>
       <Route path="*" element={<div>Page Not Found</div>} />
     </Routes>

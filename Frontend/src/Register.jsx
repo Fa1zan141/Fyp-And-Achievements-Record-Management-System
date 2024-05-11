@@ -54,6 +54,7 @@ function Register() {
                 <select name="role" id="role" form="role" required onChange={(e) => setrole(e.target.value)}>
                     <option value="Student">Student</option>
                     <option value="Teacher">Teacher</option>
+                    <option value="Alumni">Alumni</option>
                   </select>
                 <label htmlFor="password">Password</label><br></br>
                 <input type="password" id="password" name="password" placeholder="Password " required onChange={(e) => setpassword(e.target.value)}/><br></br>

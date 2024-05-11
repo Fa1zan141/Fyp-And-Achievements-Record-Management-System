@@ -1,18 +1,44 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Sidebar from '../Components/Sidebar'
 import { FaSearch } from "react-icons/fa";
-import { FaEye } from "react-icons/fa";
+import {useNavigate} from 'react-router-dom'
+import axios from 'axios'
 
-const FypRecorddata = [
-    { JobTitle: "FYP&Achievements Record", JobLocation: "Lahore", Link:"@Linkedin", NewsTitle: "Media", Description: "Summary", FullView: <FaEye/>}
-]
 
 function NewsandJobsPost() {
+
+    const Navigate= useNavigate();
+
+    const [JobpostRecord, setJobpsotRecord]= useState([])
+    
+    useEffect(() => {
+      const fetchData = async () => {
+            try {
+                const result = await axios.get("http://localhost:3000/jobpostrecord");
+                setJobpsotRecord(result.data);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+    
+        fetchData();
+    }, []);
+
+    const handleDelete = async (id) => {
+        try {
+            const res = await axios.delete('http://localhost:3000/deletejobpostrecord/' + id);
+            console.log(res);
+            window.location.reload();
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
   return (
     <>
      <Sidebar></Sidebar>
     <div id="FYPLine"></div>
-    <div id="FYPRecord"><p>News & Jobs Post</p></div>
+    <div id="FYPRecord"><p>Jobs Post</p></div>
     <div id="updateFYPbtn"><button><p> Update Record </p></button></div>
     <div id="deleterecordbtn"><button><p> Delete Record </p></button></div>
     <div id="forsearch">
@@ -21,26 +47,36 @@ function NewsandJobsPost() {
     <div id="Sicon"><button type="submit"><FaSearch /></button></div>
     <div id="table">
     <table>
+        <thead>
                 <tr>
                     <th>Job Title</th>
-                    <th>Job Location</th>
+                    <th>Location</th>
                     <th>Link</th>
-                    <th>News Title</th>
-                    <th>Description</th>
-                    <th>Full View</th>
+                    <th>Skill</th>
+                    <th>Experience</th>
+                    <th>Action</th>
                 </tr>
-                {FypRecorddata.map((val, key) => {
-                    return (
-                        <tr key={key}>
-                            <td>{val.JobTitle}</td>
-                            <td>{val.JobLocation}</td>
-                            <td>{val.Link}</td>
-                            <td>{val.NewsTitle}</td>
-                            <td>{val.Description}</td>
-                            <td>{val.FullView}</td>
+        </thead>
+        <tbody>
+        { JobpostRecord == null
+                        ? ""
+                        : JobpostRecord.map((jobpostsRecords) => {
+                        return(
+                            <tr>
+                            <td>{jobpostsRecords.jobTitle}</td>
+                            <td>{jobpostsRecords.joblocation}</td>
+                            <td>{jobpostsRecords.joblink}</td>
+                            <td>{jobpostsRecords.skill}</td>
+                            <td>{jobpostsRecords.experience}</td>
+                            <td id="buttons">
+                            <button id="deletebtn" onClick={(e) => handleDelete(jobpostsRecords._id)}>Delete</button> 
+                            <button id="viewbtn" onClick={() => {Navigate(`/jobpostfullrecord/${jobpostsRecords._id}`)}}>View</button>
+                            </td>
                         </tr>
                     )
                 })}
+        </tbody>
+              
             </table>
     </div>
     </form>

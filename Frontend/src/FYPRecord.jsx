@@ -72,7 +72,6 @@ function FYPRecord() {
                 <button id="editbtn" onClick={() => {Navigate(`/updatefyp/${fyprecord._id}`)}}>Edit</button> 
                 <button id="deletebtn" onClick={(e) => handleDelete(fyprecord._id)}>Delete</button> 
                 <button id="viewbtn" onClick={() => {Navigate(`/fullrecord/${fyprecord._id}`)}}>View</button>
-
                 </td>
             </tr>
             )        
