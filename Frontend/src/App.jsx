@@ -27,6 +27,8 @@ import AchievementsFullRecord from './AchievementsFullRecord'
 import News from './News'
 import Addnews from './Addnews'
 import JobsPost from './JobsPost'
+import Jobpostfullrecord from './Jobpostfullrecord'
+import Newspostfullrecord from './Newspostfullrecord'
 function App() {
   return (
     <BrowserRouter>
@@ -58,6 +60,8 @@ function App() {
       <Route path='/fullrecord/:id' element={<FypFullRecord/>}></Route>
       <Route path='/achievementfullrecord/:id' element={<AchievementsFullRecord/>}></Route>
       <Route path='/jobspost' element={<JobsPost/>}></Route>
+      <Route path='/jobsrecord/:id' element={<Jobpostfullrecord/>}></Route>
+      <Route path='/newsrecord/:id' element={<Newspostfullrecord/>}></Route>
       <Route path='/logout' element={<Splash/>}></Route>
       <Route path="*" element={<div>Page Not Found</div>} />
     </Routes>

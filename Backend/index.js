@@ -301,29 +301,19 @@ app.delete('/deletejobpostrecord/:id', async (req, res) => {
       res.status(500).json({ message: error.message });
   }
 });
-/*
-app.post('/addjobpost', async (req, res) => {
-  const jobTitle = req.body.jobTitle;
-  const joblocation = req.body.joblocation;
-  const joblink = req.body.joblink;
-  const skill = req.body.skill;
-  const experience = req.body.experience;
+// Getting All Record On New Page
+
+app.get('/jobsrecord/:id', async (req, res) => {
   try {
-    const newJobsrecord = new JobRecordModel({
-      jobTitle,
-      joblocation,
-      joblink,
-      skill,
-      experience
-    });
-    await newJobsrecord.save();
-    res.status(201).json({ message: 'Record Added successfully' });
+      const id = req.params.id;
+      const viewjobRecordsid = await JobRecordModel.findById({_id:id});
+      res.json(viewjobRecordsid);
   } catch (error) {
-    console.error("Error While Adding Record:", error);
-    res.status(500).json({ error: 'Internal Server Error' });
+      res.status(500).json({ message: error.message });
   }
 });
-*/
+
+
 
 // For News Post 
 // Adding News Post Record 
@@ -347,12 +337,24 @@ app.post('/addnews', async (req, res) => {
       res.status(500).json({ message: error.message });
   }
 });
+
 //Deleting Record
 app.delete('/deletenewspostrecord/:id', async (req, res) => {
   try {
       const id = req.params.id;
       const updatenewspostRecordsid = await  NewsRecordModel.findByIdAndDelete({_id:id},{ newsTitle: req.body.newsTitle, newsdescription: req.body.newsdescription, newsType: req.body.newsType, newsDate: req.body.newsDate});
       res.json(updatenewspostRecordsid);
+  } catch (error) {
+      res.status(500).json({ message: error.message });
+  }
+});
+
+// Getting All Record On New Page
+app.get('/newsrecord/:id', async (req, res) => {
+  try {
+      const id = req.params.id;
+      const viewjobRecordsid = await NewsRecordModel.findById({_id:id});
+      res.json(viewjobRecordsid);
   } catch (error) {
       res.status(500).json({ message: error.message });
   }

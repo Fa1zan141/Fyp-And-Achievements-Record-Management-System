@@ -70,7 +70,7 @@ function NewsandJobsPost() {
                             <td>{jobpostsRecords.experience}</td>
                             <td id="buttons">
                             <button id="deletebtn" onClick={(e) => handleDelete(jobpostsRecords._id)}>Delete</button> 
-                            <button id="viewbtn" onClick={() => {Navigate(`/jobpostfullrecord/${jobpostsRecords._id}`)}}>View</button>
+                            <button id="viewbtn" onClick={() => {Navigate(`/jobsrecord/${jobpostsRecords._id}`)}}>View</button>
                             </td>
                         </tr>
                     )

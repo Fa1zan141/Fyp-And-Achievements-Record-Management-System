@@ -68,7 +68,7 @@ function News() {
                             <td>{newsRecords.newsDate}</td>
                             <td id="buttons">
                             <button id="deletebtn" onClick={(e) => handleDelete(newsRecords._id)}>Delete</button> 
-                            <button id="viewbtn" onClick={() => {Navigate(`/newsfullrecord/${newsRecords._id}`)}}>View</button>
+                            <button id="viewbtn" onClick={() => {Navigate(`/newsrecord/${newsRecords._id}`)}}>View</button>
                             </td>
                         </tr>
                     )
