@@ -20,16 +20,40 @@ function Register() {
     e.preventDefault();
     axios.post('http://localhost:3000/register', { FirstName, LastName, email, role, password })
       .then(result => {
-        console.log('Registration successful:', result);
-        navigate('/login');
-        // Handle the response data as needed
-      })
-      .catch(error => {
-        console.error('Error registering user:', error);
-        // Handle the error, e.g., display an error message to the user
-      }); 
-
-  }
+        console.log(result);
+        if (result.data.status === "OK") {
+          Toastify({
+            text: result.data.message,
+            duration: 3000,
+            gravity: "top",
+            style: {
+              background: "linear-gradient(to right, blue, green)",
+              borderRadius: "10px",
+            },
+          }).showToast();
+          navigate('/login');
+        } else {  Toastify({
+          text: result.data.message,
+          duration: 3000,
+          gravity: "top",
+          style: {
+            background: "linear-gradient(to right, red, brown)",
+            borderRadius: "10px",
+          },
+        }).showToast();
+      }
+    })
+    .catch(error => {
+      console.error('ERROR WHILE LOGIN', error);
+      // Handle the error, e.g., display an error message to the user
+      Toastify({
+        text: 'An error occurred during login',
+        duration: 3000,
+        gravity: "top",
+        backgroundColor: "red",
+      }).showToast();
+    }); 
+    }
   return (
     <>
     <div id="main">
@@ -48,7 +72,7 @@ function Register() {
                 <input type="text" id="LastName" name="LastName" placeholder="LastName" required
                 onChange={(e) => setLastName(e.target.value)}/><br></br>
                 <label htmlFor="email">Email</label><br></br>
-                <input type="email" id="email" name="email" placeholder="Email" required
+                <input type="email" id="email" name="email" placeholder="Email" unique required 
                 onChange={(e) => setemail(e.target.value)}/><br></br>
                 <label htmlFor="role">Select A Role</label><br></br>
                 <select name="role" id="role" form="role" required onChange={(e) => setrole(e.target.value)}>

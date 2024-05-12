@@ -1,7 +1,12 @@
 import React from 'react'
 import Sidebar from '../Components/Sidebar'
 import { CgProfile } from "react-icons/cg";
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
 function TeachersDashboard() {
+  
+
   return (
     <>
     <Sidebar></Sidebar>

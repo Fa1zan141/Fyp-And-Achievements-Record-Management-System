@@ -6,6 +6,7 @@ import { CiCirclePlus } from "react-icons/ci";
 import {useNavigate} from 'react-router-dom'
 function StudentDashboard() {
   const Navigate= useNavigate();
+  
   return (
     <>
      <Sidebar></Sidebar>

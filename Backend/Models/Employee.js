@@ -4,7 +4,10 @@ const EmployeeSchema = new mongoose.Schema({
     FirstName: String,
     LastName: String,
     email: String,
-    role: String,
+    role: {
+        type: String,
+        default: "Student"
+    },
     password: String
 })
 

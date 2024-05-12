@@ -3,22 +3,29 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const jwt= require('jsonwebtoken');
 const multer = require('multer');
+const cookieParser= require('cookie-parser');
+const bcyrpt=require('bcrypt');
+
+//APP USE
+const app = express();
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
+app.use(cookieParser())
+app.use(cors({
+  origin:["http://localhost:5173"],
+  methods:["GET","POST"],
+  credentials: true
+}))
+app.use("/uploads", express.static(__dirname + "/public/uploads"));
+
 //Mongo Db Models
 const EmployeeModel = require('./Models/Employee');
 const FypRecordModel = require('./Models/FypRecord');
 const AchievementsRecordModel = require ('./Models/AchievementsRecord')
 const JobRecordModel= require('./Models/Job')
 const NewsRecordModel= require('./Models/News')
-const app = express();
-app.use(express.json());
-app.use(express.urlencoded({extended:true}));
 
-app.use(cors())
-
-app.use("/uploads", express.static(__dirname + "/public/uploads"));
-
-
-
+//Multer Storage
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "./public/uploads");
@@ -28,11 +35,9 @@ const storage = multer.diskStorage({
     cb(null, uniqueSuffix + file.originalname);
   },
 });
-
 require("./Models/FypRecord");
 const FypRecordSchema = mongoose.model("FypRecord");
 const upload = multer({ storage: storage });
-
 
 /*
 EmployeeModel.create({
@@ -43,7 +48,7 @@ EmployeeModel.create({
   role: "Admin",
   password: "admin123"
   })
-  */
+*/  
 
 // Connect to MongoDB
 mongoose.connect("mongodb+srv://muhammadfaizan:124@cluster0.gm5sg1g.mongodb.net/FYP")
@@ -55,6 +60,26 @@ mongoose.connect("mongodb+srv://muhammadfaizan:124@cluster0.gm5sg1g.mongodb.net/
   });
 
 // Registration Route
+
+app.post('/register', async (req, res) => {
+  try {
+    const { FirstName, LastName, email,role, password } = req.body;
+    
+    // Hashing the password
+    const hash = await bcyrpt.hash(password, 10);
+    
+    // Creating a new user with hashed password
+    const user = await EmployeeModel.create({ FirstName,LastName, email,role, password: hash });
+    
+    // Sending response
+    res.json({ status: "OK" , message: 'User registered successfully'});
+  }catch (error) {
+    console.error("Error registering user:", error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+/*
 app.post('/register', async (req, res) => {
 
  try {
@@ -68,33 +93,105 @@ app.post('/register', async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 })
+*/
 //for login
-app.post('/login', async (req, res) => {
 
-    const{email, password,role}=req.body;
-    try {
-      const user = await EmployeeModel.findOne({ email,role });
-      if (user) {
-        if (user.password === password && user.email===email && user.role===role) {
-          res.json({ status: 'success', message: 'Login Successfully' });
-        } else {
-          res.json({ status: 'error', message: 'Credentials Incorrect' });
-        }
+app.post('/login', async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    
+    // Find the user by email
+    const user = await EmployeeModel.findOne({ email });
+    
+    if (!user) {
+      return res.status(404).json({ error: 'No record existed' });
+    }
+    
+    // Compare passwords
+    const passwordMatch = await bcyrpt.compare(password, user.password);
+    
+    if (!passwordMatch) {
+      return res.status(401).json({ error: 'The password is incorrect' });
+    }
+    
+    // If passwords match, generate token
+    const token = jwt.sign({ email: user.email, role: user.role }, "jwt-secret-key", { expiresIn: '1d' });
+    
+    // Set token as cookie
+    res.cookie('token', token);
+    
+    // Send success response
+    res.json({ status: 'OK', role: user.role, message: 'Login Successfully'});
+  } catch (error) {
+    console.error("Error logging in:", error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+//Logout 
+app.get('/logout', async (req, res) => {
+  try {
+    await res.clearCookie('token');
+    res.json({ status: 'OK', message: 'Logout Successfully' });
+  } catch (error) {
+    // If an error occurs, log it and send an error response
+    console.error('Error logging out:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+//Protected Routes Authentication
+const verifyUser = async (req, res, next) => {
+  try {
+    const token = req.cookies.token;
+    if (!token) {
+      return res.json("Token is missing");
+    } else {
+      const decoded = await jwt.verify(token, "jwt-secret-key");
+      if (decoded.role === "Admin") {
+        next();
       } else {
-        res.json({ status: 'error', message: 'User Not Registered' });
+        return res.json("Not Admin");
       }
-    } catch (error) {
+    }
+  } catch (error) {
+    console.error('Error verifying user:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
+app.get('/admindashboard', verifyUser, async (req, res) => {
+  try {
+    res.json("Success");
+  } catch (error) {
+    console.error('Error in admin dashboard:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
+/*
+app.post('/login', async (req, res) => {
+  const { email, password, role } = req.body;
+  try {
+      const user = await EmployeeModel.findOne({ email, role });
+      if (user) {
+          if (user.password === password && user.email === email && user.role === role) {
+              let token = jwt.sign({ email }, 'Faizan');
+              res.cookie("Token", token); 
+              res.json({ status: 'success', message: 'Login Successfully' });
+          } else {
+              res.json({ status: 'error', message: 'Credentials Incorrect' });
+          }
+      } else {
+          res.json({ status: 'error', message: 'User Not Registered' });
+      }
+  } catch (error) {
       console.error("Error during login:", error);
       res.status(500).json({ status: 'error', message: 'Internal Server Error' });
-    }
-    let token = jwt.sign({email}, 'Faizan');
-    res.cookie("Token",token);
-  });
-  //For Logout
-  app.get("/logout", function(req, res){
-    res.cookie("Token","");
-    res.redirect("/splash");
-  });
+  }
+});
+*/
 
   //For FypRecord
 
@@ -111,6 +208,8 @@ app.post('/login', async (req, res) => {
      }
    })
 */
+
+
 // Adding Fyp Record 
    app.post('/addfyp', upload.single("Upload"), async (req, res) => {
     console.log(req.Upload);

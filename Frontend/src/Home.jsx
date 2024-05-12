@@ -13,9 +13,8 @@ import {useNavigate} from 'react-router-dom'
 
 
 function Home() {
+  const Navigate= useNavigate();
   
-
-
   //FYP Card Data Object
   const Fypdata=[{
     title:"Title",
@@ -92,7 +91,7 @@ const Alumnidata = [
     Name: "Qudsia",
   },
 ];
-const Navigate= useNavigate();
+
   const handleType = (char) => {
     console.log(`Typing character ${char}`);
   };
