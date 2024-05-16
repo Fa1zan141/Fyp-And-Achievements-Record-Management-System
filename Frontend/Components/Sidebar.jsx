@@ -5,8 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function Sidebar() {
+  axios.defaults.withCredentials=true;
   const navigate = useNavigate();
-
   const handleLogout = async () => {
     try {
       // Make a POST request to the logout endpoint

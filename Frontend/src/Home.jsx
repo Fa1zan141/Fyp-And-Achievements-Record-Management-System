@@ -13,6 +13,7 @@ import {useNavigate} from 'react-router-dom'
 
 
 function Home() {
+  axios.defaults.withCredentials=true;
   const Navigate= useNavigate();
   
   //FYP Card Data Object

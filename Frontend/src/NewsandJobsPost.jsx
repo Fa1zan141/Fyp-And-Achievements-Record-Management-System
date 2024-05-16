@@ -39,8 +39,6 @@ function NewsandJobsPost() {
      <Sidebar></Sidebar>
     <div id="FYPLine"></div>
     <div id="FYPRecord"><p>Jobs Post</p></div>
-    <div id="updateFYPbtn"><button><p> Update Record </p></button></div>
-    <div id="deleterecordbtn"><button><p> Delete Record </p></button></div>
     <div id="forsearch">
     <form action="">
     <input type="search" id="searchbar" name="searchbar" placeholder='Search'/>

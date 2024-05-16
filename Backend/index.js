@@ -13,7 +13,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(cookieParser())
 app.use(cors({
   origin:["http://localhost:5173"],
-  methods:["GET","POST"],
+  methods:["GET","POST","PUT", "DELETE"],
   credentials: true
 }))
 app.use("/uploads", express.static(__dirname + "/public/uploads"));
@@ -48,7 +48,7 @@ EmployeeModel.create({
   role: "Admin",
   password: "admin123"
   })
-*/  
+*/
 
 // Connect to MongoDB
 mongoose.connect("mongodb+srv://muhammadfaizan:124@cluster0.gm5sg1g.mongodb.net/FYP")
@@ -94,34 +94,38 @@ app.post('/register', async (req, res) => {
   }
 })
 */
-//for login
-
+//For Login
 app.post('/login', async (req, res) => {
   try {
-    const { email, password } = req.body;
-    
+    const { email, password, role } = req.body;
+
     // Find the user by email
     const user = await EmployeeModel.findOne({ email });
-    
+
     if (!user) {
       return res.status(404).json({ error: 'No record existed' });
     }
-    
+
     // Compare passwords
     const passwordMatch = await bcyrpt.compare(password, user.password);
-    
+
     if (!passwordMatch) {
       return res.status(401).json({ error: 'The password is incorrect' });
     }
-    
-    // If passwords match, generate token
+
+    // Check role
+    if (user.role !== role) {
+      return res.status(403).json({ error: 'Role does not match' });
+    }
+
+    // If everything matches, generate token
     const token = jwt.sign({ email: user.email, role: user.role }, "jwt-secret-key", { expiresIn: '1d' });
-    
+
     // Set token as cookie
     res.cookie('token', token);
-    
+
     // Send success response
-    res.json({ status: 'OK', role: user.role, message: 'Login Successfully'});
+    res.json({ status: 'OK', role: user.role, message: 'Login Successfully' });
   } catch (error) {
     console.error("Error logging in:", error);
     res.status(500).json({ error: 'Internal Server Error' });
@@ -129,9 +133,11 @@ app.post('/login', async (req, res) => {
 });
 
 //Logout 
-app.get('/logout', async (req, res) => {
+app.post('/logout', async (req, res) => {
   try {
-    await res.clearCookie('token');
+    // Clear the token cookie
+    res.clearCookie('token');
+    // Send success response
     res.json({ status: 'OK', message: 'Logout Successfully' });
   } catch (error) {
     // If an error occurs, log it and send an error response
@@ -139,6 +145,7 @@ app.get('/logout', async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
 
 //Protected Routes Authentication
 const verifyUser = async (req, res, next) => {
@@ -272,12 +279,16 @@ app.get('/updaterecord/:id', async (req, res) => {
 app.delete('/deletefpyrecord/:id', async (req, res) => {
   try {
       const id = req.params.id;
-      const updatefypRecordsid = await FypRecordModel.findByIdAndDelete({_id:id},{ Fyptitle: req.body.Fyptitle, Supervisor: req.body.Supervisor, Domain: req.body.Domain, Year: req.body.Year, Shortsummary: req.body.Shortsummary, Upload: req.body.Upload});
-      res.json(updatefypRecordsid);
+      const deletedFypRecord = await FypRecordModel.findByIdAndDelete({_id:id});
+      if (!deletedFypRecord) {
+          return res.status(404).json({ message: 'Record not found' });
+      }
+      res.json(deletedFypRecord);
   } catch (error) {
       res.status(500).json({ message: error.message });
   }
 });
+
 // Getting All Record On New Page
 app.get('/fullrecord/:id', async (req, res) => {
   try {
@@ -326,15 +337,18 @@ app.get('/doneachievement', async (req, res) => {
 });
 
 //Deleting Record
-app.delete('/deleteachievementrecord/:id', async (req, res) => {
-  try {
-      const id = req.params.id;
-      const updateachievementRecordsid = await AchievementsRecordModel.findByIdAndDelete({_id:id},{ AchievementTitle: req.body.AchievementTitle, Domain: req.body.Domain, Date: req.body.Date, Year: req.body.Year, Description: req.body.Description, Upload: req.body.Upload});
-      res.json(updateachievementRecordsid);
-  } catch (error) {
-      res.status(500).json({ message: error.message });
-  }
+app.delete('/deleteachievementrecord/:id', (req, res) => {
+  const id = req.params.id;
+
+  AchievementsRecordModel.findByIdAndDelete({ _id: id }, { AchievementTitle: req.body.AchievementTitle, Domain: req.body.Domain, Date: req.body.Date, Year: req.body.Year, Description: req.body.Description, Upload: req.body.Upload })
+      .then((updateachievementRecordsid) => {
+          res.json(updateachievementRecordsid);
+      })
+      .catch((error) => {
+          res.status(500).json({ message: error.message });
+      });
 });
+
 
 //Getting Updated Record
 app.get('/updateachievement/:id', async (req, res) => {
