@@ -27,6 +27,7 @@ import News from './News';
 import Addnews from './Addnews';
 import Newspostfullrecord from './Newspostfullrecord';
 import AuthProvider from './auth/auth'; 
+import AlumniProfile from './AlumniProfile';
 
 function App() {
   return (
@@ -52,6 +53,7 @@ function App() {
           <Route path='/adminprofile' element={<AdminProfile />} />
           <Route path='/studentprofile' element={<StudentProfile />} />
           <Route path='/teachersprofile' element={<TeachersProfile />} />
+          <Route path='/alumniprofile' element={<AlumniProfile/>}/>
           <Route path='/createalumniprofile' element={<CreateAlumniProfile />} />
           <Route path='/updatealumniprofile' element={<UpdateAlumniProfile />} />
           <Route path='/alumniprofiles' element={<AlumniProfiles />} />

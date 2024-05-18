@@ -4,20 +4,20 @@ import Sidebar from '../Components/Sidebar'
 function TeachersProfile() {
   return (
     <>
-     <Sidebar></Sidebar>
+    <Sidebar></Sidebar>
     <div id="PLine"></div>
     <div id="MP"><p>My Profile</p></div>
     <div id="general"><h1>General</h1></div>
     <div id="Generalform">
     <form >
-    <label id='Label1' htmlFor="name">Name:</label>
-    <input type="text" id="name" name="name" placeholder='Name'/>
-    <label id='Label2' htmlFor="email">Email:</label>
-    <input type="email" id="email" name="email" placeholder='Email'/>
-    <label id='Label3' htmlFor="password">Password:</label>
-    <input type="password" id="password" name="password" placeholder='Password'/>
+    <label id='Label1' htmlFor="Firstname">First Name:</label>
+    <input type="text" id="Firstname" name="Firstname"/>
+    <label id='Label2' htmlFor="Lastname">Last Name:</label>
+    <input type="text" id="Lastname" name="Lastname"/>
+    <label id='Label3' htmlFor="email">Email:</label>
+    <input type="email" id="email" name="email"  />
     <label id='Label4' htmlFor="role">Role:</label>
-    <input type="text" id="role" name="role" placeholder='Role'/>
+    <input type="text" id="role" name="role" />
     </form>
     </div>
     <div id="updateacc"><h1>Update Account</h1></div>
@@ -28,7 +28,7 @@ function TeachersProfile() {
     <label id='NLabel2' htmlFor="changeemail">Change Email:</label>
     <input type="email" id="changeemail" name="changeemail" placeholder='Change Email'/>
     <label id='NLabel3' htmlFor="changepassword">Change password:</label>
-    <input type="password" id="changepassword" name="changepassword" placeholder='Change password'/>
+    <input type="email" id="changepassword" name="changepassword" placeholder='Change Password'/>
     <div id="UA"><button type="submit">Update Account</button></div>
     </form>
     <div id="DA"><button>Delete Account</button></div>

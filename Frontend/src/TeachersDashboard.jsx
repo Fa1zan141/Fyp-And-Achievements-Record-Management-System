@@ -7,6 +7,24 @@ import { useAuth } from './auth/auth';
 
 function TeachersDashboard() {
   const {token,user}= useAuth()
+  const Navigate = useNavigate();
+
+  const handleSubmit = async () => {
+    switch (user.role) {
+      case "Admin":
+        Navigate('/adminprofile');
+        break;
+      case "Student":
+        Navigate('/studentprofile');
+        break;
+      case "Teacher":
+        Navigate('/teachersprofile');
+        break;
+      default:
+        Navigate('/alumniprofile');
+        break;
+    }
+  };
   
 
   return (
@@ -14,7 +32,7 @@ function TeachersDashboard() {
     <Sidebar></Sidebar>
     <div id="VLine"></div>
     <div id="welcome"><p>WELCOME {user && <h1>{user.FirstName}</h1>}</p></div>
-    <div id="myprofilebtn"><button><p> {user && <h1>{user.FirstName} {user.LastName}</h1>}  <div id="Picon"><CgProfile /> </div></p></button></div>
+    <div id="myprofilebtn" ><button onClick={handleSubmit}><p> {user && <h1>{user.FirstName} {user.LastName}</h1>}  <div id="Picon"><CgProfile /> </div></p></button></div>
     <div id="VerticalLane"></div>
     <div id="VLine2"></div>
     <div id="AddRecord"><p>View Record</p></div>

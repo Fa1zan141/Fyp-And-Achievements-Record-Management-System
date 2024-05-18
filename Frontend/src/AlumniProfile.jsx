@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import Sidebar from '../Components/Sidebar'
 
-function StudentProfile() {
-
-
+function AlumniProfile() {
   return (
-    <>
-    <Sidebar></Sidebar>
+    <div>
+        <>
+        <Sidebar></Sidebar>
     <div id="PLine"></div>
     <div id="MP"><p>My Profile</p></div>
     <div id="general"><h1>General</h1></div>
@@ -35,8 +34,9 @@ function StudentProfile() {
     </form>
     <div id="DA"><button>Delete Account</button></div>
     </div>
-    </>
+        </>
+    </div>
   )
 }
 
-export default StudentProfile
+export default AlumniProfile

@@ -7,9 +7,25 @@ import { useAuth } from "../src/auth/auth";
 
 function Sidebar() {
   axios.defaults.withCredentials=true;
-  const navigate = useNavigate();
+  const Navigate = useNavigate();
   const {token,user}= useAuth()
 
+  const handleSubmit = async () => {
+    switch (user.role) {
+      case "Admin":
+        Navigate('/adminprofile');
+        break;
+      case "Student":
+        Navigate('/studentprofile');
+        break;
+      case "Teacher":
+        Navigate('/teachersprofile');
+        break;
+      default:
+        Navigate('/alumniprofile');
+        break;
+    }
+  };
   const handleLogout = async () => {
     try {
       // Make a POST request to the logout endpoint
@@ -29,7 +45,7 @@ function Sidebar() {
 
       // If logout was successful, navigate to login page
       if (status === "OK") {
-        navigate('/login');
+        Navigate('/login');
       }
     } catch (error) {
       console.error('Error during logout:', error);
@@ -51,7 +67,7 @@ function Sidebar() {
         </div>
         <div id="right">
           <button id="Msgbtn" onClick={() => { navigate("/ChatBox") }}><FaRegMessage /></button>
-          <button id="username" onClick={() => { navigate("/studentdashboard") }}>{user && <h1>{user.FirstName} {user.LastName}</h1>}</button>
+          <button id="username" onClick={handleSubmit}>{user && <h1>{user.FirstName} {user.LastName}</h1>}</button>
         </div>
       </div>
       <div id="StdDashboardsidebar">
