@@ -12,19 +12,25 @@ function AdminDashboard() {
   const [success, setsuccess] = useState();
   const {token,user}= useAuth()
 
+  useEffect(() =>{
+    if(!token){
+      navigate('/login')
+    }
+  })
+
   const handleSubmit = async () => {
     switch (user.role) {
       case "Admin":
-        Navigate('/adminprofile');
+        navigate('/adminprofile');
         break;
       case "Student":
-        Navigate('/studentprofile');
+        navigate('/studentprofile');
         break;
       case "Teacher":
-        Navigate('/teachersprofile');
+        navigate('/teachersprofile');
         break;
       default:
-        Navigate('/alumniprofile');
+        navigate('/alumniprofile');
         break;
     }
   };

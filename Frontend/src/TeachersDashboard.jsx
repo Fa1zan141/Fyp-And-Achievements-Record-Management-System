@@ -8,6 +8,12 @@ import { useAuth } from './auth/auth';
 function TeachersDashboard() {
   const {token,user}= useAuth()
   const Navigate = useNavigate();
+  
+  useEffect(() =>{
+    if(!token){
+      Navigate('/login')
+    }
+  })
 
   const handleSubmit = async () => {
     switch (user.role) {

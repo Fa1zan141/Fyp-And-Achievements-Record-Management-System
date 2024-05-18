@@ -12,9 +12,9 @@ import { FaRegCopyright } from "react-icons/fa6";
 import {useNavigate} from 'react-router-dom'
 
 
+
 function Home() {
-  const Navigate= useNavigate();
-  
+ 
   //FYP Card Data Object
   const Fypdata=[{
     title:"Title",
@@ -127,7 +127,7 @@ const Alumnidata = [
                     </li>
                 </ul> 
                 <button id="username" >Muhammad Faizan</button>
-                <button id="Hpbtn" onClick={()=>{Navigate("/logout")}}>Logout</button>
+                <button id="Hpbtn">Logout</button>
                 
             </div>
         </nav>

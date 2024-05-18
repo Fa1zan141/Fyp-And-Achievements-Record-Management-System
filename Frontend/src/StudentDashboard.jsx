@@ -11,6 +11,11 @@ import { useAuth } from './auth/auth';
 function StudentDashboard() {
   const Navigate = useNavigate();
   const { token, user } = useAuth();
+  useEffect(() =>{
+    if(!token){
+      Navigate('/login')
+    }
+  })
 
   const handleSubmit = async () => {
     switch (user.role) {
