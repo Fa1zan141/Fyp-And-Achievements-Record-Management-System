@@ -87,7 +87,7 @@ function Sidebar() {
           <br />
           <h1>Settings</h1>
           <div id="Sbar"></div>
-          <a href="/studentprofile">General</a>
+          <a href="/studentprofile">General Profile</a>
           <br />
           <button onClick={handleLogout}>Logout</button>
         </div>

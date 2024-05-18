@@ -28,6 +28,9 @@ import Addnews from './Addnews';
 import Newspostfullrecord from './Newspostfullrecord';
 import AuthProvider from './auth/auth'; 
 import AlumniProfile from './AlumniProfile';
+import UpdateStudentProfile from './UpdateStudentProfile'
+import UpdateTeachersProfile from './UpdateTeachersProfile'
+import UpdateAdminProfile from './UpdateAdminProfile'
 
 function App() {
   return (
@@ -61,6 +64,9 @@ function App() {
           <Route path='/fullrecord/:id' element={<FypFullRecord />} />
           <Route path='/achievementfullrecord/:id' element={<AchievementsFullRecord />} />
           <Route path='/newsrecord/:id' element={<Newspostfullrecord />} />
+          <Route path='/updatestudentprofile' element={<UpdateStudentProfile/>}></Route>
+          <Route path='/updateteachersprofile' element={<UpdateTeachersProfile/>}></Route>
+          <Route path='/updateadminprofile' element={<UpdateAdminProfile/>}></Route>
           <Route path='/logout' element={<Splash />} />
           <Route path="*" element={<div>Page Not Found</div>} />
         </Routes>

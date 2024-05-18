@@ -1,39 +1,41 @@
 import React from 'react'
 import Sidebar from '../Components/Sidebar'
 import './AdminProfile.css'
+import { useAuth } from './auth/auth';
+
 function AdminProfile() {
+  const { token, user } = useAuth();
+
   return (
-   <>
-  <Sidebar></Sidebar>
+    <>
+    <Sidebar></Sidebar>
     <div id="PLine"></div>
-    <div id="MP"><p>My Profile</p></div>
-    <div id="general"><h1>General</h1></div>
+    <div id="MP"><p>User Information</p></div>
+    <img id="ProfilePicture" src="" alt="" />
+    <div id="name"> {user && <h1>{user.FirstName} {user.LastName}</h1>} </div>
+    <div id="email1">{user && <h1>{user.email}</h1>}</div>
+    
     <div id="Generalform">
     <form >
     <label id='Label1' htmlFor="Firstname">First Name:</label>
-    <input type="text" id="Firstname" name="Firstname"/>
+    <input type="text" id="Firstname" name="Firstname" value={user.FirstName}/>
     <label id='Label2' htmlFor="Lastname">Last Name:</label>
-    <input type="text" id="Lastname" name="Lastname"/>
+    <input type="text" id="Lastname" name="Lastname" value={user.LastName}/>
     <label id='Label3' htmlFor="email">Email:</label>
-    <input type="email" id="email" name="email"  />
+    <input type="email" id="accemail" name="email" value={user.email} />
     <label id='Label4' htmlFor="role">Role:</label>
-    <input type="text" id="role" name="role" />
+    <input type="text" id="role" name="role" value={user.role} />
+    <label id='Label5' htmlFor="dob">DOB:</label>
+    <input type="date" id="dob" name="dob" />
+    <label id='Label6' htmlFor="city">City:</label>
+    <input type="text" id="city" name="city" />
+    <label id='Label7' htmlFor="pcode">Postal Code:</label>
+    <input type="text" id="pcode" name="pcode" />
     </form>
     </div>
-    <div id="updateacc"><h1>Update Account</h1></div>
-    <div id="UpdateaccForm">
-    <form >
-    <label id='NLabel1' htmlFor="Changename">Change Name:</label>
-    <input type="text" id="Changename" name="Changename" placeholder='Change Name'/>
-    <label id='NLabel2' htmlFor="changeemail">Change Email:</label>
-    <input type="email" id="changeemail" name="changeemail" placeholder='Change Email'/>
-    <label id='NLabel3' htmlFor="changepassword">Change password:</label>
-    <input type="email" id="changepassword" name="changepassword" placeholder='Change Password'/>
-    <div id="UA"><button type="submit">Update Account</button></div>
-    </form>
+    <div id="updaterecord"><button>Update Information</button></div>
     <div id="DA"><button>Delete Account</button></div>
-    </div>
-   </>
+    </>
   )
 }
 
