@@ -47,7 +47,7 @@ function Register() {
       console.error('ERROR WHILE LOGIN', error);
       // Handle the error, e.g., display an error message to the user
       Toastify({
-        text: 'An error occurred during login',
+        text: "Error occur during login or email already register",
         duration: 3000,
         gravity: "top",
         backgroundColor: "red",
@@ -83,6 +83,7 @@ function Register() {
                 <label htmlFor="password">Password</label><br></br>
                 <input type="password" id="password" name="password" placeholder="Password " required onChange={(e) => setpassword(e.target.value)}/><br></br>
                 <button type="submit" id="Rbutton">Register</button>
+                <p id="Areadyaccount">You Already have an account? <a href="/login">Login</a> </p>
             </form>
         </div>
     </div>

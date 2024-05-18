@@ -3,10 +3,13 @@ import './Sidebar.css';
 import { FaRegMessage } from "react-icons/fa6";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useAuth } from "../src/auth/auth";
 
 function Sidebar() {
   axios.defaults.withCredentials=true;
   const navigate = useNavigate();
+  const {token,user}= useAuth()
+
   const handleLogout = async () => {
     try {
       // Make a POST request to the logout endpoint
@@ -48,7 +51,7 @@ function Sidebar() {
         </div>
         <div id="right">
           <button id="Msgbtn" onClick={() => { navigate("/ChatBox") }}><FaRegMessage /></button>
-          <button id="username" onClick={() => { navigate("/studentdashboard") }}>Muhammad Faizan</button>
+          <button id="username" onClick={() => { navigate("/studentdashboard") }}>{user && <h1>{user.FirstName} {user.LastName}</h1>}</button>
         </div>
       </div>
       <div id="StdDashboardsidebar">
