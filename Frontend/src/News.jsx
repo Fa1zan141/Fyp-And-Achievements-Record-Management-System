@@ -38,7 +38,7 @@ function News() {
     <>
      <Sidebar></Sidebar>
     <div id="FYPLine"></div>
-    <div id="FYPRecord"><p>News Post</p></div>
+    <div id="FYPRecord"><p>Post</p></div>
     <div id="forsearch">
     <form action="">
     <input type="search" id="searchbar" name="searchbar" placeholder='Search'/>
