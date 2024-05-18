@@ -10,7 +10,7 @@ function Sidebar() {
   const handleLogout = async () => {
     try {
       // Make a POST request to the logout endpoint
-      const response = await axios.post('http://localhost:3000/logout');
+      const response = await axios.post('http://localhost:3000/FYP/logout');
       const { status, message } = response.data;
 
       // Show toast message based on response status
@@ -61,9 +61,7 @@ function Sidebar() {
           <br />
           <a href="/achievementsrecord">Achievements</a>
           <br />
-          <a href="/newsandjobspost">Jobs Post</a>
-          <br />
-          <a href="/news">News Post</a>
+          <a href="/news">News Or Jobs Post</a>
           <br />
           <a href="/alumniprofiles">Alumni Connect</a>
           <br />

@@ -13,7 +13,7 @@ function FYPRecord() {
     useEffect(() => {
       const fetchData = async () => {
             try {
-                const result = await axios.get("http://localhost:3000/");
+                const result = await axios.get("http://localhost:3000/FYP/");
                 setFYPRecord(result.data);
             } catch (error) {
                 console.log(error);
@@ -25,7 +25,7 @@ function FYPRecord() {
 
     const handleDelete = async (id) => {
         try {
-            const res = await axios.delete('http://localhost:3000/deletefpyrecord/' + id);
+            const res = await axios.delete('http://localhost:3000/FYP/deletefpyrecord/' + id);
             console.log(res);
             window.location.reload();
         } catch (error) {

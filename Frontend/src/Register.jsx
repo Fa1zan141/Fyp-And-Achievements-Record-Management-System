@@ -18,7 +18,7 @@ function Register() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:3000/register', { FirstName, LastName, email, role, password })
+    axios.post('http://localhost:3000/FYP/register', { FirstName, LastName, email, role, password })
       .then(result => {
         console.log(result);
         if (result.data.status === "OK") {

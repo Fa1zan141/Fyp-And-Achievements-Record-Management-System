@@ -18,7 +18,7 @@ function UpdateAchievementsRecord() {
   useEffect(() => {
     const fetchData = async () => {
         try {
-            const result = await axios.get("http://localhost:3000/updateachievement/"+id);
+            const result = await axios.get("http://localhost:3000/FYP/updateachievement/"+id);
             setAchievementTitle(result.data.AchievementTitle);
             setDomain(result.data.Domain);
             setDate(result.data.Date);
@@ -49,7 +49,7 @@ const handleSubmit = async (e) => {
   console.log(AchievementTitle, Domain, Date, Year, Description, Upload);
 
   const result = await axios.put(
-    'http://localhost:3000/updateachievement/'+id,
+    'http://localhost:3000/FYP/updateachievement/'+id,
     formData,
     {
       headers: { "Content-Type": "multipart/form-data" },

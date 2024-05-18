@@ -11,7 +11,7 @@ function FypFullRecord() {
   useEffect(() => {
     const fetchData = async () => {
         try {
-            const result = await axios.get("http://localhost:3000/fullrecord/"+id);
+            const result = await axios.get("http://localhost:3000/FYP/fullrecord/"+id);
             setRecord(result.data);
         } catch (error) {
             console.log(error);

@@ -8,7 +8,8 @@ html,body {
     width: 100%;
     position: relative;
 }
-#job{
+
+#news{
     position: absolute;
     font-size: 26px;
     font-weight: 700;
@@ -17,25 +18,17 @@ html,body {
     text-decoration: underline;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
-#news{
-    position: absolute;
-    font-size: 26px;
-    font-weight: 700;
-    top: 400px;
-    left: 320px;
-    text-decoration: underline;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-#Jobpostbtn{
+
+#NewsPostbtn{
     height: 30px;
-    width: 100px;
+    width: 150px;
     border-radius: 50px;
     background-color: blue;
     position: absolute;
-    top: 170px;
+    top: 410px;
     left: 330px;
 }
-#Jobpostbtn > :first-child {
+#NewsPostbtn > :first-child {
     position: absolute;
     text-align: center;
     color: white;
@@ -45,16 +38,16 @@ html,body {
     top: 0px;
     left: 10px;
 }
-#NewsPostbtn{
+#AlumniProfilebtn{
     height: 30px;
-    width: 120px;
+    width: 150px;
     border-radius: 50px;
     background-color: blue;
     position: absolute;
-    top: 170px;
-    left: 450px;
+    top: 550px;
+    left: 330px;
 }
-#NewsPostbtn > :first-child {
+#AlumniProfilebtn > :first-child {
     position: absolute;
     text-align: center;
     color: white;
@@ -226,7 +219,7 @@ html,body {
     background-color: rgb(241, 238, 238);
     height: 30px;
     border-radius: 10px;}
-    #NewsForm #NLabel4 {
+#NewsForm #NLabel4 {
         position: absolute;
         font-size: 18px;
         font-weight: 700;
@@ -234,7 +227,7 @@ html,body {
         top: 370px;
         left: 350px;
     }
-    #NewsForm #newsDate {
+#NewsForm #Location {
         position: absolute;
         font-size: 18px;
         color: black;
@@ -243,6 +236,23 @@ html,body {
         background-color: rgb(241, 238, 238);
         height: 30px;
         border-radius: 10px;}
+#NewsForm #NLabel5 {
+            position: absolute;
+            font-size: 18px;
+            font-weight: 700;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            top: 410px;
+            left: 350px;
+        }
+#NewsForm #newsDate {
+            position: absolute;
+            font-size: 18px;
+            color: black;
+            top: 410px;
+            left: 500px;
+            background-color: rgb(241, 238, 238);
+            height: 30px;
+            border-radius: 10px;}
 #jobsubmit{
     height: 30px;
     width: 130px;
@@ -268,7 +278,7 @@ html,body {
     border-radius: 50px;
     background-color: blue;
     position: absolute;
-    top: 430px;
+    top: 490px;
     left: 500px;
 }
 #newssubmit > :first-child {

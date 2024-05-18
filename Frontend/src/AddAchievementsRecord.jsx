@@ -28,7 +28,7 @@ function AddAchievementsRecord() {
     console.log(AchievementTitle, Domain, Date, Year, Description, Upload);
 
     const result = await axios.post(
-      'http://localhost:3000/addachievement',
+      'http://localhost:3000/FYP/addachievement',
       formData,
       {
         headers: { "Content-Type": "multipart/form-data" },

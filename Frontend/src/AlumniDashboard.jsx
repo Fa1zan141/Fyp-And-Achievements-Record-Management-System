@@ -18,8 +18,7 @@ function AlumniDashboard() {
         <div id="VLine3"></div>
         <div id="VLine2"></div>
          <div id="AddRecord"><p>Add Record</p></div>
-         <div id="addrecordbtn"><button onClick={()=>{Navigate("/jobspost")}}><p> Job Post <div id="addicon"><CiCirclePlus /> </div></p></button></div>
-         <div id="addachievementbtn"><button onClick={()=>{Navigate("/addnews")}}><p> News Post <div id="achicon"><CiCirclePlus /> </div></p></button></div>
+         <div id="NewsPostbtn"><button onClick={()=>{Navigate("/addnews")}}><p> Post <div id="achicon"><CiCirclePlus /> </div></p></button></div>
         <div id="Addalumniprofile"><p>Update Alumni Profile</p></div>
         <div id="AlumniProfilebtn"><button  onClick={()=>{Navigate("/createalumniprofile")}}><p>Alumni Profile </p></button></div>
         </>

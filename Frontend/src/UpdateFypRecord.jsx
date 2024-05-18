@@ -18,7 +18,7 @@ function UpdateFypRecord() {
   useEffect(() => {
     const fetchData = async () => {
         try {
-            const result = await axios.get("http://localhost:3000/updaterecord/"+id);
+            const result = await axios.get("http://localhost:3000/FYP/updaterecord/"+id);
             setFYPRecord(result.data.FYPRecord);
             setFyptitle(result.data.Fyptitle);
             setSupervisor(result.data.Supervisor);
@@ -50,7 +50,7 @@ const handleSubmit = async (e) => {
   console.log(Fyptitle, Supervisor, Domain, Year, Shortsummary, Upload);
 
   const result = await axios.put(
-    'http://localhost:3000/updatedrecord/'+id,
+    'http://localhost:3000/FYP/updatedrecord/'+id,
     formData,
     {
       headers: { "Content-Type": "multipart/form-data" },

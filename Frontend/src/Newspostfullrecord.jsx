@@ -10,7 +10,7 @@ function Newspostfullrecord() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const result = await axios.get(`http://localhost:3000/newsrecord/`+id);
+                const result = await axios.get(`http://localhost:3000/FYP/newsrecord/`+id);
                 setNewsRecord(result.data);
             } catch (error) {
                 console.error(error);
@@ -25,14 +25,16 @@ function Newspostfullrecord() {
             <div>
                 <div id="fullrecordhead"><h1>Full Detail Record</h1></div>
                 <div id="detailsoffyp">
-                    <h1> News Title</h1>
-                    <p>{newsRecord.newsTitle}</p>
-                    <h1>News Description</h1>
-                    <p>{newsRecord.newsdescription}</p>
-                    <h1>Type Of News</h1>
-                    <p>{newsRecord.newsType}</p>
+                    <h1> Title</h1>
+                    <p>{newsRecord.Title}</p>
+                    <h1>Description</h1>
+                    <p>{newsRecord.description}</p>
+                    <h1>Type Of Post</h1>
+                    <p>{newsRecord.Type}</p>
+                    <h1>Location</h1>
+                    <p>{newsRecord.Location}</p>
                     <h1>Date Of Publish</h1>
-                    <p>{newsRecord.newsDate}</p>
+                    <p>{newsRecord.Date}</p>
                 </div>
             </div>
         </div>

@@ -10,7 +10,6 @@ import AdminDashboard from './AdminDashboard'
 import AlumniDashboard from './AlumniDashboard'
 import FYPRecord from './FYPRecord'
 import AchievementsRecord from './AchievementsRecord'
-import NewsandJobsPost from './NewsandJobsPost'
 import AddAchievementsRecord from './AddAchievementsRecord'
 import AddFypRecord from './AddFypRecord'
 import UpdateAchievementsRecord from './UpdateAchievementsRecord'
@@ -26,8 +25,6 @@ import FypFullRecord from './FypFullRecord'
 import AchievementsFullRecord from './AchievementsFullRecord'
 import News from './News'
 import Addnews from './Addnews'
-import JobsPost from './JobsPost'
-import Jobpostfullrecord from './Jobpostfullrecord'
 import Newspostfullrecord from './Newspostfullrecord'
 function App() {
   return (
@@ -43,7 +40,6 @@ function App() {
       <Route path='/alumnidashboard' element={<AlumniDashboard/>}></Route>
       <Route path='/fyprecord' element={<FYPRecord/>}></Route>
       <Route path='/achievementsrecord' element={<AchievementsRecord/>}></Route>
-      <Route path='/newsandjobspost' element={<NewsandJobsPost/>}></Route>
       <Route path='/news' element={<News/>}></Route>
       <Route path='/addachievement' element={<AddAchievementsRecord/>}></Route>
       <Route path='/addfyp' element={<AddFypRecord/>}></Route>
@@ -59,8 +55,6 @@ function App() {
       <Route path='/CurrentAlumniProfile' element={<AProfile/>}></Route>
       <Route path='/fullrecord/:id' element={<FypFullRecord/>}></Route>
       <Route path='/achievementfullrecord/:id' element={<AchievementsFullRecord/>}></Route>
-      <Route path='/jobspost' element={<JobsPost/>}></Route>
-      <Route path='/jobsrecord/:id' element={<Jobpostfullrecord/>}></Route>
       <Route path='/newsrecord/:id' element={<Newspostfullrecord/>}></Route>
       <Route path='/logout' element={<Splash/>}></Route>
       <Route path="*" element={<div>Page Not Found</div>} />

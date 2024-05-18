@@ -12,7 +12,7 @@ function AchievementsRecord() {
     useEffect(() => {
       const fetchData = async () => {
             try {
-                const result = await axios.get("http://localhost:3000/doneachievement");
+                const result = await axios.get("http://localhost:3000/FYP/doneachievement");
                 setAchievementsRecord(result.data);
             } catch (error) {
                 console.log(error);
@@ -24,7 +24,7 @@ function AchievementsRecord() {
 
     const handleDelete = async (id) => {
         try {
-            const res = await axios.delete('http://localhost:3000/deleteachievementrecord/' + id);
+            const res = await axios.delete('http://localhost:3000/FYP/deleteachievementrecord/' + id);
             console.log(res);
             window.location.reload();
         } catch (error) {

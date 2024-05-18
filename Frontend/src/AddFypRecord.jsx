@@ -26,7 +26,7 @@ function AddFypRecord() {
     console.log(Fyptitle, Supervisor, Domain, Year, Shortsummary, Upload);
 
     const result = await axios.post(
-      'http://localhost:3000/addfyp',
+      'http://localhost:3000/FYP/addfyp',
       formData,
       {
         headers: { "Content-Type": "multipart/form-data" },

@@ -13,7 +13,7 @@ function News() {
     useEffect(() => {
       const fetchData = async () => {
             try {
-                const result = await axios.get("http://localhost:3000/newspostrecord");
+                const result = await axios.get("http://localhost:3000/FYP/newspostrecord");
                 setNewsRecord(result.data);
             } catch (error) {
                 console.log(error);
@@ -25,7 +25,7 @@ function News() {
 
     const handleDelete = async (id) => {
         try {
-            const res = await axios.delete('http://localhost:3000/deletenewspostrecord/' + id);
+            const res = await axios.delete('http://localhost:3000/FYP/deletenewspostrecord/' + id);
             console.log(res);
             window.location.reload();
         } catch (error) {
@@ -39,8 +39,6 @@ function News() {
      <Sidebar></Sidebar>
     <div id="FYPLine"></div>
     <div id="FYPRecord"><p>News Post</p></div>
-    <div id="updateFYPbtn"><button><p> Update Record </p></button></div>
-    <div id="deleterecordbtn"><button><p> Delete Record </p></button></div>
     <div id="forsearch">
     <form action="">
     <input type="search" id="searchbar" name="searchbar" placeholder='Search'/>
@@ -49,10 +47,11 @@ function News() {
     <table>
         <thead>
         <tr>
-                    <th>News Title</th>
-                    <th>News Description</th>
-                    <th>News Type</th>
-                    <th>News Date</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Location</th>
+                    <th>Date</th>
                     <th>Action</th>
                 </tr>
         </thead>
@@ -62,10 +61,11 @@ function News() {
                         : NewsRecord.map((newsRecords) => {
                         return(
                             <tr>
-                            <td>{newsRecords.newsTitle}</td>
-                            <td>{newsRecords.newsdescription}</td>
-                            <td>{newsRecords.newsType}</td>
-                            <td>{newsRecords.newsDate}</td>
+                            <td>{newsRecords.title}</td>
+                            <td>{newsRecords.description}</td>
+                            <td>{newsRecords.type}</td>
+                            <td>{newsRecords.location}</td>
+                            <td>{new Date(newsRecords.date).toLocaleDateString()}</td>
                             <td id="buttons">
                             <button id="deletebtn" onClick={(e) => handleDelete(newsRecords._id)}>Delete</button> 
                             <button id="viewbtn" onClick={() => {Navigate(`/newsrecord/${newsRecords._id}`)}}>View</button>
