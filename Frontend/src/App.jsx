@@ -31,7 +31,6 @@ import AlumniProfile from './AlumniProfile';
 import UpdateStudentProfile from './UpdateStudentProfile'
 import UpdateTeachersProfile from './UpdateTeachersProfile'
 import UpdateAdminProfile from './UpdateAdminProfile'
-
 function App() {
   return (
     <AuthProvider> 

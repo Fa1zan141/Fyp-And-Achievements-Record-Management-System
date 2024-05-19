@@ -1,6 +1,6 @@
 import React from 'react'
 import Sidebar from '../Components/Sidebar'
-import './AdminProfile.css'
+import './assets/AdminProfile.css'
 import { useAuth } from './auth/auth';
 
 function AdminProfile() {

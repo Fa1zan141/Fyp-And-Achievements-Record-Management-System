@@ -26,6 +26,7 @@ app.use(cors({
 
 //Routes App Use
 app.use('/FYP', userRouter)
+app.use("/uploads", express.static(__dirname + "/public/uploads"));
 
 //Protected Routes Authentication
 const verifyUser = async (req, res, next) => {
@@ -34,7 +35,7 @@ const verifyUser = async (req, res, next) => {
     if (!token) {
       return res.json("Token is missing");
     } else {
-      const decoded = await jwt.verify(token, "jwt-secret-key");
+      const decoded = await jwt.verify(token, "Faizan141");
       if (decoded.role === "Admin") {
         next();
       } else {

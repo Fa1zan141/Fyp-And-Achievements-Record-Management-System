@@ -1,121 +1,42 @@
-*{
+/* Home.css */
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-html,body {
+
+html, body {
     height: 100%;
     width: 100%;
     position: relative;
 }
-#main{
+
+#main {
     height: 100%;
     width: 100%;
     border-radius: 10px;
 }
-#Hnav {
-    position: absolute;
-    width: calc(100% - 80px);
-    display: flex;
-    padding: 10px;
-    left: 40px;
-    right: 40px;
-}
 
-#Hlogo{
+#Hero {
     position: absolute;
-    height: 70px;
-    width:  150px;
-    background-image: url(logo.png);
-    background-size: cover;
-    background-position: center;
-    border-radius: 25px;
-    top: 10px;
-    box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
-}
-#Hlogo:hover{
-    position: absolute;
-    height: 70px;
-    width:  150px;
-    background-image: url(logo.png);
-    background-size: cover;
-    background-position: center;
-    border-radius: 20px;
-    top: 12px;
-    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.5);
-}
-ul {
-    color: rgb(24, 24, 58);
-    font-size: 16px;
-    font-weight: bold;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    position: absolute;
-    display: flex;
-    justify-content: space-between;
-    gap: 50px;
-    left: 460px;
-    top: 40px;
-}
-ul li a {
-    text-decoration: none;
-    color: inherit;
-    border-bottom: 2px solid transparent; 
-    transition: border-bottom 0.5s ease; 
-}
-ul li a:hover {
-    border-bottom: 2px solid blue; 
-    text-decoration: none; 
-}
-#Hpbtn {
-    height: 35px;
-    width: 100px;
-    color: rgb(24, 24, 58);
-    border-radius: 5px;
-    background-color: #63c02e;
-    position: absolute;
-    left: 1200px;
-    top: 35px;
-    font-size: 22px;
-    font-weight: bolder;
-}
-#Hpbtn:hover{
-    height: 35px;
-    width:100px;
-    background-color: rgb(27, 27, 78);
-    border-radius: 5px;
-    color:aliceblue;
-    position: absolute;
-    left: 1200px;
-    top: 35px;
-    font-weight: bolder;
-}
-#username{
-    height: 35px;
-    width: 100px;
-    color: rgb(24, 24, 58);
-    position: absolute;
-    left: 1100px;
-    top: 35px;
-    font-size: 16px;
-    font-weight: bolder;
-    font-stretch: normal;
-}
-#Hero{
-    position: absolute;
-    top:100px;
+    top: 100px;
     display: flex;
     height: auto;
     width: 100%;
 }
-#HeroL{
+
+#HeroL {
     height: 100%;
-    width: 60% ;
+    width: 60%;
 }
-#HeroR{ 
+
+#HeroR { 
     height: 100%;
-    width: 40% ;
+    width: 40%;
 }
-#HeroRimg{
+
+#HeroRimg {
     height: 350px;
     width: 350px;
     background-image: url(MainImg.png);
@@ -126,7 +47,8 @@ ul li a:hover {
     margin-top: 50px;
     margin-left: 80px;
 }
-#Hp{
+
+#Hp {
     height: 350px;
     width: 50%;
     font-size: large;
@@ -141,59 +63,66 @@ ul li a:hover {
     margin-left: 40px;
     margin-top: 110px;
 }
-#underhero{
+
+#underhero {
     width: 100%;
     height: 750px;
     position: absolute;
     top: 450px;
 }
-#Uherotop{
+
+#Uherotop {
     width: 100%;
     height: 350px;
     background-color: rgb(249, 250, 250);
     display: flex;
     justify-content: space-between;
-
 }
-#Uherobottom{
+
+#Uherobottom {
     width: 100%;
     height: 400px;
     background-color: rgb(12, 145, 223); 
     display: flex;
     opacity: 0.8;
     justify-content: space-between;
-    
 }
+
 .vertical-line {
     position: absolute;
     width: 2px; 
     height: 150px; 
     background-color: rgb(234, 234, 241); 
     left: 610px;
-    top:120px;
+    top: 120px;
 }
-#lastsection{
+
+#lastsection {
     width: 100%;
     height: 750px;
     position: absolute;
     top: 1200px;
 }
-#sectiontop{
+
+#sectiontop {
     width: 100%;
     height: 350px;
     display: flex;
     opacity: 0.9;
     background-color: rgba(16, 16, 99, 0.829);
 }
-#topleft{
+
+#topleft {
     height: 100%;
     width: 50%;
 }
-#topright{
+
+#topright {
     height: 100%;
     width: 50%;
 }
-#sectionbottom{
+
+#sectionbottom {
     width: 100%;
     height: 400px;
     background-color: aqua;
@@ -201,34 +130,38 @@ ul li a:hover {
     opacity: 0.9;
     justify-content: space-between;
 }
-#fotter{
+
+#fotter {
     width: 100%;
     height: 100px;
     position: absolute;
-    background-color:  rgb(37, 175, 37);
+    background-color: rgb(37, 175, 37);
     top: 1950px;
     display: flex;
     justify-content: space-between;
 }
-#lefttext{
+
+#lefttext {
     height: 50px;
     width: 550px;
     display: flex;
     margin-top: 50px;
-    margin-left:80px;
+    margin-left: 80px;
     color: rgb(24, 24, 58);
     font-size: medium;
     font-weight: 800;
 }
-#righttext{
+
+#righttext {
     height: 50px;
     width: 350px;
     margin-top: 50px;
-    margin-right:20px ;
+    margin-right: 20px;
     color: rgb(24, 24, 58);
     font-size: medium;
     font-weight: 800;
 }
+
 #Supervisor {
     height: 250px;
     width: 500px;
@@ -240,6 +173,7 @@ ul li a:hover {
     display: flex;
     justify-content: space-between;
 }
+
 ::-webkit-scrollbar {
     width: 6px;
 }
@@ -248,10 +182,12 @@ ul li a:hover {
     box-shadow: inset 0 0 5px rgb(238, 236, 236); 
     border-radius: 5px;
 }
+
 ::-webkit-scrollbar-thumb {
     background: linear-gradient(to right, #9aff5f, #7b9efe, #16862e); 
     border-radius: 5px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(to right, #63c02e, #2547a5, #16c03b); 
 }

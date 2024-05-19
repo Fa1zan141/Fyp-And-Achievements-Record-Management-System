@@ -17,7 +17,7 @@ html,body {
     position: absolute;
     height: 100%;
     width: 60%;
-    background-color:  rgb(37, 175, 37);
+    background-color: #59C174;
     display: flex;
 }
 #imgg{
@@ -28,8 +28,8 @@ html,body {
     align-items: center;
     top: 65px;
     left: 200px;
-    background-image: url(./public/LRImg.png);
-    box-shadow: 5px 5px 10px 10px rgba(8, 11, 199, 0.6);
+    background-image: url("LRImg.png");
+    box-shadow: 5px 5px 10px 10px #084d1b;
     border-radius: 50px;
     background-position: center;
     background-size: cover;
@@ -40,57 +40,61 @@ html,body {
     text-align: center;
     position: absolute;
     top: 460px;
-    left: 160px;
-    color: rgb(24, 24, 58);
+    left: 130px;
+    color: rgb(2, 2, 2);
     font-size: x-large;
     font-weight: bolder;
     word-spacing: 0px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: lato, sans-serif;
 }
 .LRT{
     height: 3%;
     width: 65%;
     text-align: center;
     position: absolute;
-    top: 460px;
-    left: 160px;
-    color: rgb(24, 24, 58);
+    top: 440px;
+    left: 100px;
+    color: #0d0d0e;
     font-size: x-large;
     font-weight: bolder;
     word-spacing: 0px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: lato, sans-serif;
 }
 #rightside{
     position: absolute;
     height: 100%;
     width: 40%;
-    background-color:  rgb(190, 206, 243);
+    background-color: #FAFAFA;
     display: flex;
     left: 60%;
 }
 #top{
     position: absolute;
     display: flex;
-    color: white;
+    color: rgb(3, 3, 3);
     font-size: x-large;
     font-weight: bolder;
     height: 40px;
+    font-family: lato, sans-serif;
     width:220px;
-    background-color: blue;
+    background-color: #59C174;
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
+}
+#top h1{
+    margin-left: 30px;
 }
 #text{
     position: absolute;
     width: 10%;
     width: 5%;
-    color: rgb(24, 24, 58);
+    color: #000000;
     top: -350px;
     left: 30px;
     font-size: xx-large;
     font-weight: bolder;
     word-spacing: 0px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family:lato, sans-serif;
 }
 #Rform{
     width: 100%;
@@ -100,7 +104,7 @@ html,body {
     font-size: medium;
     font-weight: bolder;
     word-spacing: 0px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family:lato, sans-serif;
     margin-left: 120px;
 }
 #Lform{
@@ -111,7 +115,7 @@ html,body {
     font-size: medium;
     font-weight: bolder;
     word-spacing: 0px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family:lato, sans-serif;
     margin-left: 120px;
     margin-top: 150px;
 }
@@ -120,28 +124,28 @@ input{
     height: 40px;
     width:300px;
     padding-left: 20px;
-    background-color: blue;
     border-radius: 50px;
-    color: white;
+    color: #2c2e4e;
+    border: 1px solid #2c2e4e;
     font-size: medium;
     font-weight: 500;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family:lato, sans-serif;
     transition: border-color 0.3s ease;
 }
 input:focus, input:valid
 {
-    font-family: inherit;
+  font-family: inherit;
   font-feature-settings: inherit;
   font-variation-settings: inherit;
   font-size: 100%;
   font-weight: inherit;
   line-height: inherit;
-  color: white;
+  color: #2c2e4e;
   margin: 0;
   padding: 10px;
-  border: 1px solid rgb(8, 241, 66);
+  border: 1px solid #2c2e4e;
   outline: none;
-  box-shadow: 0 0 2px rgba(4, 241, 64, 0.781);
+  box-shadow: 0 0 2px #2c2e4e;
 }
 select:focus, select:valid{
     font-family: inherit;
@@ -150,12 +154,12 @@ select:focus, select:valid{
   font-size: 100%;
   font-weight: inherit;
   line-height: inherit;
-  color: white;
+  color: #2c2e4e;
   margin: 0;
   padding: 10px;
-  border: 1px solid rgb(8, 241, 66);
+  border: 1px solid #2c2e4e;
   outline: none;
-  box-shadow: 0 0 2px rgba(4, 241, 64, 0.781);
+  box-shadow: 0 0 2px #2c2e4e;
 }
 input:focus, input:not(:placeholder-shown),
 select:focus, select:not(:placeholder-shown) {
@@ -165,24 +169,23 @@ select:focus, select:not(:placeholder-shown) {
     font-size: 100%;
     font-weight: inherit;
     line-height: inherit;
-    color: white;
+    color: #2c2e4e;
     margin: 0;
     padding: 10px;
-    border: 1px solid rgb(8, 241, 66);
+    border: 1px solid #2c2e4e;
   outline: none;
-  box-shadow: 0 0 2px rgba(4, 241, 64, 0.781);
+  box-shadow: 0 0 2px #2c2e4e;
   }
 option{
     margin-top: 10px;
     height: 40px;
     width:300px;
     padding-left: 20px;
-    background-color: blue;
     border-radius: 50px;
-    color: white;
+    color: #2c2e4e;
     font-size: medium;
     font-weight: 500;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family:lato, sans-serif;
 }
 label{
 color: rgb(24, 24, 58);
@@ -192,12 +195,11 @@ select{
     height: 40px;
     width:300px;
     padding-left: 20px;
-    background-color: blue;
     border-radius: 50px;
     color: white;
     font-size: medium;
     font-weight: 500;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family:lato, sans-serif;
 }
 input::placeholder {
     color: white;
@@ -217,38 +219,26 @@ input::placeholder {
     width:100px;
     border-radius: 50px;
     color: rgb(0, 0, 0);
-    box-shadow: 0px 0px 10px 10px rgba(24, 9, 231, 0.6);
+    box-shadow: 0px 0px 10px 10px #59C174;
     font-size: medium;
     font-weight: bold;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family:lato, sans-serif;
 }
 #Lbutton{
     position: absolute;
     top: 460px;
-    left: 240px;
+    left: 230px;
     height: 30px;
     width:100px;
     border-radius: 50px;
     color: rgb(0, 0, 0);
-    box-shadow: 0px 0px 10px 10px rgba(24, 9, 231, 0.6);
+    box-shadow: 0px 0px 5px 5px #59C174;
     font-size: medium;
     font-weight: bold;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-#btn{
-    position: absolute;
-    top: 560px;
-    left: 200px;
-    height: 30px;
-    border-radius: 40px;
-    width:200px;
-    box-shadow: 0px 0px 10px 10px rgba(24, 9, 231, 0.6);
-    font-size: medium;
-    font-weight: bold;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family:lato, sans-serif;
 }
 ::selection{
-    color: blue;
+    color: rgb(170, 15, 131);
 }
 #Areadyaccount{
     position: absolute;
@@ -257,14 +247,14 @@ input::placeholder {
     color:black;
     font-size: medium;
     font-weight: normal;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family:lato, sans-serif;
 }
 #AreadyaccountLogin{
     position: absolute;
-    top: 520px;
-    left: 100px;
+    top: 540px;
+    left: 160px;
     color:black;
     font-size: medium;
     font-weight:bold;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family:lato, sans-serif;
 }

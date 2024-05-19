@@ -7,9 +7,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        color1: "rgb(37, 175, 37)",
-        color2: "rgb(24, 24, 58)",
-        color3:"rgba(4, 241, 64, 0.781)"
+        color1: "#59C174",
+        color2: "#FAFAFA",
+        color3:" #2c2e4e"
     }
     },
   },

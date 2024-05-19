@@ -104,3 +104,29 @@ a:hover {
     border-bottom: 2px solid blue; 
     text-decoration: none; 
 }
+#navpf{
+    height: 50px;
+    width: 50px;
+    background-image: url('8724.jpg');
+    border-radius: 50px;
+    position: absolute;
+    top: 35px;
+    right: 110px;
+    background-position: center;
+    background-size: contain;
+}
+#Logoutbtn{
+    height:50px;
+    background-color: transparent;
+    font-size: 20px;
+    font-weight: 700;
+
+}
+#Logoutbtn:hover{
+    height:50px;
+    background-color: transparent;
+    font-size: 20px;
+    font-weight: 700;
+    color: blue;
+
+}

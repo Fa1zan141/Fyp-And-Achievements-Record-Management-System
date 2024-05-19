@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Sidebar from '../Components/Sidebar'
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
-import './AddAchievementsRecord.css'
+import './assets/AddAchievementsRecord.css'
 
 
 function AddAchievementsRecord() {

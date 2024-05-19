@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import './Fullrecord.css'
+import './assets/Fullrecord.css'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 

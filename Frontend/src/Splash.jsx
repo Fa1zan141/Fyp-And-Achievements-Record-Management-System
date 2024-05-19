@@ -1,5 +1,5 @@
 import React from 'react'
-import './Splash.css'
+import './assets/Splash.css'
 import {Link} from 'react-router-dom'
 import { motion } from "framer-motion"
 import { Typewriter } from 'react-simple-typewriter'
@@ -16,7 +16,7 @@ function Splash() {
     const Navigate= useNavigate();
   return (
     <>
-       <div className=' relative w-full h-screen bg-color1'>
+       <div>
         <nav>
             <div id="navl">
             <div id="logo"></div>

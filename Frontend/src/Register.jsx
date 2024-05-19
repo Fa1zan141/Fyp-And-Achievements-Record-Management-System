@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './LR.css'
+import './assets/LR.css'
 import axios from 'axios'
 import { motion } from "framer-motion"
 import {useNavigate} from 'react-router-dom'
@@ -47,7 +47,7 @@ function Register() {
       console.error('ERROR WHILE LOGIN', error);
       // Handle the error, e.g., display an error message to the user
       Toastify({
-        text: "Error occur during login or email already register",
+        text: "Error occur during login",
         duration: 3000,
         gravity: "top",
         backgroundColor: "red",
@@ -63,7 +63,7 @@ function Register() {
         </div>
 
         <div id="rightside">
-            <div id="top">Register Here!</div>
+            <div id="top"> <h1>Register Here!</h1></div>
             <div id="text"><p class="LRT">Register</p></div>
             <form id="Rform" onSubmit={handleSubmit}>
             <label htmlFor="FirstName">FirstName</label><br></br>

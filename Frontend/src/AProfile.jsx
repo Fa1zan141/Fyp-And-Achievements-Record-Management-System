@@ -1,6 +1,6 @@
 import React from 'react'
 import Sidebar from '../Components/Sidebar'
-import './aprofile.css'
+import './assets/aprofile.css'
 function AProfile() {
 
   return (

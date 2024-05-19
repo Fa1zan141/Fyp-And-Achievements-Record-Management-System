@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './LR.css';
+import './assets/LR.css';
 import axios from 'axios';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
@@ -85,11 +85,12 @@ function Login() {
   return (
     <div id="main">
       <div id="leftside">
+
         <motion.div animate={{ x: [100, -55, -55, 100], move: 1 }} transition={{ type: "tween", repeat: Infinity, duration: 3 }} id="imgg"></motion.div>
         <p className="LRp">Welcome to the revolutionized system for <br /> FYP & Achievements record of the <br /> Department of SE!</p>
       </div>
       <div id="rightside">
-        <div id="top"> Login Here! </div>
+        <div id="top"> <h1>Login Here!</h1></div>
         <div id="text"><p className="LRT">Login</p></div>
         <form id="Lform" onSubmit={handleSubmit}>
           <label htmlFor="email">Email</label><br />
@@ -105,8 +106,7 @@ function Login() {
           </select>
           <button type="submit" id="Lbutton">Login</button>
         </form>
-        <p id="AreadyaccountLogin">If Don't Have an Account Please Register Your Account!!</p>
-        <button id="btn" onClick={() => navigate("/register")}>Create Account</button>
+        <p id="AreadyaccountLogin">Don't have an account? <a href="/register">Register</a> </p>
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Sidebar from '../Components/Sidebar';
-import './StudentDashboard.css';
+import './assets/StudentDashboard.css';
 import { CgProfile } from "react-icons/cg";
 import { CiCirclePlus } from "react-icons/ci";
 import { useParams } from 'react-router-dom';

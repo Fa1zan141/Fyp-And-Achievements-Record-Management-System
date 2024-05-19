@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Sidebar from '../Components/Sidebar'
-import './FYPRecord.css'
+import './assets/FYPRecord.css'
 import { FaSearch } from "react-icons/fa";
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios'

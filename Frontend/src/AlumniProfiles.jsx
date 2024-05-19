@@ -2,7 +2,7 @@ import React from 'react'
 import Sidebar from '../Components/Sidebar'
 import AlumniProfile from '../Components/AlumniProfile';
 import { FaSearch } from "react-icons/fa";
-import './alumniprofiles.css'
+import './assets/alumniprofiles.css'
 function AlumniProfiles() {
     const Alumnidata = [
         {

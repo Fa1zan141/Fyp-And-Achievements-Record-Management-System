@@ -1,11 +1,11 @@
 import React from 'react';
-import './Sidebar.css';
-import { FaRegMessage } from "react-icons/fa6";
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import './Navbar.css';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from "../src/auth/auth";
+function Navbar() {
 
-function Sidebar() {
   axios.defaults.withCredentials=true;
   const Navigate = useNavigate();
   const {token,user}= useAuth()
@@ -26,6 +26,7 @@ function Sidebar() {
         break;
     }
   };
+
   const handleLogout = async () => {
     try {
       // Make a POST request to the logout endpoint
@@ -59,43 +60,35 @@ function Sidebar() {
     }
   };
 
-  return (
-    <>
-      <div id="stddashboardNav">
-        <div id="left">
-          <div id="Navlogo"></div>
-        </div>
-        <div id="right">
-          <button id="Msgbtn" onClick={() => { Navigate("/ChatBox") }}><FaRegMessage /></button>
-          <button id="username" onClick={handleSubmit}>{user && <h1>{user.FirstName} {user.LastName}</h1>}</button>
-          <img id="navpf" src="" alt="" />
 
-        </div>
+  return (
+    <nav id="Hnav">
+      <div id="Hnavl">
+        <div id="Hlogo"></div>
       </div>
-      <div id="StdDashboardsidebar">
-        <div id="leftSide">
-          <h1>Main Menu</h1>
-          <div id="bar"></div>
-          <a href="/home">Home</a>
-          <br />
-          <a href="/fyprecord">FYP</a>
-          <br />
-          <a href="/achievementsrecord">Achievements</a>
-          <br />
-          <a href="/news">News Or Jobs Post</a>
-          <br />
-          <a href="/alumniprofiles">Alumni Connect</a>
-          <br />
-          <br />
-          <h1>Settings</h1>
-          <div id="Sbar"></div>
-          <button onClick={handleLogout} id="Logoutbtn">Logout</button>
-        </div>
-        <div id="longline"></div>
-        <div id="rightSide"></div>
+      <div id="Hnavr">
+        <ul>
+          <li>
+            <Link to="/home">Home</Link>
+          </li>
+          <li>
+            <Link to="/fyprecord">FYP</Link>
+          </li>
+          <li>
+            <Link to="/achievementsrecord">Achievements</Link>
+          </li>
+          <li>
+            <Link to="/news">News & Jobs</Link>
+          </li>
+          <li>
+            <Link to="/alumniprofiles">Alumni</Link>
+          </li>
+        </ul>
+        <button id="username" onClick={handleSubmit}>{user && <h1>{user.FirstName} {user.LastName}</h1>}</button>
+        <button id="Hpbtn" onClick={handleLogout}>Logout</button>
       </div>
-    </>
+    </nav>
   );
 }
 
-export default Sidebar;
+export default Navbar;

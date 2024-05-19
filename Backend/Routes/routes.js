@@ -1,26 +1,18 @@
 const express = require('express');
-const multer = require('multer');
 const router = express.Router();
 
 const app = express();
 // Multer configuration for file upload
 app.use("/uploads", express.static(__dirname + "/public/uploads"));
+const upload = require('../Config/upload');
 
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, "./public/uploads");
-    },
-    filename: function (req, file, cb) {
-      const uniqueSuffix = Date.now();
-      cb(null, uniqueSuffix + file.originalname);
-    },
-});
-const upload = multer({ storage: storage });
 
 const userController = require('../Controlers/userController');
 const FypController = require('../Controlers/FypRecordController');
 const AchievementController = require('../Controlers/AchievementRecordController');
 const PostController = require('../Controlers/PostController');
+
+
 
 // Routes
 router.post('/register', userController.register);
@@ -42,6 +34,7 @@ router.post('/addnews', PostController.addPost);
 router.get('/newspostrecord', PostController.getPosts);
 router.delete('/deletenewspostrecord/:id', PostController.deletePost);
 router.get('/newsrecord/:id', PostController.getRecord);
+
 
 
 module.exports = router; 
