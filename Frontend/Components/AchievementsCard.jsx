@@ -1,18 +1,18 @@
-import React from 'react'
+import React from 'react';
+import './AchievementsCard.css';
 
-function AchievementsCard({Achievementsdata}) {
+function AchievementsCard({ Achievementsdata }) {
   return (
-    <>
-    <a href="/achievementsrecord">
-    <div style={{height: 350, width: 350,margin:50, marginTop:70, marginLeft:0}} > 
-        {Achievementsdata.img && <img src={Achievementsdata.img} alt="Project" style={{ height:250, width:300,borderRadius:30}} />}
-        <div style={{marginLeft: 30, marginTop:0, height:70, width:260, color:'white', fontWeight:600}}>{Achievementsdata.description}</div>
-        </div>
-    </a>
-        
-    
-    </>
-  )
+    <div className="achievement-card">
+      {Achievementsdata.img && (
+        <img src={Achievementsdata.img} alt="Achievement" className="achievement-img" />
+      )}
+      <div className="achievement-content">
+        <div className="achievement-description">{Achievementsdata.description}</div>
+        <a href="/achievementsrecord" className="achievement-button">View More</a>
+      </div>
+    </div>
+  );
 }
 
-export default AchievementsCard
+export default AchievementsCard;

@@ -1,39 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from "../src/auth/auth";
-function Navbar() {
+import { FaCaretDown } from 'react-icons/fa';
 
-  axios.defaults.withCredentials=true;
-  const Navigate = useNavigate();
-  const {token,user}= useAuth()
+function Navbar() {
+  axios.defaults.withCredentials = true;
+  const navigate = useNavigate();
+  const { token, user } = useAuth();
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const handleSubmit = async () => {
     switch (user.role) {
       case "Admin":
-        Navigate('/adminprofile');
+        navigate('/adminprofile');
         break;
       case "Student":
-        Navigate('/studentprofile');
+        navigate('/studentprofile');
         break;
       case "Teacher":
-        Navigate('/teachersprofile');
+        navigate('/teachersprofile');
         break;
       default:
-        Navigate('/alumniprofile');
+        navigate('/alumniprofile');
         break;
     }
   };
 
   const handleLogout = async () => {
     try {
-      // Make a POST request to the logout endpoint
       const response = await axios.post('http://localhost:3000/FYP/logout');
       const { status, message } = response.data;
-
-      // Show toast message based on response status
       Toastify({
         text: message,
         duration: 3000,
@@ -44,13 +43,11 @@ function Navbar() {
         },
       }).showToast();
 
-      // If logout was successful, navigate to login page
       if (status === "OK") {
-        Navigate('/splash');
+        navigate('/splash');
       }
     } catch (error) {
       console.error('Error during logout:', error);
-      // Handle errors, e.g., display an error message
       Toastify({
         text: 'An error occurred during logout',
         duration: 3000,
@@ -60,6 +57,9 @@ function Navbar() {
     }
   };
 
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
 
   return (
     <nav id="Hnav">
@@ -84,8 +84,20 @@ function Navbar() {
             <Link to="/alumniprofiles">Alumni</Link>
           </li>
         </ul>
-        <button id="username" onClick={handleSubmit}>{user && <h1>{user.FirstName} {user.LastName}</h1>}</button>
-        <button id="Hpbtn" onClick={handleLogout}>Logout</button>
+        <div className="profile-dropdown">
+          <button id="usernamenav" onClick={handleSubmit}>
+            {user && <h1>{user.FirstName} {user.LastName}</h1>}
+          </button>
+          <div onClick={toggleDropdown}>
+            <FaCaretDown className="dropdown-icon" />
+          </div>
+          <img id="navpff" src="" alt="" />
+          {isDropdownOpen && (
+            <div className="dropdown-content">
+              <button id="Hpbtn" onClick={handleLogout}>Logout</button>
+            </div>
+          )}
+        </div>
       </div>
     </nav>
   );

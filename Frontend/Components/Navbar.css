@@ -1,15 +1,17 @@
 /* Navbar.css */
 
 #Hnav {
-    position: absolute;
+    position: relative;
     width: calc(100% - 80px);
     display: flex;
     padding: 10px;
     left: 40px;
     right: 40px;
-}
-
-#Hlogo {
+    background-color: #fff8f8;
+    
+  }
+  
+  #Hlogo {
     position: absolute;
     height: 70px;
     width: 150px;
@@ -19,9 +21,9 @@
     border-radius: 25px;
     top: 10px;
     box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
-}
-
-#Hlogo:hover {
+  }
+  
+  #Hlogo:hover {
     position: absolute;
     height: 70px;
     width: 150px;
@@ -31,9 +33,9 @@
     border-radius: 20px;
     top: 12px;
     box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.5);
-}
-
-#Hnavr ul {
+  }
+  
+  #Hnavr ul {
     color: rgb(24, 24, 58);
     font-size: 16px;
     font-weight: bold;
@@ -44,53 +46,97 @@
     gap: 50px;
     left: 460px;
     top: 40px;
-}
-
-#Hnavr ul li a {
+  }
+  
+  #Hnavr ul li a {
     text-decoration: none;
     color: inherit;
     border-bottom: 2px solid transparent;
     transition: border-bottom 0.5s ease;
-}
-
-#Hnavr ul li a:hover {
+  }
+  
+  #Hnavr ul li a:hover {
     border-bottom: 2px solid blue;
     text-decoration: none;
-}
-
-#Hpbtn {
+  }
+  
+  .profile-dropdown {
+    width: 400px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    right: 20px;
+  }
+  
+  .profile-pic-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  #navpff {
+    position: absolute;
+    background-image: url('8724.jpg');
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    right: 0px;
+    top: 35px;
+    background-position: center;
+    background-size: contain;
+  }
+  
+  .dropdown-icon {
+    margin-left: 5px;
+    font-size: 1em;
+    position: absolute;
+    right: 40px;
+    top: 50px;
+  }
+  
+  .dropdown-content {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    z-index: 1;
+  }
+  
+  .dropdown-content button {
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    text-align: left;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .dropdown-content button:hover {
+    background-color: #f1f1f1;
+  }
+  
+  #Hpbtn {
+    position: absolute;
+    top: 80px;
+    right: 20px;
+    border-radius: 10px;
+    width: 100px;
+    color: #2c2e4e;
+    font-size: 16px;
+    font-weight: bolder;
+  }
+  
+  #usernamenav {
+    position: absolute;
     height: 35px;
     width: 100px;
     color: rgb(24, 24, 58);
-    border-radius: 5px;
-    background-color: #63c02e;
-    position: absolute;
-    left: 1200px;
-    top: 35px;
-    font-size: 22px;
-    font-weight: bolder;
-}
-
-#Hpbtn:hover {
-    height: 35px;
-    width: 100px;
-    background-color: rgb(27, 27, 78);
-    border-radius: 5px;
-    color: aliceblue;
-    position: absolute;
-    left: 1200px;
-    top: 35px;
-    font-weight: bolder;
-}
-
-#username {
-    height: 35px;
-    width: 100px;
-    color: rgb(24, 24, 58);
-    position: absolute;
-    left: 1100px;
-    top: 35px;
     font-size: 16px;
     font-weight: bolder;
     font-stretch: normal;
-}
+    right: 50px;
+    top: 30px;
+  }
+  

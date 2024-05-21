@@ -130,3 +130,14 @@ a:hover {
     color: blue;
 
 }
+#usernamesb {
+    position: absolute;
+    height: 35px;
+    width: 100px;
+    color: rgb(24, 24, 58);
+    font-size: 16px;
+    font-weight: bolder;
+    font-stretch: normal;
+    right: 170px;
+    top: 30px;
+  }

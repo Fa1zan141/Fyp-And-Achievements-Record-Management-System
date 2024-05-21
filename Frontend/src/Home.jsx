@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import './assets/Home.css';
 import { Typewriter } from 'react-simple-typewriter';
 import { motion } from 'framer-motion';
@@ -9,10 +8,24 @@ import News from '../Components/News';
 import Supervisors from '../Components/Supervisors';
 import AlumniProfile from '../Components/AlumniProfile';
 import { FaRegCopyright } from 'react-icons/fa6';
-import { useNavigate } from 'react-router-dom';
-import Navbar from '../Components/Navbar'; // Import the Navbar component
+import Navbar from '../Components/Navbar'; 
 
 function Home() {
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handleNext = () => {
+    if (currentIndex + 3 < Fypdata.length) {
+      setCurrentIndex(currentIndex + 3);
+    }
+  };
+
+  const handlePrev = () => {
+    if (currentIndex - 3 >= 0) {
+      setCurrentIndex(currentIndex - 3);
+    }
+  };
+
   // FYP Card Data Object
   const Fypdata = [
     {
@@ -105,11 +118,11 @@ function Home() {
   };
 
   return (
-    <div className='h-screen w-full bg-color1'>
-      <Navbar /> {/* Use the Navbar component */}
+    <div>
+      <Navbar /> 
       <div id='Hero'>
         <div id='HeroL'>
-          <p id='Hp'>
+          <p id='Homep'>
             <Typewriter
               words={['Department', 'SE', 'Code']}
               loop={Infinity}
@@ -122,10 +135,9 @@ function Home() {
               onType={(char) => handleType(char)}
             />
             <span>New Era!</span> <br />
-            <h2 id='Shtag'>To Store Record </h2> <br />
-            Revolutionized the Fyp & Achievements Record of Software Engineering
-            Depeartment And Give A Platform <br />
-            To The Students To Showcase Their Records And Achievements! <br />
+            <h2 id='hometag'>To Store Record </h2> <br />
+            Revolutionized the Fyp & Achievements Record of Software Engineering Depeartment And Give A Platform 
+            To The Students To Showcase Their Records And Achievements! 
             Also Collaborate With Their Alumni To Seek Guidance According To
             Their Intrest
           </p>
@@ -139,22 +151,17 @@ function Home() {
         </div>
         <div id='underhero'>
           <div id='Uherotop'>
-            <h1
-              style={{
-                width: 50,
-                height: 50,
-                paddingLeft: 50,
-                fontSize: 25,
-                fontWeight: 800,
-                color: 'rgb(24, 24, 58)',
-              }}
-            >
-              RecentFYP
-            </h1>
-            {Fypdata.map((item, index) => (
-              <FYPCard Fypdata={item} />
-            ))}
-          </div>
+      <h1 className="hero-title">RecentFYP</h1>
+      <div className="carousel-container">
+        <button className="nav-button" onClick={handlePrev}>&lt;</button>
+        <div className="carousel-content">
+          {Fypdata.slice(currentIndex, currentIndex + 3).map((item, index) => (
+            <FYPCard key={index} Fypdata={item} />
+          ))}
+        </div>
+        <button className="nav-button" onClick={handleNext}>&gt;</button>
+      </div>
+    </div>
           <div id='Uherobottom'>
             <h1
               style={{
@@ -172,6 +179,7 @@ function Home() {
               <AchievementsCard Achievementsdata={item} />
             ))}
           </div>
+          
         </div>
         <div id='lastsection'>
           <div className='vertical-line'></div>

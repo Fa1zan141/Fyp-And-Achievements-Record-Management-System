@@ -1,0 +1,46 @@
+.fyp-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 300px;
+  height: 250px;
+  margin: 50px ;
+  padding: 20px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.fyp-card:hover {
+  transform: scale(1.05);
+}
+
+.fyp-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.fyp-title, .fyp-student-name, .fyp-supervisor {
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #333;
+  font-weight: 600;
+}
+
+.fyp-button {
+  align-self: stretch;
+  text-align: center;
+  padding: 10px 0;
+  color: white;
+  background-color: #3f51b5;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.fyp-button:hover {
+  background-color: #303f9f;
+}
