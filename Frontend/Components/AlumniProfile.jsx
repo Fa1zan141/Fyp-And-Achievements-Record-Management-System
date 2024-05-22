@@ -1,18 +1,38 @@
-import React from 'react'
+import React from 'react';
+import './Alumniprofile.css';
 
-function AlumniProfile({Alumnidata}) {
+function AlumniProfile({ Alumnidata }) {
   return (
-    <>
-    <a href="/alumniprofiles">
-    <div style={{height: 300, width: 350, margin:50, marginTop:70, marginLeft:0}}>
-    {Alumnidata.img && <img src={Alumnidata.img} alt="Image" style={{height:250, width:300,borderRadius:30}}/>}
-        <h1 style={{marginLeft: 25, marginTop:-250, height:70, width:100, color:'white', fontWeight:700, fontSize:20}}>{Alumnidata.Name}</h1>
+    <div className="profile-page">
+        <div className="profile-container">
+          {Alumnidata.img && (
+            <img
+              src={Alumnidata.img}
+              alt="Profile"
+              className="profile-image"
+            />
+          )}
+          <div className="profile-info">
+            <h1 className="profile-name">{Alumnidata.FirstName} {Alumnidata.LastName}</h1>
+            <p className="profile-details">
+              Email: {Alumnidata.email} <br />
+              Role: {Alumnidata.role}
+            </p>
+            <p className="profile-dob">
+              DOB: {Alumnidata.dob}
+            </p>
+            <p className="profile-location">
+              City: {Alumnidata.city} <br />
+              Postal Code: {Alumnidata.postalCode}
+            </p>
+            <p className="profile-department">
+              Department: {Alumnidata.department}
+            </p>
+            <a href="/CurrentAlumniProfile" className="fyp-button">View Profile</a>
+          </div>
+        </div>
     </div>
-    </a>
-   
-    
-    </>
-  )
+  );
 }
 
-export default AlumniProfile
+export default AlumniProfile;

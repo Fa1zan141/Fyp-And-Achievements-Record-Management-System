@@ -1,14 +1,14 @@
 import React from 'react';
 import './AchievementsCard.css';
 
-function AchievementsCard({ Achievementsdata }) {
+function AchievementsCard({ Achievement }) {
   return (
     <div className="achievement-card">
-      {Achievementsdata.img && (
-        <img src={Achievementsdata.img} alt="Achievement" className="achievement-img" />
+      {Achievement.Upload && (
+        <img src={Achievement.Upload} alt="Achievement" className="achievement-img" />
       )}
       <div className="achievement-content">
-        <div className="achievement-description">{Achievementsdata.description}</div>
+        <div className="achievement-description">{Achievement.Description}</div>
         <a href="/achievementsrecord" className="achievement-button">View More</a>
       </div>
     </div>

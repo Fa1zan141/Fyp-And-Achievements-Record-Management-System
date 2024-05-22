@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Sidebar from '../Components/Sidebar'
-import { FaSearch } from "react-icons/fa";
+import { FaSearch, FaEllipsisV} from "react-icons/fa";
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
 
@@ -67,8 +67,13 @@ function News() {
                             <td>{newsRecords.location}</td>
                             <td>{new Date(newsRecords.date).toLocaleDateString()}</td>
                             <td id="buttons">
-                            <button id="deletebtn" onClick={(e) => handleDelete(newsRecords._id)}>Delete</button> 
-                            <button id="viewbtn" onClick={() => {Navigate(`/newsrecord/${newsRecords._id}`)}}>View</button>
+                            <div className="dropdown">
+                                                <button className="three-dots"><FaEllipsisV /></button>
+                                                <div className="dropdown-content">
+                                                    <button  onClick={(e) => handleDelete(newsRecords._id)}>Delete</button>
+                                                    <button  onClick={() => {Navigate(`/newsrecord/${newsRecords._id}`)}}>View</button>
+                                                </div>
+                                            </div>
                             </td>
                         </tr>
                     )

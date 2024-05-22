@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from "../src/auth/auth";
 
-function Sidebar() {
+function Withoutsidenav() {
   axios.defaults.withCredentials=true;
   const Navigate = useNavigate();
   const {token,user}= useAuth()
@@ -26,23 +26,6 @@ function Sidebar() {
         break;
     }
   };
-  const handleDashboard = async () => {
-    switch (user.role) {
-      case "Admin":
-        Navigate('/admindashboard');
-        break;
-      case "Student":
-        Navigate('/studentdashboard');
-        break;
-      case "Teacher":
-        Navigate('/teachersdashboard');
-        break;
-      default:
-        Navigate('/alumnidashboard');
-        break;
-    }
-  };
-
   const handleLogout = async () => {
     try {
       // Make a POST request to the logout endpoint
@@ -89,32 +72,8 @@ function Sidebar() {
 
         </div>
       </div>
-      <div id="StdDashboardsidebar">
-        <div id="leftSide">
-          <h1>Main Menu</h1>
-          <div id="bar"></div>
-          <a href="/home">Home</a>
-          <br />
-          <button id="dashboard" onClick={handleDashboard}><h1>Dashboard</h1></button>
-          <br />
-          <a href="/fyprecord">FYP</a>
-          <br />
-          <a href="/achievementsrecord">Achievements</a>
-          <br />
-          <a href="/news">News Or Jobs Post</a>
-          <br />
-          <a href="/alumniprofiles">Alumni Connect</a>
-          <br />
-          <br />
-          <h1>Settings</h1>
-          <div id="Sbar"></div>
-          <button onClick={handleLogout} id="Logoutbtn">Logout</button>
-        </div>
-        <div id="longline"></div>
-        <div id="rightSide"></div>
-      </div>
     </>
   );
 }
 
-export default Sidebar;
+export default Withoutsidenav;

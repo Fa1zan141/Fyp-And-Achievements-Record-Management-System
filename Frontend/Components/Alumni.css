@@ -1,0 +1,54 @@
+.profile-contain {
+    align-items: center;
+    height: 250px;
+    background-color: #292929;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-image {
+    width: 80px; 
+    height: 80px; 
+    border-radius: 50%;
+    margin-right: 50px;
+  }
+  
+  .profile-information {
+    flex: 1;
+  }
+  
+  .profile-name {
+    font-size: 18px;
+    margin-bottom: 5px;
+    font-family:lato, sans-serif;
+    color: white;
+  }
+  
+  .profile-department {
+    font-size: 14px;
+    margin-bottom: 5px;
+    font-family:lato, sans-serif;
+    color: white;
+
+  }
+  
+  .fyp-btn {
+    border: 2px solid #e2e2e2;
+    color: white;
+    margin-top: 20px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .fyp-btn:hover {
+    background-color: #e2e2e2;
+    color: #302e2e;
+  }
+  

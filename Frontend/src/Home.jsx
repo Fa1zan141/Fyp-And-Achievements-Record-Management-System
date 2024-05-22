@@ -1,86 +1,126 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom'
 import './assets/Home.css';
 import { Typewriter } from 'react-simple-typewriter';
 import { motion } from 'framer-motion';
 import FYPCard from '../Components/FYPCard';
 import AchievementsCard from '../Components/AchievementsCard';
 import News from '../Components/News';
-import Supervisors from '../Components/Supervisors';
 import AlumniProfile from '../Components/AlumniProfile';
 import { FaRegCopyright } from 'react-icons/fa6';
-import Navbar from '../Components/Navbar'; 
+import Navbar from '../Components/Navbar';
+import axios from 'axios';
 
 function Home() {
+  const navigate = useNavigate();
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-
+  const [fypCurrentIndex, setFypCurrentIndex] = useState(0);
+  const [achievementsCurrentIndex, setAchievementsCurrentIndex] = useState(0);
+  const [profileCurrentIndex, setprofileCurrentIndex] = useState(0);
+  const itemsPerPage = 3;
+//For FYP
   const handleNext = () => {
-    if (currentIndex + 3 < Fypdata.length) {
-      setCurrentIndex(currentIndex + 3);
+    if (fypCurrentIndex + 3 < Fypdata.length) {
+      setFypCurrentIndex(fypCurrentIndex + 3);
     }
   };
 
   const handlePrev = () => {
-    if (currentIndex - 3 >= 0) {
-      setCurrentIndex(currentIndex - 3);
+    if (fypCurrentIndex - 3 >= 0) {
+      setFypCurrentIndex(fypCurrentIndex - 3);
+    }
+  };
+//FOR ACHIEVEMENTS
+  const handleNextpage = () => {
+    if (achievementsCurrentIndex < Achievementsdata.length - itemsPerPage) {
+      setAchievementsCurrentIndex(achievementsCurrentIndex + itemsPerPage);
     }
   };
 
-  // FYP Card Data Object
-  const Fypdata = [
-    {
-      title: 'Title',
-      studentname: 'Student Name',
-      supervisor: 'Supervisor',
-    },
-    {
-      title: 'Title',
-      studentname: 'Student Name',
-      supervisor: 'Supervisor',
-    },
-    {
-      title: 'Title',
-      studentname: 'Student Name',
-      supervisor: 'Supervisor',
-    },
-    {
-      title: 'Title',
-      studentname: 'Student Name',
-      supervisor: 'Supervisor',
-    },
-  ];
+  const handlePrevpage = () => {
+    if (achievementsCurrentIndex > 0) {
+      setAchievementsCurrentIndex(achievementsCurrentIndex - itemsPerPage);
+    }
+  };
+//FOR ALUMNIPROFILES
 
-  const Achievementsdata = [
-    {
-      img: 'Ach.png',
-      video: '',
-      description: 'Description Of The Achievements',
-    },
-    {
-      img: 'Ach4.jpg',
-      video: '',
-      description: 'Description Of The Achievements',
-    },
-    {
-      img: 'Ach2.jpg',
-      video: '',
-      description: 'Description Of The Achievements',
-    },
-  ];
+const handleNextprofile = () => {
+  if (profileCurrentIndex + 3 < Fypdata.length) {
+    setprofileCurrentIndex(profileCurrentIndex + 3);
+  }
+};
+
+const handlePrevprofile = () => {
+  if (profileCurrentIndex - 3 >= 0) {
+    setprofileCurrentIndex(profileCurrentIndex - 3);
+  }
+};
+
+
+
+  // FYP Card Data Object
+  const [FYP, setFYP] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const result = await axios.get("http://localhost:3000/FYP/");
+                setFYP(result.data);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+// ACHIEVEMENT CARD OBJECT
+const [Achievement, setAchievement] = useState([]);
+
+useEffect(() => {
+    const fetchData = async () => {
+        try {
+            const result = await axios.get("http://localhost:3000/FYP/doneachievement");
+            setAchievement(result.data);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    fetchData();
+}, []);
+
+// NEWS OR JOB POST OBJECT
 
   const Newsjobs = [
     {
-      title: '1-News Of Scholorship',
+      title: "Web Developer",
+      startDate: "2024-04-30",
+      endDate: "2024-05-15",
+      description: "An experienced web developer with experience of web 3 required.",
+      icon: "path/to/icon.png"
     },
     {
-      title: '2-Post Of Scholorship',
+      title: "Analytical Chemist",
+      startDate: "2024-04-30",
+      endDate: "2024-05-22",
+      description: "An expert analytical chemist with practical experience required.",
+      icon: "path/to/icon2.png"
     },
     {
-      title: '3-Student Of Scholorship',
+      title: "Data Scientist",
+      startDate: "2024-05-01",
+      endDate: "2024-05-30",
+      description: "A skilled data scientist is needed for an AI project.",
+      icon: "path/to/icon3.png"
     },
     {
-      title: '4-Study at Scholorship',
-    },
+      title: "Project Manager",
+      startDate: "2024-05-05",
+      endDate: "2024-06-05",
+      description: "An experienced project manager is required for overseeing web development projects.",
+      icon: "path/to/icon4.png"
+    }
   ];
 
   const Teachersdata = [
@@ -97,16 +137,48 @@ function Home() {
   const Alumnidata = [
     {
       img: 'Std1.jpg',
-      Name: 'Fariha',
+      FirstName: 'Fariha',
+      LastName: 'Faizan',
+      email: 'fariha.faizan@example.com',
+      role: 'Software Engineer',
+      dob: '1990-01-01',
+      city: 'Lahore',
+      postalCode: '54000',
+      department: 'Engineering',
     },
     {
-      img: 'Std 2.jpg',
-      Name: 'Maham',
+      img: 'Std1.jpg',
+      FirstName: 'Maham',
+      LastName: 'Khan',
+      email: 'maham.khan@example.com',
+      role: 'Data Analyst',
+      dob: '1992-03-15',
+      city: 'Karachi',
+      postalCode: '74000',
+      department: 'Data Science',
     },
     {
-      img: 'Std 3.jpg',
-      Name: 'Qudsia',
+      img: 'Std1.jpg',
+      FirstName: 'Qudsia',
+      LastName: 'Ali',
+      email: 'qudsia.ali@example.com',
+      role: 'Project Manager',
+      dob: '1988-07-22',
+      city: 'Islamabad',
+      postalCode: '44000',
+      department: 'Management',
     },
+    {
+      img: 'Std1.jpg',
+      FirstName: 'Ali',
+      LastName: 'Ali',
+      email: 'Ali.ali@example.com',
+      role: 'Project Manager',
+      dob: '1999-07-22',
+      city: 'Islamabad',
+      postalCode: '44000',
+      department: 'Management',
+    }
   ];
 
   const handleType = (char) => {
@@ -117,9 +189,13 @@ function Home() {
     console.log('Typing animation done after 5 loops!');
   };
 
+  const handleViewMore = () => {
+    navigate('/news');
+  };
+
   return (
     <div>
-      <Navbar /> 
+      <Navbar />
       <div id='Hero'>
         <div id='HeroL'>
           <p id='Homep'>
@@ -136,10 +212,10 @@ function Home() {
             />
             <span>New Era!</span> <br />
             <h2 id='hometag'>To Store Record </h2> <br />
-            Revolutionized the Fyp & Achievements Record of Software Engineering Depeartment And Give A Platform 
-            To The Students To Showcase Their Records And Achievements! 
+            Revolutionized the Fyp & Achievements Record of Software Engineering Department And Give A Platform
+            To The Students To Showcase Their Records And Achievements!
             Also Collaborate With Their Alumni To Seek Guidance According To
-            Their Intrest
+            Their Interest
           </p>
         </div>
         <div id='HeroR'>
@@ -151,92 +227,35 @@ function Home() {
         </div>
         <div id='underhero'>
           <div id='Uherotop'>
-      <h1 className="hero-title">RecentFYP</h1>
-      <div className="carousel-container">
-        <button className="nav-button" onClick={handlePrev}>&lt;</button>
-        <div className="carousel-content">
-          {Fypdata.slice(currentIndex, currentIndex + 3).map((item, index) => (
-            <FYPCard key={index} Fypdata={item} />
-          ))}
-        </div>
-        <button className="nav-button" onClick={handleNext}>&gt;</button>
-      </div>
-    </div>
-          <div id='Uherobottom'>
-            <h1
-              style={{
-                width: 50,
-                height: 50,
-                paddingLeft: 50,
-                fontSize: 25,
-                fontWeight: 800,
-                color: 'white',
-              }}
-            >
-              RecentAchievements
-            </h1>
-            {Achievementsdata.map((item, index) => (
-              <AchievementsCard Achievementsdata={item} />
-            ))}
+            <h1 className="hero-title">RecentFYP</h1>
+            <div className="carousel-container">
+              <button className="nav-button" onClick={handlePrev}>&lt;</button>
+              <div className="carousel-content">
+                {FYP.slice(fypCurrentIndex, fypCurrentIndex + 3).map((item, index) => (
+                  <FYPCard key={index} FYP={item} />
+                ))}
+              </div>
+              <button className="nav-button" onClick={handleNext}>&gt;</button>
+            </div>
           </div>
-          
+          <div id='Uherobottom'>
+            <h1 className="hero-title">Recent Achievements</h1>
+            <div className="carousel-container">
+              <button className="nav-button" onClick={handlePrevpage}>&lt;</button>
+              <div className="carousel-content">
+                {Achievement.slice(achievementsCurrentIndex, achievementsCurrentIndex + itemsPerPage).map((item, index) => (
+                  <AchievementsCard key={index} Achievement={item} />
+                ))}
+              </div>
+              <button className="nav-button" onClick={handleNextpage}>&gt;</button>
+            </div>
+          </div>
         </div>
         <div id='lastsection'>
-          <div className='vertical-line'></div>
-          <div id='sectiontop'>
-            <div id='topleft'>
-              <h1
-                style={{
-                  width: 50,
-                  height: 50,
-                  paddingLeft: 50,
-                  fontSize: 25,
-                  fontWeight: 800,
-                  color: 'white',
-                }}
-              >
-                News&Jobs
-              </h1>
-              <div
-                style={{
-                  height: 250,
-                  width: 500,
-                  backgroundColor: 'rgb(37, 175, 37)',
-                  borderRadius: 30,
-                  marginLeft: 50,
-                  margin: 50,
-                  marginTop: 20,
-                }}
-              >
-                {Newsjobs.map((item, index) => (
-                  <News Newsjobs={item} />
-                ))}
-              </div>
-            </div>
-            <div id='topright'>
-              <h1
-                style={{
-                  width: 50,
-                  height: 50,
-                  paddingLeft: 50,
-                  fontSize: 25,
-                  fontWeight: 800,
-                  color: 'white',
-                }}
-              >
-                Teachers/Supervisors
-              </h1>
-              <div id='Supervisor'>
-                {Teachersdata.map((item, index) => (
-                  <Supervisors Teachersdata={item} />
-                ))}
-              </div>
-            </div>
-          </div>
-          <div id='sectionbottom'>
-            <h1
+        <div id='sectiontop'>
+        <h1
               style={{
-                width: 50,
+                width: 400,
                 height: 50,
                 paddingLeft: 50,
                 fontSize: 25,
@@ -244,22 +263,48 @@ function Home() {
                 color: 'rgb(24, 24, 58)',
               }}
             >
-              AlumniProfiles
+            Jobs OR News Post
             </h1>
-            {Alumnidata.map((item, index) => (
-              <AlumniProfile Alumnidata={item} />
+          {Newsjobs.slice(0, 3).map((newsJob, index) => (
+            <News key={index} Newsjobs={newsJob} />
+          ))}
+          {Newsjobs.length > 3 && (
+            <button className="view-more-button" onClick={handleViewMore}>
+              View More
+            </button>
+          )}
+          </div>
+          <div id="sectionbottom">
+    <h1 style={{
+        width: 50,
+        height: 50,
+        paddingLeft: 50,
+        fontSize: 25,
+        fontWeight: 800,
+        color: 'rgb(24, 24, 58)',
+    }}>
+        Alumni Profiles
+    </h1>
+    <div className="carousel-container">
+        <button className="nav-button" onClick={handlePrevprofile}>&lt;</button>
+        <div className="carousel-content">
+            {Alumnidata.slice(profileCurrentIndex, profileCurrentIndex + 3).map((item, index) => (
+                <AlumniProfile key={index} Alumnidata={item} />
             ))}
-          </div>
         </div>
-        <div id='fotter'>
-          <div id='lefttext'>
-            <FaRegCopyright />{' '}
-            <p style={{ position: 'absolute', top: 45, left: 100 }}>
-              By muhammad.faizan0141@gmail.com
-            </p>
-          </div>
-          <div id='righttext'>Developed By Muhammad Faizan</div>
+        <button className="nav-button" onClick={handleNextprofile}>&gt;</button>
+    </div>
+</div>
+
         </div>
+        <div id="footer">
+  <div id="lefttext">
+    <FaRegCopyright />
+    <p>By muhammad.faizan0141@gmail.com</p>
+  </div>
+  <div id="righttext">Developed By Muhammad Faizan</div>
+</div>
+
       </div>
     </div>
   );
