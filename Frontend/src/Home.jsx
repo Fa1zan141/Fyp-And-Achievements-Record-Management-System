@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
-import { useParams } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './assets/Home.css';
 import { Typewriter } from 'react-simple-typewriter';
 import { motion } from 'framer-motion';
@@ -17,11 +16,12 @@ function Home() {
 
   const [fypCurrentIndex, setFypCurrentIndex] = useState(0);
   const [achievementsCurrentIndex, setAchievementsCurrentIndex] = useState(0);
-  const [profileCurrentIndex, setprofileCurrentIndex] = useState(0);
+  const [profileCurrentIndex, setProfileCurrentIndex] = useState(0);
   const itemsPerPage = 3;
-//For FYP
+
+  // Handle navigation for FYP
   const handleNext = () => {
-    if (fypCurrentIndex + 3 < Fypdata.length) {
+    if (fypCurrentIndex + 3 < FYP.length) {
       setFypCurrentIndex(fypCurrentIndex + 3);
     }
   };
@@ -31,108 +31,79 @@ function Home() {
       setFypCurrentIndex(fypCurrentIndex - 3);
     }
   };
-//FOR ACHIEVEMENTS
-  const handleNextpage = () => {
-    if (achievementsCurrentIndex < Achievementsdata.length - itemsPerPage) {
+
+  // Handle navigation for Achievements
+  const handleNextPage = () => {
+    if (achievementsCurrentIndex < Achievement.length - itemsPerPage) {
       setAchievementsCurrentIndex(achievementsCurrentIndex + itemsPerPage);
     }
   };
 
-  const handlePrevpage = () => {
+  const handlePrevPage = () => {
     if (achievementsCurrentIndex > 0) {
       setAchievementsCurrentIndex(achievementsCurrentIndex - itemsPerPage);
     }
   };
-//FOR ALUMNIPROFILES
 
-const handleNextprofile = () => {
-  if (profileCurrentIndex + 3 < Fypdata.length) {
-    setprofileCurrentIndex(profileCurrentIndex + 3);
-  }
-};
+  // Handle navigation for Alumni Profiles
+  const handleNextProfile = () => {
+    if (profileCurrentIndex + 3 < Alumnidata.length) {
+      setProfileCurrentIndex(profileCurrentIndex + 3);
+    }
+  };
 
-const handlePrevprofile = () => {
-  if (profileCurrentIndex - 3 >= 0) {
-    setprofileCurrentIndex(profileCurrentIndex - 3);
-  }
-};
+  const handlePrevProfile = () => {
+    if (profileCurrentIndex - 3 >= 0) {
+      setProfileCurrentIndex(profileCurrentIndex - 3);
+    }
+  };
 
-
-
-  // FYP Card Data Object
+  // Fetch FYP data
   const [FYP, setFYP] = useState([]);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const result = await axios.get("http://localhost:3000/FYP/");
-                setFYP(result.data);
-            } catch (error) {
-                console.log(error);
-            }
-        };
-
-        fetchData();
-    }, []);
-
-// ACHIEVEMENT CARD OBJECT
-const [Achievement, setAchievement] = useState([]);
-
-useEffect(() => {
+  useEffect(() => {
     const fetchData = async () => {
-        try {
-            const result = await axios.get("http://localhost:3000/FYP/doneachievement");
-            setAchievement(result.data);
-        } catch (error) {
-            console.log(error);
-        }
+      try {
+        const result = await axios.get('http://localhost:3000/FYP/');
+        setFYP(result.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  // Fetch Achievement data
+  const [Achievement, setAchievement] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await axios.get('http://localhost:3000/FYP/doneachievement');
+        setAchievement(result.data);
+      } catch (error) {
+        console.log(error);
+      }
     };
     fetchData();
-}, []);
+  }, []);
 
-// NEWS OR JOB POST OBJECT
+  // Fetch News or job post data
+  const [newsData, setNewsData] = useState([]);
 
-  const Newsjobs = [
-    {
-      title: "Web Developer",
-      startDate: "2024-04-30",
-      endDate: "2024-05-15",
-      description: "An experienced web developer with experience of web 3 required.",
-      icon: "path/to/icon.png"
-    },
-    {
-      title: "Analytical Chemist",
-      startDate: "2024-04-30",
-      endDate: "2024-05-22",
-      description: "An expert analytical chemist with practical experience required.",
-      icon: "path/to/icon2.png"
-    },
-    {
-      title: "Data Scientist",
-      startDate: "2024-05-01",
-      endDate: "2024-05-30",
-      description: "A skilled data scientist is needed for an AI project.",
-      icon: "path/to/icon3.png"
-    },
-    {
-      title: "Project Manager",
-      startDate: "2024-05-05",
-      endDate: "2024-06-05",
-      description: "An experienced project manager is required for overseeing web development projects.",
-      icon: "path/to/icon4.png"
-    }
-  ];
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await axios.get("http://localhost:3000/FYP/newspostrecord");
+        setNewsData(result.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-  const Teachersdata = [
-    {
-      img: 'Teacher2.jpg',
-      Name: 'Adeel Shehzad',
-    },
-    {
-      img: 'Teacher1.png',
-      Name: 'Mam Reema',
-    },
-  ];
+    fetchData();
+  }, []);
 
   const Alumnidata = [
     {
@@ -181,6 +152,7 @@ useEffect(() => {
     }
   ];
 
+  // Handle typewriter events
   const handleType = (char) => {
     console.log(`Typing character ${char}`);
   };
@@ -208,7 +180,7 @@ useEffect(() => {
               deleteSpeed={50}
               delaySpeed={1000}
               onLoopDone={handleDone}
-              onType={(char) => handleType(char)}
+              onType={handleType}
             />
             <span>New Era!</span> <br />
             <h2 id='hometag'>To Store Record </h2> <br />
@@ -227,7 +199,7 @@ useEffect(() => {
         </div>
         <div id='underhero'>
           <div id='Uherotop'>
-            <h1 className="hero-title">RecentFYP</h1>
+            <h1 className="hero-title">Recent FYP</h1>
             <div className="carousel-container">
               <button className="nav-button" onClick={handlePrev}>&lt;</button>
               <div className="carousel-content">
@@ -241,70 +213,66 @@ useEffect(() => {
           <div id='Uherobottom'>
             <h1 className="hero-title">Recent Achievements</h1>
             <div className="carousel-container">
-              <button className="nav-button" onClick={handlePrevpage}>&lt;</button>
+              <button className="nav-button" onClick={handlePrevPage}>&lt;</button>
               <div className="carousel-content">
                 {Achievement.slice(achievementsCurrentIndex, achievementsCurrentIndex + itemsPerPage).map((item, index) => (
                   <AchievementsCard key={index} Achievement={item} />
                 ))}
               </div>
-              <button className="nav-button" onClick={handleNextpage}>&gt;</button>
+              <button className="nav-button" onClick={handleNextPage}>&gt;</button>
             </div>
           </div>
         </div>
         <div id='lastsection'>
-        <div id='sectiontop'>
-        <h1
-              style={{
-                width: 400,
-                height: 50,
-                paddingLeft: 50,
-                fontSize: 25,
-                fontWeight: 800,
-                color: 'rgb(24, 24, 58)',
-              }}
-            >
-            Jobs OR News Post
+          <div id='sectiontop'>
+            <h1 style={{
+              width: 400,
+              height: 50,
+              paddingLeft: 50,
+              fontSize: 25,
+              fontWeight: 800,
+              color: 'rgb(24, 24, 58)',
+            }}>
+              Jobs OR News Post
             </h1>
-          {Newsjobs.slice(0, 3).map((newsJob, index) => (
-            <News key={index} Newsjobs={newsJob} />
-          ))}
-          {Newsjobs.length > 3 && (
-            <button className="view-more-button" onClick={handleViewMore}>
-              View More
-            </button>
-          )}
+            {newsData.slice(0, 3).map((newsJob, index) => (
+              <News key={index} newsData={newsJob} />
+            ))}
+            {newsData.length > 3 && (
+              <button className="view-more-button" onClick={handleViewMore}>
+                View More
+              </button>
+            )}
           </div>
           <div id="sectionbottom">
-    <h1 style={{
-        width: 50,
-        height: 50,
-        paddingLeft: 50,
-        fontSize: 25,
-        fontWeight: 800,
-        color: 'rgb(24, 24, 58)',
-    }}>
-        Alumni Profiles
-    </h1>
-    <div className="carousel-container">
-        <button className="nav-button" onClick={handlePrevprofile}>&lt;</button>
-        <div className="carousel-content">
-            {Alumnidata.slice(profileCurrentIndex, profileCurrentIndex + 3).map((item, index) => (
-                <AlumniProfile key={index} Alumnidata={item} />
-            ))}
-        </div>
-        <button className="nav-button" onClick={handleNextprofile}>&gt;</button>
-    </div>
-</div>
-
+            <h1 style={{
+              width: 50,
+              height: 50,
+              paddingLeft: 50,
+              fontSize: 25,
+              fontWeight: 800,
+              color: 'rgb(24, 24, 58)',
+            }}>
+              Alumni Profiles
+            </h1>
+            <div className="carousel-container">
+              <button className="nav-button" onClick={handlePrevProfile}>&lt;</button>
+              <div className="carousel-content">
+                {Alumnidata.slice(profileCurrentIndex, profileCurrentIndex + 3).map((item, index) => (
+                  <AlumniProfile key={index} Alumnidata={item} />
+                ))}
+              </div>
+              <button className="nav-button" onClick={handleNextProfile}>&gt;</button>
+            </div>
+          </div>
         </div>
         <div id="footer">
-  <div id="lefttext">
-    <FaRegCopyright />
-    <p>By muhammad.faizan0141@gmail.com</p>
-  </div>
-  <div id="righttext">Developed By Muhammad Faizan</div>
-</div>
-
+          <div id="lefttext">
+            <FaRegCopyright />
+            <p>By muhammad.faizan0141@gmail.com</p>
+          </div>
+          <div id="righttext">Developed By Muhammad Faizan</div>
+        </div>
       </div>
     </div>
   );
