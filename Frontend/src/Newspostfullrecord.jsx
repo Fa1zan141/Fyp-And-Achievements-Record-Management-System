@@ -10,7 +10,7 @@ function Newspostfullrecord() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const result = await axios.get(`http://localhost:3000/FYP/newsrecord/`+id);
+                const result = await axios.get(`http://localhost:3000/FYP/newsrecord/${id}`);
                 setNewsRecord(result.data);
             } catch (error) {
                 console.error(error);
@@ -18,23 +18,33 @@ function Newspostfullrecord() {
         };
 
         fetchData();
-    }, []);
+    }, [id]);
 
     return (
-        <div>
-            <div>
-                <div id="fullrecordhead"><h1>Full Detail Record</h1></div>
-                <div id="detailsoffyp">
-                    <h1> Title</h1>
-                    <p>{newsRecord.Title}</p>
-                    <h1>Description</h1>
+        <div className="full-record-container">
+            <div className="full-record-header">
+                <h1>Full Detail Record</h1>
+            </div>
+            <div className="details-of-news">
+                <div className="record-item">
+                    <h2>Title</h2>
+                    <p>{newsRecord.title}</p>
+                </div>
+                <div className="record-item">
+                    <h2>Description</h2>
                     <p>{newsRecord.description}</p>
-                    <h1>Type Of Post</h1>
-                    <p>{newsRecord.Type}</p>
-                    <h1>Location</h1>
-                    <p>{newsRecord.Location}</p>
-                    <h1>Date Of Publish</h1>
-                    <p>{newsRecord.Date}</p>
+                </div>
+                <div className="record-item">
+                    <h2>Type Of Post</h2>
+                    <p>{newsRecord.type}</p>
+                </div>
+                <div className="record-item">
+                    <h2>Location</h2>
+                    <p>{newsRecord.location}</p>
+                </div>
+                <div className="record-item">
+                    <h2>Date Of Publish</h2>
+                    <p>{new Date(newsRecord.date).toLocaleDateString()}</p>
                 </div>
             </div>
         </div>

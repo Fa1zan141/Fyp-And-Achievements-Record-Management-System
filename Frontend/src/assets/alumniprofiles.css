@@ -4,9 +4,9 @@
     display: flex;
     flex-wrap: wrap; 
     justify-content: flex-start; 
-    height: 430px;
+    height: 380px;
     width: 1050px;
-    top: 160px;
+    top: 210px;
     left: 280px;
     overflow-x: auto; 
     padding: 10px 0; 

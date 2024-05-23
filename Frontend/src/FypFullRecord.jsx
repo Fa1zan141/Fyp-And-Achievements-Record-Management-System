@@ -1,55 +1,64 @@
-import React, { useEffect, useState } from 'react'
-import './assets/Fullrecord.css'
-import { useParams } from 'react-router-dom'
-import axios from 'axios'
+import React, { useEffect, useState } from 'react';
+import './assets/Fullrecord.css';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 function FypFullRecord() {
+    const { id } = useParams();
+    const [Record, setRecord] = useState({});
 
-  const {id}= useParams()
-  const [Record, setRecord]= useState([])
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const result = await axios.get(`http://localhost:3000/FYP/fullrecord/${id}`);
+                setRecord(result.data);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        fetchData();
+    }, [id]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-        try {
-            const result = await axios.get("http://localhost:3000/FYP/fullrecord/"+id);
-            setRecord(result.data);
-        } catch (error) {
-            console.log(error);
-        }
+    const showPdf = (Upload) => {
+        window.open(`http://localhost:3000/uploads/${Upload}`, "_blank", "noreferrer");
     };
 
-    fetchData();
-}, []);
-
-const showPdf = (Upload) => {
-   window.open(`http://localhost:3000/uploads/${Upload}`, "_blank", "noreferrer");
+    return (
+        <>
+            <div className="full-record-container">
+                <div className="full-record-header">
+                    <h1>Full Detail Record</h1>
+                </div>
+                <div className="details-of-fyp">
+                    <div className="record-item">
+                        <h2>Title</h2>
+                        <p>{Record.Fyptitle}</p>
+                    </div>
+                    <div className="record-item">
+                        <h2>Supervisor</h2>
+                        <p>{Record.Supervisor}</p>
+                    </div>
+                    <div className="record-item">
+                        <h2>Domain</h2>
+                        <p>{Record.Domain}</p>
+                    </div>
+                    <div className="record-item">
+                        <h2>Year</h2>
+                        <p>{Record.Year}</p>
+                    </div>
+                    <div className="record-item">
+                        <h2>Summary</h2>
+                        <p>{Record.Shortsummary}</p>
+                    </div>
+                    <div className="record-item">
+                        <h2>Media</h2>
+                        <div className="media-container">{Record.Upload}</div>
+                        <button className="btn-show" onClick={() => showPdf(Record.Upload)}>Show Pdf</button>
+                    </div>
+                </div>
+            </div>
+        </>
+    );
 }
 
-  return (
-   <>
-   <div>
-     <div id="fullrecordhead"><h1>Full Detail Record</h1></div>
-      <div id="detailsoffyp">
-        <h1>Title</h1>
-        <p>{Record.Fyptitle}</p>
-        <h1>Supervisor</h1>
-        <p>{Record.Supervisor}</p>
-        <h1>Domain</h1>
-        <p>{Record.Domain}</p>
-        <h1>Year</h1>
-        <p>{Record.Year}</p>
-        <h1>Summary</h1>
-        <p>{Record.Shortsummary}</p>
-        <h1>Media</h1>
-        <div id="media">{Record.Upload}</div>
-        <button id="btnshow" onClick={() => showPdf(Record.Upload)} >Show Pdf</button>
-      
-        </div>
-    </div>
-
-    
-   </>
-  )
-}
-
-export default FypFullRecord
+export default FypFullRecord;

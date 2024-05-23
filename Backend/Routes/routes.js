@@ -6,12 +6,11 @@ const app = express();
 app.use("/uploads", express.static(__dirname + "/public/uploads"));
 const upload = require('../Config/upload');
 
-
 const userController = require('../Controlers/userController');
 const FypController = require('../Controlers/FypRecordController');
 const AchievementController = require('../Controlers/AchievementRecordController');
 const PostController = require('../Controlers/PostController');
-
+const AlumniProfileController = require('../Controlers/AlumniProfileController')
 
 
 // Routes
@@ -34,6 +33,10 @@ router.post('/addnews', PostController.addPost);
 router.get('/newspostrecord', PostController.getPosts);
 router.delete('/deletenewspostrecord/:id', PostController.deletePost);
 router.get('/newsrecord/:id', PostController.getRecord);
+router.post('/addprofile', upload.fields([{ name: 'Uploadpic', maxCount: 1 }, { name: 'UploadVideo', maxCount: 1 }]), AlumniProfileController.addProfile);
+router.get('/profile/:id', AlumniProfileController.getProfileById);
+router.get('/profiles', AlumniProfileController.getAllProfiles);
+
 
 
 

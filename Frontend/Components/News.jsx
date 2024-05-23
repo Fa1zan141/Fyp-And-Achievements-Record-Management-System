@@ -1,21 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './JobPost.css';
+import './JobPost.css'
 
 function News({ newsData }) {
+  
   return (
-    <div className="job-post">
-      <div className="job-post-icon">
-        <img src="" alt="Job Icon" style={{ width: '100%', height: '100%' }} />
+    <div className="news-post"> 
+      <div className="news-post-icon"> 
+        <img src="" alt="News Icon" style={{ width: '100%', height: '100%' }} /> 
       </div>
-      <div className="job-post-content">
-        <Link to="/news" className="job-post-title">
+      <div className="news-post-content"> 
+        <Link to={`/news/${newsData.id}`} className="news-post-title"> 
           {newsData.title}
         </Link>
-        <div className="job-post-dates">
-          {newsData.date} 
+        <div className="news-post-dates"> 
+          {new Date(newsData.date).toLocaleDateString()} 
         </div>
-        <div className="job-post-description">
+        <div className="news-post-description"> 
           {newsData.description}
         </div>
       </div>

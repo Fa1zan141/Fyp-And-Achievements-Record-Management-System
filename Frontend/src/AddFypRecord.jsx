@@ -103,7 +103,6 @@ function AddFypRecord() {
     <Sidebar></Sidebar>
     <div id="ALine"></div>
     <div id="AAR"><p>Add Record</p></div>
-    <div id="Arecord"><h1>Add Record</h1></div>
     <div id="RecordForm">
     <form onSubmit={handleSubmit} >
     <label id='Label1' htmlFor="Fyptitle">FYP Title:</label>

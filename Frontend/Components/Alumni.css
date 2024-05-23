@@ -7,7 +7,7 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
-  .profile-image {
+  .profile {
     width: 80px; 
     height: 80px; 
     border-radius: 50%;
@@ -18,14 +18,15 @@
     flex: 1;
   }
   
-  .profile-name {
+  .profile-Name {
     font-size: 18px;
-    margin-bottom: 5px;
+    margin-top: 30px;
+    margin-bottom: 0px;
     font-family:lato, sans-serif;
     color: white;
   }
   
-  .profile-department {
+  .profile-Position {
     font-size: 14px;
     margin-bottom: 5px;
     font-family:lato, sans-serif;

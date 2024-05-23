@@ -104,53 +104,22 @@ function Home() {
 
     fetchData();
   }, []);
+//Alumni Profiles
+  const [alumniData, setAlumniData] = useState([]);
 
-  const Alumnidata = [
-    {
-      img: 'Std1.jpg',
-      FirstName: 'Fariha',
-      LastName: 'Faizan',
-      email: 'fariha.faizan@example.com',
-      role: 'Software Engineer',
-      dob: '1990-01-01',
-      city: 'Lahore',
-      postalCode: '54000',
-      department: 'Engineering',
-    },
-    {
-      img: 'Std1.jpg',
-      FirstName: 'Maham',
-      LastName: 'Khan',
-      email: 'maham.khan@example.com',
-      role: 'Data Analyst',
-      dob: '1992-03-15',
-      city: 'Karachi',
-      postalCode: '74000',
-      department: 'Data Science',
-    },
-    {
-      img: 'Std1.jpg',
-      FirstName: 'Qudsia',
-      LastName: 'Ali',
-      email: 'qudsia.ali@example.com',
-      role: 'Project Manager',
-      dob: '1988-07-22',
-      city: 'Islamabad',
-      postalCode: '44000',
-      department: 'Management',
-    },
-    {
-      img: 'Std1.jpg',
-      FirstName: 'Ali',
-      LastName: 'Ali',
-      email: 'Ali.ali@example.com',
-      role: 'Project Manager',
-      dob: '1999-07-22',
-      city: 'Islamabad',
-      postalCode: '44000',
-      department: 'Management',
-    }
-  ];
+    useEffect(() => {
+        // Fetch all profiles from the server when the component mounts
+        const fetchProfiles = async () => {
+            try {
+                const response = await axios.get('http://localhost:3000/FYP/profiles'); 
+                setAlumniData(response.data.data);
+            } catch (error) {
+                console.error('Error fetching profiles:', error);
+            }
+        };
+
+        fetchProfiles();
+    }, []);
 
   // Handle typewriter events
   const handleType = (char) => {
@@ -258,8 +227,8 @@ function Home() {
             <div className="carousel-container">
               <button className="nav-button" onClick={handlePrevProfile}>&lt;</button>
               <div className="carousel-content">
-                {Alumnidata.slice(profileCurrentIndex, profileCurrentIndex + 3).map((item, index) => (
-                  <AlumniProfile key={index} Alumnidata={item} />
+                {alumniData.slice(profileCurrentIndex, profileCurrentIndex + 3).map((item, index) => (
+                  <AlumniProfile key={index} alumniData={item} />
                 ))}
               </div>
               <button className="nav-button" onClick={handleNextProfile}>&gt;</button>

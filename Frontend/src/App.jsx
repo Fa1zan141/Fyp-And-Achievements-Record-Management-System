@@ -59,7 +59,7 @@ function App() {
           <Route path='/createalumniprofile' element={<CreateAlumniProfile />} />
           <Route path='/updatealumniprofile' element={<UpdateAlumniProfile />} />
           <Route path='/alumniprofiles' element={<AlumniProfiles />} />
-          <Route path='/CurrentAlumniProfile' element={<AProfile />} />
+          <Route path='/CurrentAlumniProfile/:id' element={<AProfile />} />
           <Route path='/fullrecord/:id' element={<FypFullRecord />} />
           <Route path='/achievementfullrecord/:id' element={<AchievementsFullRecord />} />
           <Route path='/newsrecord/:id' element={<Newspostfullrecord />} />
