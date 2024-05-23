@@ -58,7 +58,7 @@ function Navbar() {
   };
 
   const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
+    setIsDropdownOpen(prevState => !prevState);
   };
 
   return (
@@ -93,7 +93,7 @@ function Navbar() {
           </div>
           <img id="navpff" src="" alt="" />
           {isDropdownOpen && (
-            <div className="dropdown-content">
+            <div className="dropdown-cont">
               <button id="Hpbtn" onClick={handleLogout}>Logout</button>
             </div>
           )}

@@ -16,7 +16,7 @@ function AlumniProfile({ alumniData }) {
             <h1 className="profile-name">{alumniData.Alumniname}</h1>
             <p className="profile-details">
               Email: {alumniData.alumniemail} <br />
-              Role: {alumniData.alumniposition}
+              Position: {alumniData.alumniposition}
             </p>
             <p className="profile-dob">
               DOB: {alumniData.alumnidob}
@@ -25,10 +25,7 @@ function AlumniProfile({ alumniData }) {
               City: {alumniData.alumnicity} <br />
               Postal Code: {alumniData.alumnipostalcode}
             </p>
-            <p className="profile-department">
-              Department: {alumniData.alumniposition}
-            </p>
-            <a href="/CurrentAlumniProfile" className="fyp-button">View Profile</a>
+            <a href={`/CurrentAlumniProfile/${alumniData._id}`} className="fyp-button">View Profile</a>
           </div>
         </div>
     </div>

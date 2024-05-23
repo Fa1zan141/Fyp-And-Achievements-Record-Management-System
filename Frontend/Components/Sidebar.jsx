@@ -85,7 +85,7 @@ function Sidebar() {
         <div id="right">
           <button id="Msgbtn" onClick={() => { Navigate("/ChatBox") }}><FaRegMessage /></button>
           <button id="usernamesb" onClick={handleSubmit}>{user && <h1>{user.FirstName} {user.LastName}</h1>}</button>
-          <img id="navpf" src="" alt="" />
+          <img id="navprofilepic" src="" alt="" />
 
         </div>
       </div>
