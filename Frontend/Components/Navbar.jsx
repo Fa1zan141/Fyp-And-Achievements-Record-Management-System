@@ -64,7 +64,7 @@ function Navbar() {
   return (
     <nav id="Hnav">
       <div id="Hnavl">
-        <div id="Hlogo"></div>
+        <div id="navlogo"></div>
       </div>
       <div id="Hnavr">
         <ul>

@@ -80,7 +80,7 @@ function Sidebar() {
     <>
       <div id="stddashboardNav">
         <div id="left">
-          <div id="Navlogo"></div>
+          <div id="Nlogo"></div>
         </div>
         <div id="right">
           <button id="Msgbtn" onClick={() => { Navigate("/ChatBox") }}><FaRegMessage /></button>

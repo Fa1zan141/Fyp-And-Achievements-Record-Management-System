@@ -1,5 +1,5 @@
 import React from 'react';
-import './Sidebar.css';
+import './Withoutside.css';
 import { FaRegMessage } from "react-icons/fa6";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -63,12 +63,12 @@ function Withoutsidenav() {
     <>
       <div id="stddashboardNav">
         <div id="left">
-          <div id="Navlogo"></div>
+          <div id="Nvlogo"></div>
         </div>
         <div id="right">
           <button id="Msgbtn" onClick={() => { Navigate("/ChatBox") }}><FaRegMessage /></button>
-          <button id="usernamesb" onClick={handleSubmit}>{user && <h1>{user.FirstName} {user.LastName}</h1>}</button>
-          <img id="navpfrofilepic" src="" alt="" />
+          <button id="usern" onClick={handleSubmit}>{user && <h1>{user.FirstName} {user.LastName}</h1>}</button>
+          <img id="navpp" src="" alt="" />
 
         </div>
       </div>

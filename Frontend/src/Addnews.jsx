@@ -54,7 +54,7 @@ function Addnews() {
       <Sidebar />
       <div id="VLine"></div>
       <div id="welcome">
-        <p>Add Record</p>
+        <p>Add Post Record</p>
       </div>
       <div id="NewsForm">
         <form onSubmit={handleSubmit}>

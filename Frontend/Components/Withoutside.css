@@ -44,7 +44,7 @@ html,body {
     font-size: 22px;
     font-weight: bolder;
 }
-#Nlogo{
+#Nvlogo{
     position: absolute;
     height: 70px;
     width:  150px;
@@ -104,7 +104,7 @@ a:hover {
     border-bottom: 2px solid rgb(8, 236, 122); 
     text-decoration: none; 
 }
-#navprofilepic{
+#navpp{
     height: 50px;
     width: 50px;
     background-image: url('8724.jpg');
@@ -130,7 +130,7 @@ a:hover {
     border-bottom: 2px solid rgb(0, 255, 128); 
 
 }
-#usernamesb {
+#usern {
     position: absolute;
     height: 35px;
     width: 100px;

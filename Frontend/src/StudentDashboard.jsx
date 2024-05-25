@@ -16,7 +16,6 @@ function StudentDashboard() {
       Navigate('/login')
     }
   })
-
   const handleSubmit = async () => {
     switch (user.role) {
       case "Admin":
