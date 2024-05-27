@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Sidebar from '../Components/Sidebar';
 import axios from 'axios';
 import './assets/aprofile.css';
@@ -7,6 +7,7 @@ import './assets/aprofile.css';
 function AProfile() {
     const [alumniData, setAlumniData] = useState(null);
     const { id } = useParams();
+    const Navigate= useNavigate();
 
     useEffect(() => {
         const fetchAlumniProfile = async () => {
@@ -24,6 +25,8 @@ function AProfile() {
     if (!alumniData) {
         return <div>Loading...</div>;
     }
+
+
 
     return (
         <>

@@ -126,3 +126,33 @@
     background-color: #252525;
     color: rgb(255, 255, 255);
 }
+#deleteaccbtn{
+    border: 2px solid #000000;
+    color: rgb(0, 0, 0);
+    padding: 5px;
+    margin: 5px;
+    font-size: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family:lato, sans-serif;
+}
+#deleteaccbtn:hover {
+    background-color: #252525;
+    color: rgb(255, 255, 255);
+}
+#changepassbtn{
+    border: 2px solid #000000;
+    color: rgb(0, 0, 0);
+    padding: 5px;
+    font-size: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family:lato, sans-serif;
+}
+#changepassbtn:hover {
+    background-color: #252525;
+    color: rgb(255, 255, 255);
+}
+

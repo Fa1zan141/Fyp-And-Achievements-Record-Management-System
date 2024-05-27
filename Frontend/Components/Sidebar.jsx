@@ -6,50 +6,49 @@ import axios from 'axios';
 import { useAuth } from "../src/auth/auth";
 
 function Sidebar() {
-  axios.defaults.withCredentials=true;
-  const Navigate = useNavigate();
-  const {token,user}= useAuth()
+  axios.defaults.withCredentials = true;
+  const navigate = useNavigate();
+  const { token, user } = useAuth();
 
   const handleSubmit = async () => {
     switch (user.role) {
       case "Admin":
-        Navigate('/adminprofile');
+        navigate('/adminprofile');
         break;
       case "Student":
-        Navigate('/studentprofile');
+        navigate('/studentprofile');
         break;
       case "Teacher":
-        Navigate('/teachersprofile');
+        navigate('/teachersprofile');
         break;
       default:
-        Navigate('/alumniprofile');
+        navigate('/alumniprofile');
         break;
     }
   };
+
   const handleDashboard = async () => {
     switch (user.role) {
       case "Admin":
-        Navigate('/admindashboard');
+        navigate('/admindashboard');
         break;
       case "Student":
-        Navigate('/studentdashboard');
+        navigate('/studentdashboard');
         break;
       case "Teacher":
-        Navigate('/teachersdashboard');
+        navigate('/teachersdashboard');
         break;
       default:
-        Navigate('/alumnidashboard');
+        navigate('/alumnidashboard');
         break;
     }
   };
 
   const handleLogout = async () => {
     try {
-      // Make a POST request to the logout endpoint
       const response = await axios.post('http://localhost:3000/FYP/logout');
       const { status, message } = response.data;
 
-      // Show toast message based on response status
       Toastify({
         text: message,
         duration: 3000,
@@ -60,13 +59,11 @@ function Sidebar() {
         },
       }).showToast();
 
-      // If logout was successful, navigate to login page
       if (status === "OK") {
-        Navigate('/splash');
+        navigate('/splash');
       }
     } catch (error) {
       console.error('Error during logout:', error);
-      // Handle errors, e.g., display an error message
       Toastify({
         text: 'An error occurred during logout',
         duration: 3000,
@@ -76,6 +73,8 @@ function Sidebar() {
     }
   };
 
+  const profilePictureUrl = user && user.profilePicture ? `http://localhost:3000/uploads/${user.profilePicture}` : '';
+
   return (
     <>
       <div id="stddashboardNav">
@@ -83,10 +82,9 @@ function Sidebar() {
           <div id="Nlogo"></div>
         </div>
         <div id="right">
-          <button id="Msgbtn" onClick={() => { Navigate("/ChatBox") }}><FaRegMessage /></button>
+          <button id="Msgbtn" onClick={() => { navigate("/ChatBox") }}><FaRegMessage /></button>
           <button id="usernamesb" onClick={handleSubmit}>{user && <h1>{user.FirstName} {user.LastName}</h1>}</button>
-          <img id="navprofilepic" src="" alt="" />
-
+          {user && <img id="navprofilepic" src={profilePictureUrl} alt="Profile" />}
         </div>
       </div>
       <div id="StdDashboardsidebar">
@@ -97,9 +95,9 @@ function Sidebar() {
           <br />
           <button id="dashboard" onClick={handleDashboard}><h1>Dashboard</h1></button>
           <br />
-          <a href="/fyprecord">FYP</a>
+          <a href="/forallfyprecord">FYP</a>
           <br />
-          <a href="/achievementsrecord">Achievements</a>
+          <a href="/forallachievementrecord">Achievements</a>
           <br />
           <a href="/news">News Or Jobs Post</a>
           <br />

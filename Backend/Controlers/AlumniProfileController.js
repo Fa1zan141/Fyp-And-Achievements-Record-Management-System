@@ -1,4 +1,4 @@
-const AlumniProfile = require('../models/AlumniProfile');
+const AlumniProfile = require('../Models/AlumniProfile');
 
 class AlumniProfileController {
   async addProfile(req, res) {
@@ -73,6 +73,19 @@ class AlumniProfileController {
     } catch (error) {
       console.error('Error editing alumni profile:', error);
       res.status(500).json({ status: 'fail', message: 'Failed to update alumni profile', error: error.message });
+    }
+  }
+  async deleteAlumniProfile(req, res) {
+    const id = req.params.id;
+
+    try {
+      const deletedAlumniProfile = await AlumniProfile.findByIdAndDelete(id);
+      if (!deletedAlumniProfile) {
+        return res.status(404).json({ message: 'Record not found' });
+      }
+      res.json(deletedAlumniProfile);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
     }
   }
 }

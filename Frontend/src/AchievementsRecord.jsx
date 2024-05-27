@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import Sidebar from '../Components/Sidebar';
-import { FaSearch, FaEllipsisV } from "react-icons/fa";
+import { FaSearch, FaEllipsisV, FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
+ 
 function AchievementsRecord() {
     const Navigate = useNavigate();
     const [AchievementsRecord, setAchievementsRecord] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [recordsPerPage] = useState(5);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -20,6 +22,16 @@ function AchievementsRecord() {
         fetchData();
     }, []);
 
+    const indexOfLastRecord = currentPage * recordsPerPage;
+    const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+    const currentRecords = AchievementsRecord.slice(indexOfFirstRecord, indexOfLastRecord);
+
+    // Logic to calculate total number of pages
+    const totalRecords = AchievementsRecord.length;
+    const totalPages = Math.ceil(totalRecords / recordsPerPage);
+
+
+
     const handleDelete = async (id) => {
         try {
             await axios.delete('http://localhost:3000/FYP/deleteachievementrecord/' + id);
@@ -28,6 +40,22 @@ function AchievementsRecord() {
             console.log(error);
         }
     };
+
+     // Logic to handle pagination
+     const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
+
+    const handleNextPageClick = (e) => {
+        e.preventDefault();
+        paginate(currentPage + 1);
+    };
+
+    const handlePrevPageClick = (e) => {
+        e.preventDefault();
+        paginate(currentPage === 1 ? 1 : currentPage - 1);
+    };
+
 
     return (
         <>
@@ -73,7 +101,19 @@ function AchievementsRecord() {
                             </tbody>
                         </table>
                     </div>
+                    
                 </form>
+                <div className="pagination">
+                        <button onClick={handlePrevPageClick}><FaArrowLeft /></button>
+                        <div className="page-numbers">
+                            {Array.from({ length: totalPages }, (_, index) => (
+                                <button key={index + 1} onClick={() => paginate(index + 1)} className={currentPage === index + 1 ? 'active' : ''}>
+                                    {index + 1}
+                                </button>
+                            ))}
+                        </div>
+                        <button onClick={handleNextPageClick}><FaArrowRight /></button>
+                    </div>
             </div>
         </>
     );

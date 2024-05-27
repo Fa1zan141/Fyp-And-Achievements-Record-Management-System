@@ -56,14 +56,14 @@ function AdminDashboard() {
       <div id="VerticalLane"></div>
       <div id="VLine2"></div>
       <div id="AddRecord"><p>View Record</p></div>
-      <div id="addrecordbtn"><button><p> View FYP </p></button></div>
-      <div id="addachievementbtn"><button><p> View Achievement </p></button></div>
+      <div id="addrecordbtn"><button onClick={() => { navigate("/fyprecord") }}><p> View FYP </p></button></div>
+      <div id="addachievementbtn"><button onClick={() => { navigate("/achievementsrecord") }}><p> View Achievement </p></button></div>
       <div id="VLine3"></div>
       <div id="Addalumniprofile"><p>View Profile</p></div>
-      <div id="AlumniProfilebtn"><button><p> View Alumni Profile </p></button></div>
+      <div id="AlumniProfilebtn"><button onClick={() => { navigate("/AllAlumniProfiles") }}><p> View Alumni Profile </p></button></div>
       <div id="VLine4"></div>
-      <div id="UpdateRecord"><p>Update Record</p></div>
-      <div id="updaterecordbtn"><button><p> Update FYP </p></button></div>
+      <div id="UpdateRecord"><p>All User Record</p></div>
+      <div id="updaterecordbtn"><button onClick={() => { navigate("/Allusers") }}><p> View All Users </p></button></div>
       <div id="updateachievementbtn"><button><p> Update Achievement </p></button></div>
       <div id="VLine5"></div>
       <div id="Updatealumniprofile"><p>Update Profile</p></div>

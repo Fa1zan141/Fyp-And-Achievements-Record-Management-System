@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import Sidebar from '../Components/Sidebar';
 import './assets/FYPRecord.css';
-import { FaSearch, FaEllipsisV } from "react-icons/fa";
+import { FaSearch, FaEllipsisV, FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function FYPRecord() {
     const Navigate = useNavigate();
     const [FYPRecord, setFYPRecord] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [recordsPerPage] = useState(5);
+    const [searchQuery, setSearchQuery] = useState('');
 
     useEffect(() => {
         const fetchData = async () => {
@@ -22,6 +25,15 @@ function FYPRecord() {
         fetchData();
     }, []);
 
+    // Logic to get current records for the current page
+    const indexOfLastRecord = currentPage * recordsPerPage;
+    const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+    const currentRecords = FYPRecord.slice(indexOfFirstRecord, indexOfLastRecord);
+
+    // Logic to calculate total number of pages
+    const totalRecords = FYPRecord.length;
+    const totalPages = Math.ceil(totalRecords / recordsPerPage);
+
     const handleDelete = async (id) => {
         try {
             await axios.delete('http://localhost:3000/FYP/deletefpyrecord/' + id);
@@ -31,6 +43,34 @@ function FYPRecord() {
         }
     };
 
+    // Logic to handle pagination
+    const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
+
+    const handleNextPageClick = (e) => {
+        e.preventDefault();
+        paginate(currentPage + 1);
+    };
+
+    const handlePrevPageClick = (e) => {
+        e.preventDefault();
+        paginate(currentPage === 1 ? 1 : currentPage - 1);
+    };
+
+    // Function to handle search
+    const handleSearch = (e) => {
+        setSearchQuery(e.target.value);
+    };
+
+    // Filter records based on search query
+    const filteredRecords = FYPRecord.filter(record =>
+        record.Fyptitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        record.Supervisor.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        record.Domain.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        record.Year.toString().includes(searchQuery.toLowerCase())
+    );
+
     return (
         <>
             <Sidebar />
@@ -38,7 +78,7 @@ function FYPRecord() {
             <div id="FYPRecord"><p>FYP Record</p></div>
             <div id="forsearch">
                 <form action="">
-                    <input type="search" id="searchbar" name="searchbar" placeholder='Search' />
+                    <input type="search" id="searchbar" name="searchbar" placeholder='Search' value={searchQuery} onChange={handleSearch} />
                     <div id="Sicon"><button type="submit"><FaSearch /></button></div>
                     <div id="table">
                         <table>
@@ -53,8 +93,8 @@ function FYPRecord() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {FYPRecord == null ? "" : FYPRecord.map((fyprecord) => (
-                                    <tr key={fyprecord._id}>
+                                {currentRecords.map((fyprecord, index) => (
+                                    <tr key={fyprecord._id} className={index % 2 === 0 ? "even" : "odd"}>
                                         <td>{fyprecord.Fyptitle}</td>
                                         <td>{fyprecord.Supervisor}</td>
                                         <td>{fyprecord.Domain}</td>
@@ -74,6 +114,17 @@ function FYPRecord() {
                                 ))}
                             </tbody>
                         </table>
+                    </div>
+                    <div className="pagination">
+                        <button onClick={handlePrevPageClick}><FaArrowLeft /></button>
+                        <div className="page-numbers">
+                            {Array.from({ length: totalPages }, (_, index) => (
+                                <button key={index + 1} onClick={() => paginate(index + 1)} className={currentPage === index + 1 ? 'active' : ''}>
+                                    {index + 1}
+                                </button>
+                            ))}
+                        </div>
+                        <button onClick={handleNextPageClick}><FaArrowRight /></button>
                     </div>
                 </form>
             </div>

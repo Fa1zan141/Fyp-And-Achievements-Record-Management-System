@@ -50,7 +50,7 @@ body, html {
 }
 
 table {
-    width: 100%;
+    width: 97%;
     border-collapse: collapse;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -121,3 +121,27 @@ tr:hover {
     border: none;
     color: #000;
 }
+.pagination {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 420px;
+    left: 500px;
+  }
+  
+  .page-numbers {
+    display: flex;
+  }
+  
+  .page-numbers button {
+    margin: 0 5px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  
+  .page-numbers button.active {
+    font-weight: bold;
+  }
+  

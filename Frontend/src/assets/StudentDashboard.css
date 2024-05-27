@@ -29,8 +29,8 @@ html,body {
     width: 4px; 
     height: 55px; 
     background-color: #59C174; 
-    top: 500px;
-    left: 300px;
+    top: 350px;
+    left: 900px;
 }
 #welcome{
     position: absolute;
@@ -55,6 +55,14 @@ font-family:lato, sans-serif;
     font-weight: 700;
     top: 350px;
     left: 310px;
+font-family:lato, sans-serif;
+}
+#UpdateRecord{
+    position: absolute;
+    font-size: 28px;
+    font-weight: 700;
+    top: 350px;
+    left: 810px;
 font-family:lato, sans-serif;
 }
 #Addalumniprofile{
@@ -152,6 +160,64 @@ font-family:lato, sans-serif;
     left: 10px;
 }
 #achicon{
+    position: absolute;
+    text-align: center;
+    color: rgb(230, 221, 221);
+    font-size: 22px;
+    font-weight: bolder;
+font-family:lato, sans-serif;
+    top: 5px;
+    left: 160px;
+}
+#Updaterecordbtn{
+    height: 30px;
+    width: 200px;
+    border-radius: 50px;
+    background-color: #59C174;
+    position: absolute;
+    top: 410px;
+    left: 930px;
+}
+#Updaterecordbtn > :first-child {
+    position: absolute;
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+font-family:lato, sans-serif;
+    top: 0px;
+    left: 10px;
+}
+#Updateicon{
+    position: absolute;
+    text-align: center;
+    color: rgb(230, 221, 221);
+    font-size: 22px;
+    font-weight: bolder;
+font-family:lato, sans-serif;
+    top: 5px;
+    left: 160px;
+}
+#Updateachievementbtn{
+    height: 30px;
+    width: 200px;
+    border-radius: 50px;
+    background-color: #59C174;
+    position: absolute;
+    top: 460px;
+    left: 930px;
+}
+#Updateachievementbtn > :first-child {
+    position: absolute;
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+font-family:lato, sans-serif;
+    top: 0px;
+    left: 10px;
+}
+#Updateachicon{
     position: absolute;
     text-align: center;
     color: rgb(230, 221, 221);

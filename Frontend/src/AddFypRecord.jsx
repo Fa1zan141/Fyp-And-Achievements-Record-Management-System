@@ -43,7 +43,7 @@ function AddFypRecord() {
           borderRadius: "10px",
         },
       }).showToast();
-      Navigate('/fyprecord');
+      Navigate('/studentfyprecord');
     }else {
       Toastify({
         text: result.data.message,

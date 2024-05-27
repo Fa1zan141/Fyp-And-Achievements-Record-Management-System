@@ -4,7 +4,7 @@ const dotenv = require('dotenv');
 dotenv.config({ path: './Config/.env' });
 
 const verifyUser = (req, res, next) => {
-  const token = req.cookies.token;
+  const token = req.headers.authorization?.split(' ')[1]; // Changed to use Bearer token from headers
   if (!token) {
     return res.status(401).json({ message: "Token is missing" });
   }
@@ -20,7 +20,7 @@ const verifyUser = (req, res, next) => {
 
 const checkUserRole = (allowedRoles) => {
   return (req, res, next) => {
-    const token = req.cookies.token;
+    const token = req.headers.authorization?.split(' ')[1]; // Changed to use Bearer token from headers
     if (!token) {
       return res.status(401).json({ message: "Token is missing" });
     }

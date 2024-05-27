@@ -1,4 +1,5 @@
 const FypRecordModel = require('../Models/FypRecord');
+
 class FypRecord {
   async addFyp(req, res) {
     const { Fyptitle, Supervisor, Domain, Year, Shortsummary } = req.body;
@@ -34,19 +35,45 @@ class FypRecord {
     try {
       const id = req.params.id;
       const fypRecord = await FypRecordModel.findById(id);
+      if (!fypRecord) {
+        return res.status(404).json({ message: 'Record not found' });
+      }
       res.json(fypRecord);
     } catch (error) {
-      res.status(500).json({ message: error.message });
+      console.error("Error While Fetching Record:", error);
+      res.status(500).json({ message: 'Internal Server Error' });
     }
   }
 
   async updateFyp(req, res) {
     try {
       const id = req.params.id;
-      const updatedFypRecord = awaitFypRecordModel.findByIdAndUpdate({_id:id},{ Fyptitle: req.body.Fyptitle, Supervisor: req.body.Supervisor, Domain: req.body.Domain, Year: req.body.Year, Shortsummary: req.body.Shortsummary, Upload: req.file.Upload});
+      const updatedFields = {
+        Fyptitle: req.body.Fyptitle,
+        Supervisor: req.body.Supervisor,
+        Domain: req.body.Domain,
+        Year: req.body.Year,
+        Shortsummary: req.body.Shortsummary,
+      };
+
+      if (req.file) {
+        updatedFields.Upload = req.file.filename;
+      }
+
+      const updatedFypRecord = await FypRecordModel.findByIdAndUpdate(
+        id,
+        { $set: updatedFields },
+        { new: true }
+      );
+
+      if (!updatedFypRecord) {
+        return res.status(404).json({ message: 'Record not found' });
+      }
+
       res.json(updatedFypRecord);
     } catch (error) {
-      res.status(500).json({ message: error.message });
+      console.error("Error While Updating Record:", error);
+      res.status(500).json({ message: 'Internal Server Error' });
     }
   }
 

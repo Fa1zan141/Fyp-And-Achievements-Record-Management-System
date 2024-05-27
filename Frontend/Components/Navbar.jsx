@@ -61,6 +61,8 @@ function Navbar() {
     setIsDropdownOpen(prevState => !prevState);
   };
 
+  const profilePictureUrl = user && user.profilePicture ? `http://localhost:3000/uploads/${user.profilePicture}` : '';
+
   return (
     <nav id="Hnav">
       <div id="Hnavl">
@@ -72,10 +74,10 @@ function Navbar() {
             <Link to="/home">Home</Link>
           </li>
           <li>
-            <Link to="/fyprecord">FYP</Link>
+            <Link to="/forallfyprecord">FYP</Link>
           </li>
           <li>
-            <Link to="/achievementsrecord">Achievements</Link>
+            <Link to="/forallachievementrecord">Achievements</Link>
           </li>
           <li>
             <Link to="/news">News & Jobs</Link>
@@ -91,11 +93,15 @@ function Navbar() {
           <div onClick={toggleDropdown}>
             <FaCaretDown className="dropdown-icon" />
           </div>
-          <img id="navpff" src="" alt="" />
-          {isDropdownOpen && (
-            <div className="dropdown-cont">
-              <button id="Hpbtn" onClick={handleLogout}>Logout</button>
-            </div>
+          {user && (
+            <>
+              <img id="navpff" src={profilePictureUrl} alt="Profile" />
+              {isDropdownOpen && (
+                <div className="dropdown-cont">
+                  <button id="Hpbtn" onClick={handleLogout}>Logout</button>
+                </div>
+              )}
+            </>
           )}
         </div>
       </div>

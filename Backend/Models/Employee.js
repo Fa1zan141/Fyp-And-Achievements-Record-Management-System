@@ -21,6 +21,18 @@ const EmployeeSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+    dob: {
+        type: Date
+    },
+    city: {
+        type: String
+    },
+    postalCode: {
+        type: String
+    },
+    profilePicture: {
+        type: String // Add this line
     }
 });
 

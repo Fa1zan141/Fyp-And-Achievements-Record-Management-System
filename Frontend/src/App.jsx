@@ -30,9 +30,17 @@ import News from './News';
 import Addnews from './Addnews';
 import Newspostfullrecord from './Newspostfullrecord';
 import AlumniProfile from './AlumniProfile';
-import UpdateStudentProfile from './UpdateStudentProfile'
-import UpdateTeachersProfile from './UpdateTeachersProfile'
-import UpdateAdminProfile from './UpdateAdminProfile'
+import UpdateStudentProfile from './UpdateStudentProfile';
+import UpdateTeachersProfile from './UpdateTeachersProfile';
+import UpdateAdminProfile from './UpdateAdminProfile';
+import StudentFypRecord from './StudentFypRecord';
+import ForAllFypRecord from './ForAllFypRecord';
+import StudentAchievementRecord from './StudentAchievementRecord';
+import ForAllAchievementRecord from './ForAllAchievementRecord';
+import AllAlumniProfiles from './AllAlumniProfiles';
+import SingleAlumniProfile from './SingleAlumniProfile';
+import AdminUserManagement from './AdminUserManagement';
+import CurrentUserProfile from './CurrentUserProfile';
 import Unauthorized from './Unauthorized'
 function App() {
   return (
@@ -77,10 +85,43 @@ function App() {
             }
           />
 
-          <Route path='/fyprecord' element={<FYPRecord />} />
-          <Route path='/achievementsrecord' element={<AchievementsRecord />} />
+          <Route path='/forallfyprecord' element={<ForAllFypRecord />} />
+          <Route path='/forallachievementrecord' element={<ForAllAchievementRecord />} />
           <Route path='/news' element={<News />} />
 
+          <Route
+            path='/fyprecord'
+            element={
+              <ProtectedRoute roles={['Admin']}>
+                <FYPRecord />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path='/studentfyprecord'
+            element={
+              <ProtectedRoute roles={['Student']}>
+                <StudentFypRecord />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path='/studentachievementrecord'
+            element={
+              <ProtectedRoute roles={['Student']}>
+                <StudentAchievementRecord />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path='/achievementsrecord'
+            element={
+              <ProtectedRoute roles={['Admin']}>
+                <AchievementsRecord />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path='/addachievement'
             element={
@@ -169,8 +210,26 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route
+            path='/AllAlumniProfiles'
+            element={
+              <ProtectedRoute roles={['Admin']}>
+                <AllAlumniProfiles />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path='/Allusers'
+            element={
+              <ProtectedRoute roles={['Admin']}>
+                <AdminUserManagement />
+              </ProtectedRoute>
+            }
+          />
           <Route path='/alumniprofiles' element={<AlumniProfiles />} />
           <Route path='/CurrentAlumniProfile/:id' element={<AProfile />} />
+          <Route path='/CurrentUserProfile/:id' element={<CurrentUserProfile />} />
+          <Route path='/singleAlumniProfile/:id' element={<SingleAlumniProfile />} />
           <Route path='/fullrecord/:id' element={<FypFullRecord />} />
           <Route path='/achievementfullrecord/:id' element={<AchievementsFullRecord />} />
           <Route path='/newsrecord/:id' element={<Newspostfullrecord />} />

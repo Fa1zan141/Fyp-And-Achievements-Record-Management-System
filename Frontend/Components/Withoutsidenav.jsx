@@ -6,33 +6,32 @@ import axios from 'axios';
 import { useAuth } from "../src/auth/auth";
 
 function Withoutsidenav() {
-  axios.defaults.withCredentials=true;
-  const Navigate = useNavigate();
-  const {token,user}= useAuth()
+  axios.defaults.withCredentials = true;
+  const navigate = useNavigate();
+  const { token, user } = useAuth();
 
   const handleSubmit = async () => {
     switch (user.role) {
       case "Admin":
-        Navigate('/adminprofile');
+        navigate('/adminprofile');
         break;
       case "Student":
-        Navigate('/studentprofile');
+        navigate('/studentprofile');
         break;
       case "Teacher":
-        Navigate('/teachersprofile');
+        navigate('/teachersprofile');
         break;
       default:
-        Navigate('/alumniprofile');
+        navigate('/alumniprofile');
         break;
     }
   };
+
   const handleLogout = async () => {
     try {
-      // Make a POST request to the logout endpoint
       const response = await axios.post('http://localhost:3000/FYP/logout');
       const { status, message } = response.data;
 
-      // Show toast message based on response status
       Toastify({
         text: message,
         duration: 3000,
@@ -43,13 +42,11 @@ function Withoutsidenav() {
         },
       }).showToast();
 
-      // If logout was successful, navigate to login page
       if (status === "OK") {
-        Navigate('/splash');
+        navigate('/splash');
       }
     } catch (error) {
       console.error('Error during logout:', error);
-      // Handle errors, e.g., display an error message
       Toastify({
         text: 'An error occurred during logout',
         duration: 3000,
@@ -59,6 +56,8 @@ function Withoutsidenav() {
     }
   };
 
+  const profilePictureUrl = user && user.profilePicture ? `http://localhost:3000/uploads/${user.profilePicture}` : '';
+
   return (
     <>
       <div id="stddashboardNav">
@@ -66,10 +65,9 @@ function Withoutsidenav() {
           <div id="Nvlogo"></div>
         </div>
         <div id="right">
-          <button id="Msgbtn" onClick={() => { Navigate("/ChatBox") }}><FaRegMessage /></button>
+          <button id="Msgbtn" onClick={() => { navigate("/ChatBox") }}><FaRegMessage /></button>
           <button id="usern" onClick={handleSubmit}>{user && <h1>{user.FirstName} {user.LastName}</h1>}</button>
-          <img id="navpp" src="" alt="" />
-
+          {user && <img id="navpp" src={profilePictureUrl} alt="Profile" />}
         </div>
       </div>
     </>

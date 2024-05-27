@@ -1,5 +1,6 @@
 .profile-contain {
     align-items: center;
+    width: 200px;
     height: 250px;
     background-color: #292929;
     padding: 10px;
@@ -24,6 +25,7 @@
     margin-bottom: 0px;
     font-family:lato, sans-serif;
     color: white;
+    text-align: center;
   }
   
   .profile-Position {
@@ -31,6 +33,7 @@
     margin-bottom: 5px;
     font-family:lato, sans-serif;
     color: white;
+    text-align: center;
 
   }
   
@@ -38,6 +41,7 @@
     border: 2px solid #e2e2e2;
     color: white;
     margin-top: 20px;
+    margin-left: 25px;
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;

@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import Sidebar from '../Components/Sidebar';
-import { FaSearch, FaEllipsisV } from "react-icons/fa";
+import { FaSearch, FaEllipsisV, FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function News() {
     const navigate = useNavigate();
     const [NewsRecord, setNewsRecord] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [recordsPerPage] = useState(5);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -21,6 +23,12 @@ function News() {
         fetchData();
     }, []);
 
+    const indexOfLastRecord = currentPage * recordsPerPage;
+    const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+    const currentRecords = NewsRecord.slice(indexOfFirstRecord, indexOfLastRecord);
+// Logic to calculate total number of pages
+    const totalRecords = NewsRecord.length;
+    const totalPages = Math.ceil(totalRecords / recordsPerPage);
     const handleDelete = async (id) => {
         try {
             const res = await axios.delete('http://localhost:3000/FYP/deletenewspostrecord/' + id);
@@ -31,6 +39,20 @@ function News() {
         }
     };
 
+     // Logic to handle pagination
+     const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
+
+    const handleNextPageClick = (e) => {
+        e.preventDefault();
+        paginate(currentPage + 1);
+    };
+
+    const handlePrevPageClick = (e) => {
+        e.preventDefault();
+        paginate(currentPage === 1 ? 1 : currentPage - 1);
+    };
     return (
         <>
             <Sidebar />
@@ -58,8 +80,8 @@ function News() {
                                         <td colSpan="6">No records found</td>
                                     </tr>
                                 ) : (
-                                    NewsRecord.map((newsRecord) => (
-                                        <tr key={newsRecord._id}>
+                                    NewsRecord.map((newsRecord, index) => (
+                                        <tr key={newsRecord._id} className={index % 2 === 0 ? "even" : "odd"}>
                                             <td>{newsRecord.title}</td>
                                             <td>{newsRecord.description}</td>
                                             <td>{newsRecord.type}</td>
@@ -81,6 +103,17 @@ function News() {
                         </table>
                     </div>
                 </form>
+                <div className="pagination">
+                        <button onClick={handlePrevPageClick}><FaArrowLeft /></button>
+                        <div className="page-numbers">
+                            {Array.from({ length: totalPages }, (_, index) => (
+                                <button key={index + 1} onClick={() => paginate(index + 1)} className={currentPage === index + 1 ? 'active' : ''}>
+                                    {index + 1}
+                                </button>
+                            ))}
+                        </div>
+                        <button onClick={handleNextPageClick}><FaArrowRight /></button>
+                    </div>
             </div>
         </>
     );

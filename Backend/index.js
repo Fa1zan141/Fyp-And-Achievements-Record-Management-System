@@ -8,6 +8,7 @@ const bcyrpt=require('bcrypt');
 const dotenv=require('dotenv');
 const dbConnection = require('./Config/db');
 const userRouter = require('./Routes/routes');
+const bodyParser = require('body-parser');
 
 //For Database
 dotenv.config({path: "./Config/.env"});
@@ -23,7 +24,8 @@ app.use(cors({
   methods:["GET","POST","PUT", "DELETE"],
   credentials: true
 }))
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 //Routes App Use
 app.use('/FYP', userRouter)
 app.use("/uploads", express.static(__dirname + "/public/uploads"));

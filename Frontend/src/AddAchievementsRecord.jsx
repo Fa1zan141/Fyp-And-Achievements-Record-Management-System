@@ -45,7 +45,7 @@ function AddAchievementsRecord() {
           borderRadius: "10px",
         },
       }).showToast();
-      Navigate('/achievementsrecord');
+      Navigate('/studentachievementrecord');
     }else {
       Toastify({
         text: result.data.message,
