@@ -1,0 +1,324 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    
+}
+body::-webkit-scrollbar {
+    width: 5px;               
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: rgb(73, 73, 73);        /* color of the tracking area */
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: rgb(61, 61, 61);    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid rgb(41, 41, 41);  /* creates padding around scroll thumb */
+  }
+
+#chat-dashboard {
+    width: 100%;
+    display: flex;
+  }
+  
+  .sidebar {
+    width: 25%;
+    height: 100vh;
+    background-color: var(--secondary);
+    overflow-y: scroll;
+    background-color: #e7e7e7;
+  }
+  
+  .user-profile {
+    display: flex;
+    align-items: center;
+    margin: 32px 20px;
+  }
+  
+  .profile-pic {
+    width: 90px;
+    height: 90px;
+    border: 1px solid var(--primary);
+    border-radius: 50%;
+    
+  }
+  
+  .user-details {
+    margin-left: 32px;
+  }
+  
+  .user-name {
+    font-size: 20px;
+    font-weight: 700;
+    font-family:lato, sans-serif;
+  }
+  
+  .user-account {
+    font-size: 16px;
+    font-weight: 500;
+    font-family:lato, sans-serif;
+  }
+  
+  .conversations {
+    margin: 40px 56px;
+  }
+  
+  .conversations-title {
+    color: var(--primary);
+    font-size: 20px;
+    font-weight: 700;
+    font-family:lato, sans-serif;
+  }
+  
+  .conversation {
+    display: flex;
+    align-items: center;
+    padding: 32px 0;
+    border-bottom: 1px solid #D1D5DB;
+    cursor: pointer;
+  }
+  
+  .conversation-pic {
+    width: 60px;
+    height: 60px;
+    border: 1px solid var(--primary);
+    padding: 2px;
+    border-radius: 50%;
+  }
+  
+  .conversation-details {
+    margin-left: 24px;
+    
+  }
+  
+  .conversation-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: black;
+    font-family:lato, sans-serif;
+  }
+  
+  .conversation-email {
+    font-size: 14px;
+    font-weight: 500;
+    font-family:lato, sans-serif;
+  }
+  
+  .no-conversations, .no-messages, .no-people {
+    text-align: center;
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-top: 96px;
+    font-family:lato, sans-serif;
+  }
+  
+  .chat-window {
+    position: absolute;
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    left: 330px;
+    top: 0px;
+  }
+  
+  .chat-header {
+    width: 75%;
+    background-color: var(--secondary);
+    height: 80px;
+    margin: 40px ;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+    background-color: #e7e7e7;
+  }
+  
+  .receiver-pic {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+  }
+  
+  .receiver-details {
+    margin-left: 24px;
+    margin-right: auto;
+    
+  }
+  
+  .receiver-name {
+    font-size: 1.125rem;
+    color: #000000;
+    font-size: 16px;
+    font-weight: 700;
+    font-family:lato, sans-serif;
+  }
+  
+  .receiver-email {
+    font-size: 0.875rem;
+    color: #000000;
+    font-size: 14px;
+    font-family:lato, sans-serif;
+  }
+  
+  .call-icon {
+    cursor: pointer;
+  }
+  
+  .messages {
+    position: absolute;
+    top: 150px;
+    left: 0px;
+    height: 75%;
+    width: 100%;
+    overflow-y: scroll;
+    box-shadow: 0px 1px 3px rgba(15, 15, 15, 0.1);
+  }
+  
+  .messages-container {
+    padding: 20px;
+  }
+  
+  .message {
+    max-width: 40%;
+    border-radius: 0.375rem;
+    color: white;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    background-color: #0f1dda;
+    font-family:lato, sans-serif;
+  }
+  
+  .sent-message {
+    background-color: var(--primary);
+    color: white;
+    font-weight: 500;
+    border-radius: 0.375rem 0.375rem 0.375rem 0;
+    margin-left: auto;
+    background-color: #3023e0;
+    font-family:lato, sans-serif;
+  }
+  
+  .received-message {
+    background-color: var(--secondary);
+    color: black;
+    font-weight: 500;
+    border-radius: 0 0.375rem 0.375rem 0.375rem;
+    background-color: rgb(206, 206, 206);
+    font-family:lato, sans-serif;
+  }
+  
+  .message-input {
+    position: fixed;
+    padding: 30px;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    margin-top: 80px;
+    margin-left: 60px;
+    top: 460px;
+    font-family:lato, sans-serif;
+  }
+  
+  .input {
+    width: 75%;
+  }
+  
+  .input-field {
+    width: 95%;
+    padding: 1rem;
+    border: none;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 9999px;
+    background-color: var(--light);
+    outline: none;
+    border: 2px solid #2c2e4e;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    font-family:lato, sans-serif;
+  }
+  
+  .send-icon {
+    cursor: pointer;
+    background-color: var(--light);
+    border-radius: 9999px;
+  }
+  .add-icon{
+    cursor: pointer;
+    background-color: var(--light);
+    border-radius: 9999px;
+
+  }
+  
+  .disabled {
+    pointer-events: none;
+  }
+  
+  .people {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 25%;
+    height: 100vh;
+    background-color: var(--light);
+    padding: 64px 32px;
+    overflow-y: scroll;
+    background-color: #e7e7e7;
+  }
+  
+  .people-title {
+    color: var(--primary);
+    font-size: 20px;
+    font-weight: 700;
+    font-family:lato, sans-serif;
+
+  }
+  
+  .person {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #D1D5DB;
+    cursor: pointer;
+  }
+  
+  .person-pic {
+    width: 60px;
+    height: 60px;
+    border: 1px solid var(--primary);
+    padding: 2px;
+    border-radius: 50%;
+  }
+  
+  .person-details {
+    width: 200px;
+    margin-left: -10px;
+    margin-top: 20px;
+  }
+  
+  .person-name {
+    margin-left: 40px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family:lato, sans-serif;
+    color: #000000;
+
+  }
+  
+  .person-email {
+    margin-left: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family:lato, sans-serif;
+    color: #000000;
+  }
+  

@@ -41,6 +41,7 @@ import AllAlumniProfiles from './AllAlumniProfiles';
 import SingleAlumniProfile from './SingleAlumniProfile';
 import AdminUserManagement from './AdminUserManagement';
 import CurrentUserProfile from './CurrentUserProfile';
+import ChatDashboard from './ChatDashboard';
 import Unauthorized from './Unauthorized'
 function App() {
   return (
@@ -227,6 +228,7 @@ function App() {
             }
           />
           <Route path='/alumniprofiles' element={<AlumniProfiles />} />
+          <Route path='/ChatDashboard' element={<ChatDashboard />} />
           <Route path='/CurrentAlumniProfile/:id' element={<AProfile />} />
           <Route path='/CurrentUserProfile/:id' element={<CurrentUserProfile />} />
           <Route path='/singleAlumniProfile/:id' element={<SingleAlumniProfile />} />

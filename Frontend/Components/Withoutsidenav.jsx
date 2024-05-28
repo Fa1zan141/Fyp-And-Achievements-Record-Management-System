@@ -62,7 +62,7 @@ function Withoutsidenav() {
     <>
       <div id="stddashboardNav">
         <div id="left">
-          <div id="Nvlogo"></div>
+          <div id="Navlogo"></div>
         </div>
         <div id="right">
           <button id="Msgbtn" onClick={() => { navigate("/ChatBox") }}><FaRegMessage /></button>

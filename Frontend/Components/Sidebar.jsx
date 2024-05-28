@@ -79,10 +79,10 @@ function Sidebar() {
     <>
       <div id="stddashboardNav">
         <div id="left">
-          <div id="Nlogo"></div>
+          <div id="Navbarlogo"></div>
         </div>
         <div id="right">
-          <button id="Msgbtn" onClick={() => { navigate("/ChatBox") }}><FaRegMessage /></button>
+          <button id="Msgbtn" onClick={() => { navigate("/ChatDashboard") }}><FaRegMessage /></button>
           <button id="usernamesb" onClick={handleSubmit}>{user && <h1>{user.FirstName} {user.LastName}</h1>}</button>
           {user && <img id="navprofilepic" src={profilePictureUrl} alt="Profile" />}
         </div>

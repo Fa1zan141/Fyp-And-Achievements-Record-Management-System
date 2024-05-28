@@ -7,6 +7,7 @@ import './assets/AdminProfile.css';
 
 function AdminProfile() {
   const { token, user } = useAuth();
+  
   const [profilePicture, setProfilePicture] = useState(null);
   const [profileData, setProfileData] = useState({
     FirstName: '',

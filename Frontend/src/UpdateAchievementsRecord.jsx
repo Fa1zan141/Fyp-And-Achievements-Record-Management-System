@@ -66,7 +66,7 @@ const handleSubmit = async (e) => {
         borderRadius: "10px",
       },
     }).showToast();
-    Navigate('/achievementsrecord');
+    Navigate('/studentachievementrecord');
   }else {
     Toastify({
       text: result.data.message,
@@ -87,17 +87,16 @@ const handleSubmit = async (e) => {
     <Sidebar></Sidebar>
     <div id="ALine"></div>
     <div id="AAR"><p>Update Achievements Record</p></div>
-    <div id="Arecord"><h1>Update Record</h1></div>
     <div id="RecordForm">
     <form  onSubmit={handleSubmit}>
     <label id='Label1' htmlFor="AchievementTitle">Achievement Title:</label>
     <input type="text" id="AchievementTitle" name="AchievementTitle" placeholder='Achievement Title' value={AchievementTitle}  required onChange={(e) => setAchievementTitle(e.target.value)}/>
-    <label id='Label2' htmlFor="Domain">Domain:</label>
-    <input type="text" id="Domain" name="Domain" placeholder='Domain' value={Domain} required onChange={(e) => setDomain(e.target.value)}/>
+    <label id='Label2' htmlFor="Domain">Achievement Holder:</label>
+    <input type="text" id="Domain" name="Domain" placeholder='Holder Name' value={Domain} required onChange={(e) => setDomain(e.target.value)}/>
     <label id='Label3' htmlFor="Date">Date:</label>
-    <input type="text" id="Date" name="Date" placeholder='Date' value={Date} required onChange={(e) => setDate(e.target.value)}/>
-    <label id='Label4' htmlFor="Year">Year:</label>
-    <input type="text" id="Year" name="Year" placeholder='Year' value={Year} onChange={(e) => setYear(e.target.value)}/>
+    <input type="date" id="Date" name="Date" placeholder='Date' value={Date} required onChange={(e) => setDate(e.target.value)}/>
+    <label id='Label4' htmlFor="Year">Catagory:</label>
+    <input type="text" id="Year" name="Year" placeholder='Catagory Of The Achievement' value={Year} onChange={(e) => setYear(e.target.value)}/>
     <label id='Label5' htmlFor="Description">Description:</label>
     <input type="text" id="Description" name="Description" placeholder='Description' value={Description} required onChange={(e) => setDescription(e.target.value)}/>
     <label id='Label6' htmlFor="mediaUpload">Upload Media:</label>

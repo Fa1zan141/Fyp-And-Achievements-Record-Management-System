@@ -1,6 +1,7 @@
 const AlumniProfile = require('../Models/AlumniProfile');
 
 class AlumniProfileController {
+  
   async addProfile(req, res) {
     try {
       const {

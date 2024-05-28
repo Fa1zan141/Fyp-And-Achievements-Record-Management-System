@@ -33,6 +33,9 @@ const EmployeeSchema = new mongoose.Schema({
     },
     profilePicture: {
         type: String // Add this line
+    },
+    token: {
+        type: String
     }
 });
 

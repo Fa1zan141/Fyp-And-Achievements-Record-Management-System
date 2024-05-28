@@ -9,14 +9,29 @@ import { useAuth } from './auth/auth';
 function AdminDashboard() {
 
   const navigate = useNavigate();
-  const [success, setsuccess] = useState();
-  const {token,user}= useAuth()
+  const [totalUsers, setTotalUsers] = useState(0);
+  const [alumniUsers, setAlumniUsers] = useState(0);
+  const { token, user } = useAuth();
 
-  useEffect(() =>{
-    if(!token){
-      navigate('/login')
+  useEffect(() => {
+    if (!token) {
+      navigate('/login');
     }
-  })
+
+    const fetchCounts = async () => {
+      try {
+        const totalUsersRes = await axios.get('http://localhost:3000/FYP/count/all-users');
+        setTotalUsers(totalUsersRes.data.totalUsers);
+
+        const alumniUsersRes = await axios.get('http://localhost:3000/FYP/count/alumni-users');
+        setAlumniUsers(alumniUsersRes.data.alumniUsers);
+      } catch (error) {
+        console.error('Error fetching user counts:', error);
+      }
+    };
+
+    fetchCounts();
+  }, [token, navigate]);
 
   const handleSubmit = async () => {
     switch (user.role) {
@@ -35,39 +50,36 @@ function AdminDashboard() {
     }
   };
 
-  useEffect(() => {
-    axios.get("http://localhost:3000/admindashboard")
-      .then(result => {
-        if (result.data === "Success") {
-          setsuccess(true);
-        } else {
-          navigate('/login');
-        }
-      })
-      .catch(err => console.log(err));
-  }, []);
-
   return (
     <>
       <Sidebar />
       <div id="VLine"></div>
       <div id="welcome"><p>WELCOME {user && <h1>{user.FirstName}</h1>}</p></div>
-      <div id="myprofilebtn"><button onClick={handleSubmit}><p> {user && <h1>{user.FirstName} {user.LastName}</h1>}  <div id="Picon"><CgProfile /></div></p></button></div>
+      <div id="myprofilebtn">
+        <button onClick={handleSubmit}>
+          <p> {user && <h1>{user.FirstName} {user.LastName}</h1>} <div id="Picon"><CgProfile /></div></p>
+        </button>
+        <div id="userCounts">
+        <p> Users<h1>{totalUsers}</h1> </p>
+      </div>
+      <div id="AlumniCounts">
+      <p>Alumni Users<h1>{alumniUsers}</h1> </p>
+      </div>
+      
+      </div>
       <div id="VerticalLane"></div>
       <div id="VLine2"></div>
       <div id="AddRecord"><p>View Record</p></div>
-      <div id="addrecordbtn"><button onClick={() => { navigate("/fyprecord") }}><p> View FYP </p></button></div>
-      <div id="addachievementbtn"><button onClick={() => { navigate("/achievementsrecord") }}><p> View Achievement </p></button></div>
+      <div id="addrecordbtn"><button onClick={() => { navigate("/fyprecord") }}><p> FYP </p></button></div>
+      <div id="addachievementbtn"><button onClick={() => { navigate("/achievementsrecord") }}><p> Achievement </p></button></div>
       <div id="VLine3"></div>
       <div id="Addalumniprofile"><p>View Profile</p></div>
-      <div id="AlumniProfilebtn"><button onClick={() => { navigate("/AllAlumniProfiles") }}><p> View Alumni Profile </p></button></div>
+      <div id="AlumniProfilebtn"><button onClick={() => { navigate("/AllAlumniProfiles") }}><p> Alumni Profile </p></button></div>
       <div id="VLine4"></div>
       <div id="UpdateRecord"><p>All User Record</p></div>
-      <div id="updaterecordbtn"><button onClick={() => { navigate("/Allusers") }}><p> View All Users </p></button></div>
-      <div id="updateachievementbtn"><button><p> Update Achievement </p></button></div>
-      <div id="VLine5"></div>
-      <div id="Updatealumniprofile"><p>Update Profile</p></div>
-      <div id="EditAlumniProfilebtn"><button><p> Edit Alumni Profile </p></button></div>
+      <div id="updaterecordbtn"><button onClick={() => { navigate("/Allusers") }}><p> All Users </p></button></div>
+      
+
     </>
   );
 }

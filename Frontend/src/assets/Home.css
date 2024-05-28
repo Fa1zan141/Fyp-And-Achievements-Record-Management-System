@@ -1,4 +1,4 @@
-/* Home.css */
+
 * {
     margin: 0;
     padding: 0;
@@ -9,7 +9,21 @@ html, body {
     height: 100%;
     width: 100%;
     position: relative;
+    
 }
+body::-webkit-scrollbar {
+    width: 5px;               
+  }
+  
+body::-webkit-scrollbar-track {
+    background: rgb(73, 73, 73);        /* color of the tracking area */
+  }
+  
+body::-webkit-scrollbar-thumb {
+    background-color: rgb(61, 61, 61);    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid rgb(41, 41, 41);  /* creates padding around scroll thumb */
+  }
 
 #main {
     height: 100%;

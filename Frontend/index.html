@@ -6,10 +6,17 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FYP & Achievemets Record Management System</title>
+    <title>FYP & Achievements Record Management System</title>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script src="https://cdn.jsdelivr.net/npm/socket.io-client/dist/socket.io.js"></script>
+    <script>
+      const socket = io();
+      socket.on('connect', function() {
+        console.log('Connected to server');
+      });
+    </script>
   </body>
 </html>

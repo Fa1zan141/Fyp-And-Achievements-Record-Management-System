@@ -3,8 +3,8 @@ const mongoose= require('mongoose')
 const AchievementsRecordSchema = new mongoose.Schema({
     AchievementTitle: String,
     Domain: String,
-    Date: String,
-    Year: Number,
+    Date: Date,
+    Year: String,
     Description: String,
     Upload: String
 })

@@ -70,12 +70,12 @@ function AddAchievementsRecord() {
     <form onSubmit={handleSubmit} >
     <label id='Label1' htmlFor="AchievementTitle">Achievement Title:</label>
     <input type="text" id="AchievementTitle" name="AchievementTitle" placeholder='Achievement Title'  required onChange={(e) => setAchievementTitle(e.target.value)}/>
-    <label id='Label2' htmlFor="Domain">Domain:</label>
-    <input type="text" id="Domain" name="Domain" placeholder='Domain'  required onChange={(e) => setDomain(e.target.value)}/>
+    <label id='Label2' htmlFor="Domain">Achievement Holder:</label>
+    <input type="text" id="Domain" name="Domain" placeholder='Name Of The Holder'  required onChange={(e) => setDomain(e.target.value)}/>
     <label id='Label3' htmlFor="Date">Date:</label>
-    <input type="text" id="Date" name="Date" placeholder='Date'  required onChange={(e) => setDate(e.target.value)}/>
-    <label id='Label4' htmlFor="Year">Year:</label>
-    <input type="text" id="Year" name="Year" placeholder='Year'  required onChange={(e) => setYear(e.target.value)}/>
+    <input type="date" id="Date" name="Date" placeholder='Date'  required onChange={(e) => setDate(e.target.value)}/>
+    <label id='Label4' htmlFor="Year">Catagory :</label>
+    <input type="text" id="Year" name="Year" placeholder='In Which Catagory Achievement '  required onChange={(e) => setYear(e.target.value)}/>
     <label id='Label5' htmlFor="Description">Description:</label>
     <input type="text" id="Description" name="Description" placeholder='Description'  required onChange={(e) => setDescription(e.target.value)}/>
     <label id='Label6' htmlFor="mediaUpload">Upload Media:</label>

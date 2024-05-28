@@ -6,13 +6,16 @@ const app = express();
 app.use("/uploads", express.static(__dirname + "/public/uploads"));
 const upload = require('../Config/upload');
 
+const { verifyUser, checkUserRole } = require('../middlewares/auth');
+
+
 const userController = require('../Controlers/userController');
 const FypController = require('../Controlers/FypRecordController');
 const AchievementController = require('../Controlers/AchievementRecordController');
 const PostController = require('../Controlers/PostController');
-const AlumniProfileController = require('../Controlers/AlumniProfileController')
-
-
+const AlumniProfileController = require('../Controlers/AlumniProfileController');
+const conservationController= require('../Controlers/conservationController');
+const messageController= require('../Controlers/messageController');
 
 // Routes
 router.post('/register', userController.register);
@@ -22,7 +25,10 @@ router.get('/userprofiles', userController.getAllUsers);
 router.get('/userprofile/:id', userController.getuserProfileById);
 router.delete('/deleteuser/:id', userController.deleteUser);
 router.put('/changepassword', userController.changePassword);
+router.get('/count/all-users', userController.getAllUserCount);
+router.get('/count/alumni-users', userController.getAllAlumniCount);
 
+router.get('/api/users/:userId',userController.getUsers );
 
 router.post('/addfyp', upload.single("Upload"), FypController.addFyp);
 router.get('/', FypController.getAllFyp);
@@ -48,5 +54,11 @@ router.get('/profile/:id', AlumniProfileController.getProfileById);
 router.get('/profiles', AlumniProfileController.getAllProfiles);
 router.put('/user/update', upload.single('profilePicture'), userController.updateprofile);
 router.delete('/deletealumni/:id', AlumniProfileController.deleteAlumniProfile);
+
+router.post('/api/conversation',conservationController.createConversation );
+router.get('/api/conversations/:userId',conservationController.getUserConversations );
+
+router.post('/api/message', messageController.sendMessage);
+router.get('/api/message/:conversationId', messageController.getMessages );
 
 module.exports = router; 

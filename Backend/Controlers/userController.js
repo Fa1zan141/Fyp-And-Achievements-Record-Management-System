@@ -177,6 +177,46 @@ class userManagement {
     }
 }
 
+// Get count of all users
+ async getAllUserCount (req, res){
+  try {
+    const totalUsers = await EmployeeModel.countDocuments({});
+    res.status(200).json({ status: 'success', totalUsers });
+  } catch (error) {
+    console.error('Error getting total users count:', error);
+    res.status(500).json({ status: 'fail', message: 'Failed to get total users count', error: error.message });
+  }
+}
+
+// Get count of alumni users
+ async getAllAlumniCount (req, res){
+  try {
+    const alumniUsers = await EmployeeModel.countDocuments({ role: 'Alumni' });
+    res.status(200).json({ status: 'success', alumniUsers });
+  } catch (error) {
+    console.error('Error getting alumni users count:', error);
+    res.status(500).json({ status: 'fail', message: 'Failed to get alumni users count', error: error.message });
+  }
+ }
+
+ async getUsers(req, res) {
+  try {
+    const { userId } = req.params;
+    const users = await EmployeeModel.find({ _id: { $ne: userId } });
+    const usersData = await Promise.all(users.map(async (user) => ({
+      id: user._id,
+      email: user.email,
+      FirstName: user.FirstName,
+      receiverId: user._id,
+      profile: user.profilePicture,
+    })));
+
+    res.status(200).json(usersData);
+  } catch (error) {
+    console.error('Error fetching users:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
 
 }
 
