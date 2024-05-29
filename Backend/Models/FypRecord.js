@@ -6,7 +6,8 @@ const FypRecordSchema = new mongoose.Schema({
     Domain: String,
     Year: Number,
     Shortsummary: String,
-    Upload: String
+    Upload: String,
+    Logo: String
 })
 
 const  FypRecordModel= mongoose.model("FypRecord", FypRecordSchema)

@@ -50,9 +50,7 @@ function CurrentUserProfile() {
         }
     };
 
-    const handleSendMessage = () => {
-        // Logic to handle sending a message
-    };
+   
 
     return (
         <>
@@ -84,9 +82,7 @@ function CurrentUserProfile() {
                         <p><strong>Role:</strong> {userprofile.role}</p>
                     </div>
                 </div>
-                <div id="message-btn-container">
-                    <button id="message-btn" onClick={handleSendMessage}><h1>Send Message</h1></button>
-                </div>
+                
             </div>
             
         </>

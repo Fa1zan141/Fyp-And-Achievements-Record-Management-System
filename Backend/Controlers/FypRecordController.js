@@ -3,7 +3,8 @@ const FypRecordModel = require('../Models/FypRecord');
 class FypRecord {
   async addFyp(req, res) {
     const { Fyptitle, Supervisor, Domain, Year, Shortsummary } = req.body;
-    const Upload = req.file;
+    const Upload = req.files['Upload'] ? req.files['Upload'][0].filename : '';
+    const Logo = req.files['Logo'] ? req.files['Logo'][0].filename : '';
 
     try {
       const newFypRecord = new FypRecordModel({
@@ -12,7 +13,8 @@ class FypRecord {
         Domain,
         Year,
         Shortsummary,
-        Upload: req.file.filename
+        Upload: Upload,
+        Logo: Logo
       });
       await newFypRecord.save();
       res.status(201).json({ message: 'Record Added successfully' });
@@ -58,6 +60,7 @@ class FypRecord {
 
       if (req.file) {
         updatedFields.Upload = req.file.filename;
+        updatedFields.Logo = req.file.filename;
       }
 
       const updatedFypRecord = await FypRecordModel.findByIdAndUpdate(

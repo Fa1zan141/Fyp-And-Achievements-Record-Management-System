@@ -6,27 +6,35 @@
   height: 250px;
   margin: 50px ;
   padding: 20px;
-  background-color: white;
-  border-radius: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: rgb(231, 231, 231);
+  border-radius: 10px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.795);
   transition: transform 0.2s ease-in-out;
 }
 
 .fyp-card:hover {
   transform: scale(1.05);
 }
-
+#Fypimage{
+  height: 120px;
+  width: 100%;
+}
 .fyp-content {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
-.fyp-title, .fyp-student-name, .fyp-supervisor {
-  margin-bottom: 10px;
-  font-size: 16px;
+.fyp-title{
+  font-size: 18px;
   color: #333;
   font-weight: 600;
+}
+.fyp-student-name {
+  font-size: 16px;
+  color: #333;
+  font-weight: 500;
+
 }
 
 .fyp-button {

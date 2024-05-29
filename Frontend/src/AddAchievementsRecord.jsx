@@ -77,7 +77,7 @@ function AddAchievementsRecord() {
     <label id='Label4' htmlFor="Catagory">Catagory :</label>
     <input type="text" id="Year" name="Catagory" placeholder='In Which Catagory Achievement '  required onChange={(e) => setCatagory(e.target.value)}/>
     <label id='Label5' htmlFor="Description">Description:</label>
-    <input type="text" id="Description" name="Description" placeholder='Description'  required onChange={(e) => setDescription(e.target.value)}/>
+    <textarea id="Description" name="Description" placeholder='Description'required onChange={(e) => setDescription(e.target.value)}></textarea>
     <label id='Label6' htmlFor="mediaUpload">Upload Media:</label>
     <input type="file" id="Upload" name="Upload" required accept="image/*,video/*" onChange={(e) => setUpload(e.target.files[0])}/>
     <div id="SubmitRecord"><button type="submit">Add Record</button></div>

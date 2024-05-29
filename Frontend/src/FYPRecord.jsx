@@ -11,6 +11,7 @@ function FYPRecord() {
     const [currentPage, setCurrentPage] = useState(1);
     const [recordsPerPage] = useState(5);
     const [searchQuery, setSearchQuery] = useState('');
+    const [search, setSearch] = useState('');
 
     useEffect(() => {
         const fetchData = async () => {
@@ -60,7 +61,7 @@ function FYPRecord() {
         paginate(currentPage === 1 ? 1 : currentPage - 1);
     };
 
-    // Function to handle search
+    /* Function to handle search
     const handleSearch = (e) => {
         setSearchQuery(e.target.value);
     };
@@ -72,7 +73,7 @@ function FYPRecord() {
         record.Domain.toLowerCase().includes(searchQuery.toLowerCase()) ||
         record.Year.toString().includes(searchQuery.toLowerCase())
     );
-
+*/
     return (
         <>
             <Sidebar />
@@ -80,7 +81,7 @@ function FYPRecord() {
             <div id="FYPRecord"><p>FYP Record</p></div>
             <div id="forsearch">
                 <form action="">
-                    <input type="search" id="searchbar" name="searchbar" placeholder='Search' value={searchQuery} onChange={handleSearch} />
+                    <input type="search" id="searchbar" name="searchbar" placeholder='Search' value={search}  onChange={(e) => setSearch(e.target.value)}/>
                     <div id="Sicon"><button type="submit"><FaSearch /></button></div>
                     <div id="table">
                         <table>
@@ -95,7 +96,14 @@ function FYPRecord() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {currentRecords.map((fyprecord, index) => (
+                                {currentRecords.
+                                 filter(record =>
+                                    record.Fyptitle.toLowerCase().includes(search.toLowerCase()) ||
+                                    record.Supervisor.toLowerCase().includes(search.toLowerCase()) ||
+                                    record.Domain.toLowerCase().includes(search.toLowerCase()) ||
+                                    record.Year.toString().includes(search.toLowerCase())
+                                )
+                                .map((fyprecord, index) => (
                                     <tr key={fyprecord._id} className={index % 2 === 0 ? "even" : "odd"}>
                                         <td>{fyprecord.Fyptitle}</td>
                                         <td>{fyprecord.Supervisor}</td>

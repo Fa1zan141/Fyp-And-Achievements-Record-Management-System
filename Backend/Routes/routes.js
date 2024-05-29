@@ -30,7 +30,7 @@ router.get('/count/alumni-users', userController.getAllAlumniCount);
 
 router.get('/api/users/:userId',userController.getUsers );
 
-router.post('/addfyp', upload.single("Upload"), FypController.addFyp);
+router.post('/addfyp', upload.fields([{ name: 'Upload', maxCount: 1 }, { name: 'Logo', maxCount: 1 }]), FypController.addFyp);
 router.get('/', FypController.getAllFyp);
 router.get('/updaterecord/:id', FypController.getFypById);
 router.put('/updatedrecord/:id', upload.single("Upload"), FypController.updateFyp);

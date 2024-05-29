@@ -11,6 +11,7 @@ function AddFypRecord() {
   const [Year, setYear]= useState()
   const [Shortsummary, setShortsummary]= useState()
   const [Upload, setUpload]= useState()
+  const [Logo, setLogo]= useState()
 
   const Navigate= useNavigate();
 
@@ -23,7 +24,8 @@ function AddFypRecord() {
     formData.append("Year", Year);
     formData.append("Shortsummary", Shortsummary);
     formData.append("Upload", Upload);
-    console.log(Fyptitle, Supervisor, Domain, Year, Shortsummary, Upload);
+    formData.append("Logo", Logo);
+    console.log(Fyptitle, Supervisor, Domain, Year, Shortsummary, Upload,Logo);
 
     const result = await axios.post(
       'http://localhost:3000/FYP/addfyp',
@@ -105,18 +107,20 @@ function AddFypRecord() {
     <div id="AAR"><p>Add Record</p></div>
     <div id="RecordForm">
     <form onSubmit={handleSubmit} >
-    <label id='Label1' htmlFor="Fyptitle">FYP Title:</label>
+    <label id='Label1' htmlFor="Fyptitle">FYP Title</label>
     <input type="text" id="AchievementTitle" name="Fyptitle" placeholder='Fyp Title' required onChange={(e) => setFyptitle(e.target.value)}/>
-    <label id='Label2' htmlFor="Supervisor">Supervisor:</label>
+    <label id='Label2' htmlFor="Supervisor">Supervisor</label>
     <input type="text" id="Domain" name="Supervisor" placeholder='Supervisor' required onChange={(e) => setSupervisor(e.target.value)}/>
-    <label id='Label3' htmlFor="Domain">Domain:</label>
+    <label id='Label3' htmlFor="Domain">Domain</label>
     <input type="text" id="Date" name="Domain" placeholder='Domain' required onChange={(e) => setDomain(e.target.value)}/>
-    <label id='Label4' htmlFor="Year">Year:</label>
+    <label id='Label4' htmlFor="Year">Year</label>
     <input type="text" id="Year" name="Year" placeholder='Year' required onChange={(e) => setYear(e.target.value)}/>
-    <label id='Label5' htmlFor="Shortsummary">Short Summary:</label>
-    <input type="text" id="Description" name="Shortsummary" placeholder='Short summary' required onChange={(e) => setShortsummary(e.target.value)}/>
-    <label id='Label6' htmlFor="mediaUpload">Upload Media:</label>
+    <label id='Label5' htmlFor="Shortsummary">Short Summary</label>
+    <textarea id="Description" name="Shortsummary" placeholder='Short summary' required onChange={(e) => setShortsummary(e.target.value)}></textarea>
+    <label id='Label6' htmlFor="mediaUpload">Upload Documentation</label>
     <input type="file" id="Upload" name="Upload" required accept="application/pdf" onChange={(e) => setUpload(e.target.files[0])}/>
+    <label id='Label7' htmlFor="LogoUpload">Upload Logo</label>
+    <input type="file" id="LogoUpload" name="Logo" required accept="image/*" onChange={(e) => setLogo(e.target.files[0])}/>
     <div id="SubmitRecord"><button type="submit">Submit Record</button></div>
     </form>
     </div>

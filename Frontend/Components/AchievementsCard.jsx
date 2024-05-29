@@ -20,7 +20,7 @@ function AchievementsCard({ Achievement }) {
         ></iframe>
       );
     } else if (['jpg', 'jpeg', 'png', 'gif'].includes(fileType)) {
-      return <img src={`http://localhost:3000/uploads/${Upload}`} width="300px" height="300px" />;
+      return <img src={`http://localhost:3000/uploads/${Upload}`} id="image" />
     } else {
       return "File Not Supported. Upload Supported File";
     }
@@ -32,7 +32,9 @@ function AchievementsCard({ Achievement }) {
         {showMedia()}
       </div>
       <div className="achievement-content">
-        <div className="achievement-description">{Achievement.Description}</div>
+        <div className="achievement-description">Title: {Achievement.AchievementTitle}</div>
+        <div className="achievement-name"> {Achievement.Name}</div>
+        <div className="achievement-catagory">{Achievement.Catagory}</div>
         <a href="/achievementsrecord" className="achievement-button">View More</a>
       </div>
     </div>

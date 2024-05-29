@@ -36,6 +36,7 @@ function SingleAlumniProfile() {
             alert('Failed to delete profile');
         }
     };
+    
 
 
     return (
@@ -74,9 +75,6 @@ function SingleAlumniProfile() {
                             Your browser does not support the video tag.
                         </video>
                     </div>
-                </div>
-                <div id="message-btn-container">
-                    <button id="message-btn"><h1>Send Message</h1></button>
                 </div>
             </div>
         </>

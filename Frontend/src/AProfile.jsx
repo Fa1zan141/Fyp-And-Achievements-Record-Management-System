@@ -26,6 +26,9 @@ function AProfile() {
         return <div>Loading...</div>;
     }
 
+    const handleClick = () => {
+        Navigate('/ChatDashboard');
+    };
 
 
     return (
@@ -65,7 +68,7 @@ function AProfile() {
                     </div>
                 </div>
                 <div id="message-btn-container">
-                    <button id="message-btn"><h1>Send Message</h1></button>
+                    <button id="message-btn" onClick={handleClick}><h1>Send Message</h1></button>
                 </div>
             </div>
         </>

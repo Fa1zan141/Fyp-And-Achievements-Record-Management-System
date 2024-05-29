@@ -10,6 +10,9 @@ import AlumniProfile from '../Components/AlumniProfile';
 import { FaRegCopyright } from 'react-icons/fa6';
 import Navbar from '../Components/Navbar';
 import axios from 'axios';
+import AOS from 'aos';
+import 'aos/dist/aos.css'
+
 
 function Home() {
   const navigate = useNavigate();
@@ -133,6 +136,18 @@ function Home() {
   const handleViewMore = () => {
     navigate('/news');
   };
+//Animations Using Aos
+
+useEffect(() =>
+  {
+    AOS.init({
+      offset: 300,
+      duration: 2000,
+      easing: 'ease-in-out',
+      delay: 50,
+    })
+
+  },[]);
 
   return (
     <div>
@@ -166,12 +181,13 @@ function Home() {
             id='HeroRimg'
           ></motion.div>
         </div>
-        <div id='underhero'>
-          <div id='Uherotop'>
-            <h1 className="hero-title">Recent FYP</h1>
+        
+          <div id='Uherotop' >
+            <h1 className="hero-title">FYP</h1>
+            <hr className="new1"/>
             <div className="carousel-container">
               <button className="nav-button" onClick={handlePrev}>&lt;</button>
-              <div className="carousel-content">
+              <div className="carousel-content" data-aos="flip-down">
                 {FYP.slice(fypCurrentIndex, fypCurrentIndex + 3).map((item, index) => (
                   <FYPCard key={index} FYP={item} />
                 ))}
@@ -179,11 +195,14 @@ function Home() {
               <button className="nav-button" onClick={handleNext}>&gt;</button>
             </div>
           </div>
-          <div id='Uherobottom'>
-            <h1 className="hero-title">Recent Achievements</h1>
+          
+          <div id='Uherobottom' >
+          <h1 className="hero-title">Achievements</h1>
+          <hr className="new2"/>
             <div className="carousel-container">
+              
               <button className="nav-button" onClick={handlePrevPage}>&lt;</button>
-              <div className="carousel-content">
+              <div className="carousel-content" data-aos="zoom-in">
                 {Achievement.slice(achievementsCurrentIndex, achievementsCurrentIndex + itemsPerPage).map((item, index) => (
                   <AchievementsCard key={index} Achievement={item} />
                 ))}
@@ -193,40 +212,26 @@ function Home() {
           </div>
         </div>
         <div id='lastsection'>
-          <div id='sectiontop'>
-            <h1 style={{
-              width: 400,
-              height: 50,
-              paddingLeft: 50,
-              fontSize: 25,
-              fontWeight: 800,
-              color: 'rgb(24, 24, 58)',
-            }}>
-              Jobs OR News Post
-            </h1>
-            {newsData.slice(0, 3).map((newsJob, index) => (
+          <div id='sectiontop' >
+          <h1 className="hero-titlejob">Jobs OR News Post</h1>
+          <hr className="new3"/>
+          <div data-aos="fade-left" >
+          {newsData.slice(0, 3).map((newsJob, index) => (
               <News key={index} newsData={newsJob} />
             ))}
+          </div>
             {newsData.length > 3 && (
               <button className="view-more-button" onClick={handleViewMore}>
                 View More
               </button>
             )}
           </div>
-          <div id="sectionbottom">
-            <h1 style={{
-              width: 50,
-              height: 50,
-              paddingLeft: 50,
-              fontSize: 25,
-              fontWeight: 800,
-              color: 'rgb(24, 24, 58)',
-            }}>
-              Alumni Profiles
-            </h1>
+          <div id="sectionbottom" >
+          <h1 className="hero-titleprofile">Profiles</h1>
+          <hr className="new4"/>
             <div className="carousel-container">
               <button className="nav-button" onClick={handlePrevProfile}>&lt;</button>
-              <div className="carousel-content">
+              <div className="carousel-content" data-aos="fade-up">
                 {alumniData.slice(profileCurrentIndex, profileCurrentIndex + 3).map((item, index) => (
                   <AlumniProfile key={index} alumniData={item} />
                 ))}
@@ -243,7 +248,7 @@ function Home() {
           <div id="righttext">Developed By Muhammad Faizan</div>
         </div>
       </div>
-    </div>
+   
   );
 }
 

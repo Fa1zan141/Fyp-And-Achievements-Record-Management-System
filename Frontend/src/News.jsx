@@ -9,6 +9,7 @@ function News() {
     const [NewsRecord, setNewsRecord] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [recordsPerPage] = useState(5);
+    const [search, setSearch] = useState('');
 
     useEffect(() => {
         const fetchData = async () => {
@@ -59,7 +60,7 @@ function News() {
             <div id="FYPRecord"><p>Post</p></div>
             <div id="forsearch">
                 <form action="">
-                    <input type="search" id="searchbar" name="searchbar" placeholder='Search' />
+                    <input type="search" id="searchbar" name="searchbar" placeholder='Search' value={search}  onChange={(e) => setSearch(e.target.value)} />
                     <div id="Sicon"><button type="submit"><FaSearch /></button></div>
                     <div id="table">
                         <table>
@@ -79,7 +80,11 @@ function News() {
                                         <td colSpan="6">No records found</td>
                                     </tr>
                                 ) : (
-                                    NewsRecord.map((newsRecord, index) => (
+                                    NewsRecord.filter(record =>
+                                        record.title.toLowerCase().includes(search.toLowerCase()) ||
+                                         record.type.toLowerCase().includes(search.toLowerCase()) ||
+                                         record.location.toLowerCase().includes(search.toLowerCase())
+                                    ).map((newsRecord, index) => (
                                         <tr key={newsRecord._id} className={index % 2 === 0 ? "even" : "odd"}>
                                             <td>{newsRecord.title}</td>
                                             <td>{newsRecord.description}</td>

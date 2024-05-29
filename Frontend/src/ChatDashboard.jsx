@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Input from '../Components/Input';
 import './assets/Chatdashboard.css';
+import { FaSearch } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import io from 'socket.io-client'; 
@@ -16,6 +17,7 @@ function ChatDashboard() {
      const [users, setUsers] = useState([]);
      const messageRef = useRef(null);
      const [socket, setSocket] = useState(null);
+     const [search, setSearch] = useState();
         // Retrieve token from local storage
     const storedToken = localStorage.getItem('token');
     const storedUser = JSON.parse(localStorage.getItem('user'));
@@ -252,13 +254,15 @@ useEffect(() => {
     }
   }, [messages]);
 
+  //For search
+
 
   return (
     <>
     <div className='sidebar'>
       <div className='user-profile'>
 
-        <div><img src="8724.jpg" width={75} height={75} className='profile-pic' alt="Profile" /></div>
+        <div><img src="Pfp.jpg" width={75} height={75} className='profile-pic' alt="Profile" /></div>
         <div className='user-details'>
           <h3 className='user-name'>{user && <h1>{user.FirstName} {user.LastName}</h1>}</h3>
           <button onClick={handleSubmit}>
@@ -273,7 +277,7 @@ useEffect(() => {
         conversations.length > 0 ? (
             conversations.map(({ conversationId, user }) => (
             <div className='conversation' key={conversationId} onClick={() => fetchMessages(conversationId, user)}>
-                <div><img src='Std 2.jpg' className="conversation-pic" alt="Profile" /></div>
+                <div><img src='Pfp.jpg' className="conversation-pic" alt="Profile" /></div>
                 <div className='conversation-details'>
                 <h3 className='conversation-name'>{user?.FirstName}</h3>
                 <p className='conversation-email'>{user?.email}</p>
@@ -289,7 +293,7 @@ useEffect(() => {
     <div className='chat-window'>
     {messages?.receiver?.FirstName && (
         <div className='chat-header'>
-          <div><img src="Std 2.jpg" width={60} height={60} className="receiver-pic" alt="Receiver" /></div>
+          <div><img src="Pfp.jpg" width={60} height={60} className="receiver-pic" alt="Receiver" /></div>
           <div className='receiver-details'>
             <h3 className='receiver-name'>{messages?.receiver?.FirstName}</h3>
             <p className='receiver-email'>{messages?.receiver?.email}</p>
@@ -344,10 +348,29 @@ useEffect(() => {
     </div>
     <div className='people'>
       <div className='people-title'>People</div>
+      <div id="search">
+                <form >
+                    <input 
+                        type="search" 
+                        id="searchbar" 
+                        name="searchbaralumni" 
+                        placeholder='Search Profile' 
+                        value={search}  
+                        onChange={(e) => setSearch(e.target.value)} 
+                    />
+                    <div id="Sicon">
+                        <button type="submit"><FaSearch /></button>
+                    </div>
+                </form>
+            </div>
       {users.length > 0 ? (
-        users.map(({ id,email, FirstName, receiverId }) => (
+        users.filter(
+          record =>
+            record.FirstName?.toLowerCase().includes(search?.toLowerCase() ?? '')
+        )
+        .map(({ id,email, FirstName, receiverId }) => (
           <div key={receiverId} className='person' onClick={() => fetchMessages('new', { id, email, FirstName, receiverId })}>
-            <div><img src="Std 2.jpg" className="person-pic" alt="Person" /></div>
+            <div><img src="Pfp.jpg" className="person-pic" alt="Person" /></div>
             <div className='person-details'>
 
               <h3 className='person-name'>{FirstName}</h3>

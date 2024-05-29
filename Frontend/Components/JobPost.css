@@ -3,9 +3,9 @@
   align-items: center;
   padding: 20px;
   margin: 10px;
-  background-color: #fff;
+  background-color: rgb(231, 231, 231);
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.795);
   transition: transform 0.3s ease;
 }
 

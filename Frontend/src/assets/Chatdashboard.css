@@ -321,4 +321,10 @@ body::-webkit-scrollbar {
     font-family:lato, sans-serif;
     color: #000000;
   }
-  
+  #search{
+    width: 500px;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    margin-left: -30px;
+  }
