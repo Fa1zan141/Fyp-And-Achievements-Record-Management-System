@@ -31,11 +31,13 @@ function AchievementsRecord() {
     const totalPages = Math.ceil(totalRecords / recordsPerPage);
 
 
-
+    
     const handleDelete = async (id) => {
         try {
             await axios.delete('http://localhost:3000/FYP/deleteachievementrecord/' + id);
             setAchievementsRecord(AchievementsRecord.filter(record => record._id !== id));
+            
+            Navigate('/achievementsrecord')
         } catch (error) {
             console.log(error);
         }
@@ -71,9 +73,9 @@ function AchievementsRecord() {
                             <thead>
                                 <tr>
                                     <th>Title</th>
-                                    <th>Domain</th>
+                                    <th>Name</th>
                                     <th>Date</th>
-                                    <th>Year</th>
+                                    <th>Catagory</th>
                                     <th>Summary</th>
                                     <th>Full View</th>
                                 </tr>
@@ -82,9 +84,9 @@ function AchievementsRecord() {
                                 {AchievementsRecord.map((achievementsRecords, index) => (
                                     <tr key={achievementsRecords._id} className={index % 2 === 0 ? "even" : "odd"}>
                                         <td>{achievementsRecords.AchievementTitle}</td>
-                                        <td>{achievementsRecords.Domain}</td>
+                                        <td>{achievementsRecords.Name}</td>
                                         <td>{achievementsRecords.Date}</td>
-                                        <td>{achievementsRecords.Year}</td>
+                                        <td>{achievementsRecords.Catagory}</td>
                                         <td>{achievementsRecords.Description}</td>
                                         <td id="buttons">
                                             <div className="dropdown">

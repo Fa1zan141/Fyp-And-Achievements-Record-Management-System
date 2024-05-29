@@ -3,6 +3,7 @@ import './assets/LR.css';
 import axios from 'axios';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Import eye icons
 import { useAuth } from './auth/auth';
 
 function Login() {
@@ -10,6 +11,7 @@ function Login() {
   const [email, setEmail] = useState('');
   const [role, setRole] = useState('Student');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
 
   const navigate = useNavigate();
 
@@ -85,7 +87,6 @@ function Login() {
   return (
     <div id="main">
       <div id="leftside">
-
         <motion.div animate={{ x: [100, -55, -55, 100], move: 1 }} transition={{ type: "tween", repeat: Infinity, duration: 3 }} id="imgg"></motion.div>
         <p className="LRp">Welcome to the revolutionized system for <br /> FYP & Achievements record of the <br /> Department of SE!</p>
       </div>
@@ -96,7 +97,22 @@ function Login() {
           <label htmlFor="email">Email</label><br />
           <input type="email" id="email" name="email" placeholder="Email" required onChange={(e) => setEmail(e.target.value)} /><br />
           <label htmlFor="password">Password</label><br />
-          <input type="password" id="password" name="password" placeholder="Password" required onChange={(e) => setPassword(e.target.value)} /><br />
+          <div>
+            <input
+              type={showPassword ? 'text' : 'password'} // Toggle input type based on showPassword state
+              id="password"
+              name="password"
+              placeholder="Password"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            {showPassword ? (
+              <FaEyeSlash onClick={() => setShowPassword(false)} style={{ cursor: 'pointer' }} /> // Eye icon to hide password
+            ) : (
+              <FaEye onClick={() => setShowPassword(true)} style={{ cursor: 'pointer' }} /> // Eye icon to show password
+            )}
+          </div>
           <label htmlFor="role">Select A Role</label><br />
           <select name="role" id="role" required onChange={(e) => setRole(e.target.value)}>
             <option value="Student">Student</option>

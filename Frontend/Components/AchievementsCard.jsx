@@ -20,7 +20,7 @@ function AchievementsCard({ Achievement }) {
         ></iframe>
       );
     } else if (['jpg', 'jpeg', 'png', 'gif'].includes(fileType)) {
-      return <img src={`http://localhost:3000/uploads/${Upload}`} alt="Achievement Media" width="800px" height="300px" />;
+      return <img src={`http://localhost:3000/uploads/${Upload}`} width="300px" height="300px" />;
     } else {
       return "File Not Supported. Upload Supported File";
     }

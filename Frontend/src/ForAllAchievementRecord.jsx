@@ -71,9 +71,9 @@ function ForAllAchievementRecord() {
                             <thead>
                                 <tr>
                                     <th>Title</th>
-                                    <th>Domain</th>
+                                    <th>Name</th>
                                     <th>Date</th>
-                                    <th>Year</th>
+                                    <th>Catagory</th>
                                     <th>Summary</th>
                                     <th>Full View</th>
                                 </tr>
@@ -82,9 +82,9 @@ function ForAllAchievementRecord() {
                                 {AchievementsRecord.map((achievementsRecords, index) => (
                                     <tr key={achievementsRecords._id} className={index % 2 === 0 ? "even" : "odd"}>
                                         <td>{achievementsRecords.AchievementTitle}</td>
-                                        <td>{achievementsRecords.Domain}</td>
+                                        <td>{achievementsRecords.Name}</td>
                                         <td>{achievementsRecords.Date}</td>
-                                        <td>{achievementsRecords.Year}</td>
+                                        <td>{achievementsRecords.Catagory}</td>
                                         <td>{achievementsRecords.Description}</td>
                                         <td id="buttons">
                                             <div className="dropdown">

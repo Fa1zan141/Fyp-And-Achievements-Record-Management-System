@@ -72,6 +72,7 @@ function AdminDashboard() {
       <div id="AddRecord"><p>View Record</p></div>
       <div id="addrecordbtn"><button onClick={() => { navigate("/fyprecord") }}><p> FYP </p></button></div>
       <div id="addachievementbtn"><button onClick={() => { navigate("/achievementsrecord") }}><p> Achievement </p></button></div>
+      <div id="addnewsbtn"><button onClick={() => { navigate("/news") }}><p> News </p></button></div>
       <div id="VLine3"></div>
       <div id="Addalumniprofile"><p>View Profile</p></div>
       <div id="AlumniProfilebtn"><button onClick={() => { navigate("/AllAlumniProfiles") }}><p> Alumni Profile </p></button></div>

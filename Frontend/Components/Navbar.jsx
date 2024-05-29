@@ -80,7 +80,7 @@ function Navbar() {
             <Link to="/forallachievementrecord">Achievements</Link>
           </li>
           <li>
-            <Link to="/news">News & Jobs</Link>
+            <Link to="/allnews">News & Jobs</Link>
           </li>
           <li>
             <Link to="/alumniprofiles">Alumni</Link>

@@ -10,6 +10,7 @@ function Addnews() {
   const [Type, setType] = useState('');
   const [Location, setLocation] = useState('');
   const [Date, setDate] = useState('');
+  const [Upload, setUpload] = useState(null); // Update to null initially
 
   const navigate = useNavigate();
 
@@ -17,17 +18,29 @@ function Addnews() {
     e.preventDefault();
 
     try {
-      const result = await axios.post('http://localhost:3000/FYP/addnews', {
-        title: Title,         // Match the field names with the model schema
-        description: description,
-        type: Type,
-        location: Location,
-        date: Date
+      if (!Upload) {
+        showToast('Please upload a file', 'linear-gradient(to right, yellow, blue)');
+        return;
+      }
+
+      // Create form data
+      const formData = new FormData();
+      formData.append('title', Title);
+      formData.append('description', description);
+      formData.append('type', Type);
+      formData.append('location', Location);
+      formData.append('date', Date);
+      formData.append('Upload', Upload);
+
+      const result = await axios.post('http://localhost:3000/FYP/addnews', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data', // Set content type to multipart form-data
+        },
       });
 
       if (result.data.status !== 'fail') {
         showToast(result.data.message, 'linear-gradient(to right, blue, green)');
-        navigate('/news');
+        navigate('/allnews');
       } else {
         showToast(result.data.message, 'linear-gradient(to right, yellow, blue)');
       }
@@ -49,6 +62,12 @@ function Addnews() {
     }).showToast();
   };
 
+  // Function to handle file input change
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setUpload(file);
+  };
+
   return (
     <>
       <Sidebar />
@@ -68,8 +87,11 @@ function Addnews() {
           <input type="text" id="Location" name="Location" placeholder="Location" required onChange={(e) => setLocation(e.target.value)} />
           <label id="NLabel5" htmlFor="newsDate">Date Of News:</label>
           <input type="date" id="newsDate" name="newsDate" placeholder="News Date" required onChange={(e) => setDate(e.target.value)} />
-          <div id="newssubmit">
-            <button type="submit">Submit News</button>
+          <label id='NLabel6' htmlFor="mediaUpload">Upload Icon:</label>
+          <input type="file" id="Upload" name="Upload" required accept="image/*" onChange={(e) => setUpload(e.target.files[0])}/>
+         
+          <div id="SubmitRecord">
+          <button type="submit">Add News</button>
           </div>
         </form>
       </div>

@@ -20,6 +20,30 @@ function Newspostfullrecord() {
         fetchData();
     }, [id]);
 
+    const showMedia = () => {
+        const { Upload } = newsRecord;
+        if (!Upload) return null;
+
+        const fileType = Upload.split('.').pop().toLowerCase();
+
+        if (fileType === 'mp4') {
+            return (
+                <iframe
+                    src={`http://localhost:3000/uploads/${Upload}`}
+                    frameBorder="0"
+                    width="800px"
+                    height="300px"
+                    allowFullScreen
+                    allow="autoplay"
+                ></iframe>
+            );
+        } else if (['jpg', 'jpeg', 'png', 'gif'].includes(fileType)) {
+            return <img src={`http://localhost:3000/uploads/${Upload}`} alt="Image" width="800px" height="300px" />;
+        } else {
+            return "File Not Supported. Upload Supported File";
+        }
+    };
+
     return (
         <div className="full-record-container">
             <div className="full-record-header">
@@ -46,6 +70,10 @@ function Newspostfullrecord() {
                     <h2>Date Of Publish</h2>
                     <p>{new Date(newsRecord.date).toLocaleDateString()}</p>
                 </div>
+                <div className="record-item">
+                        <h2>Post Media</h2>
+                        <div className="media-container">{showMedia()}</div>
+                    </div>
             </div>
         </div>
     );

@@ -42,6 +42,7 @@ import SingleAlumniProfile from './SingleAlumniProfile';
 import AdminUserManagement from './AdminUserManagement';
 import CurrentUserProfile from './CurrentUserProfile';
 import ChatDashboard from './ChatDashboard';
+import Forallnews from './Forallnews'
 import Unauthorized from './Unauthorized'
 function App() {
   return (
@@ -88,7 +89,18 @@ function App() {
 
           <Route path='/forallfyprecord' element={<ForAllFypRecord />} />
           <Route path='/forallachievementrecord' element={<ForAllAchievementRecord />} />
-          <Route path='/news' element={<News />} />
+
+
+          <Route path='/allnews' element={<Forallnews />} />
+
+          <Route
+            path='/news'
+            element={
+              <ProtectedRoute roles={['Admin']}>
+                <News />
+              </ProtectedRoute>
+            }
+          />
 
           <Route
             path='/fyprecord'

@@ -166,6 +166,24 @@ html,body {
     height: 30px;
     border-radius: 10px;
 }
+#JobForm #Label6 {
+    position: absolute;
+    font-size: 18px;
+    font-weight: 700;
+    font-family:lato, sans-serif;
+    top: 440px;
+    left: 350px;
+}
+#JobForm #Upload {
+    position: absolute;
+    font-size: 18px;
+    color: black;
+    top: 410px;
+    left: 500px;
+    background-color: rgb(241, 238, 238);
+    height: 30px;
+    border-radius: 10px;
+}
 #NewsForm #NLabel1 {
     position: absolute;
     font-size: 18px;
@@ -261,7 +279,7 @@ html,body {
                 top: 460px;
                 left: 350px;
             }
-#NewsForm #newsIcon {
+#NewsForm #Upload {
                 position: absolute;
                 font-size: 18px;
                 color: black;

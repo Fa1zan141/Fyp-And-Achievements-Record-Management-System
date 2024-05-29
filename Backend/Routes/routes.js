@@ -44,7 +44,7 @@ router.put('/updateachievement/:id', upload.single("Upload"), AchievementControl
 router.delete('/deleteachievementrecord/:id', AchievementController.deleteAchievementRecord);
 router.get('/achievementfullrecord/:id', AchievementController.getFullAchievementRecord);
 
-router.post('/addnews', PostController.addPost);
+router.post('/addnews',upload.single("Upload"), PostController.addPost);
 router.get('/newspostrecord', PostController.getPosts);
 router.delete('/deletenewspostrecord/:id', PostController.deletePost);
 router.get('/newsrecord/:id', PostController.getRecord);

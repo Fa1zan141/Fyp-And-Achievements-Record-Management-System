@@ -1,15 +1,15 @@
 const AchievementsRecordModel = require('../Models/AchievementsRecord');
 class AchievementRecord {
     async addAchievement(req, res) {
-        const { AchievementTitle, Domain, Date, Year, Description } = req.body;
+        const { AchievementTitle, Name, Date, Catagory, Description } = req.body;
         const Upload = req.file;
         
         try {
           const newAchievementRecord = new AchievementsRecordModel({
             AchievementTitle,
-            Domain,
+            Name,
             Date,
-            Year,
+            Catagory,
             Description,
             Upload: req.file.filename
           });

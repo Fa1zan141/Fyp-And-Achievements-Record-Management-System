@@ -9,9 +9,9 @@ function UpdateAchievementsRecord() {
   const {id}= useParams()
 
   const [AchievementTitle, setAchievementTitle]= useState()
-  const [Domain, setDomain]= useState()
+  const [Name, setName]= useState()
   const [Date, setDate]= useState()
-  const [Year, setYear]= useState()
+  const [Catagory, setCatagory]= useState()
   const [Description, setDescription]= useState()
   const [Upload, setUpload]= useState()
 
@@ -20,9 +20,9 @@ function UpdateAchievementsRecord() {
         try {
             const result = await axios.get("http://localhost:3000/FYP/updateachievement/"+id);
             setAchievementTitle(result.data.AchievementTitle);
-            setDomain(result.data.Domain);
+            setDomain(result.data.Name);
             setDate(result.data.Date);
-            setYear(result.data.Year);
+            setYear(result.data.Catagory);
             setDescription(result.data.Description);
             setUpload(result.data.Upload);
 
@@ -41,12 +41,12 @@ const handleSubmit = async (e) => {
   e.preventDefault();
   const formData = new FormData();
   formData.append("AchievementTitle", AchievementTitle);
-  formData.append("Domain", Domain);
+  formData.append("Name", Name);
   formData.append("Date", Date);
-  formData.append("Year", Year);
+  formData.append("Catagory", Catagory);
   formData.append("Description", Description);
   formData.append("Upload", Upload);
-  console.log(AchievementTitle, Domain, Date, Year, Description, Upload);
+  console.log(AchievementTitle, Name, Date, Catagory, Description, Upload);
 
   const result = await axios.put(
     'http://localhost:3000/FYP/updateachievement/'+id,
@@ -91,12 +91,12 @@ const handleSubmit = async (e) => {
     <form  onSubmit={handleSubmit}>
     <label id='Label1' htmlFor="AchievementTitle">Achievement Title:</label>
     <input type="text" id="AchievementTitle" name="AchievementTitle" placeholder='Achievement Title' value={AchievementTitle}  required onChange={(e) => setAchievementTitle(e.target.value)}/>
-    <label id='Label2' htmlFor="Domain">Achievement Holder:</label>
-    <input type="text" id="Domain" name="Domain" placeholder='Holder Name' value={Domain} required onChange={(e) => setDomain(e.target.value)}/>
+    <label id='Label2' htmlFor="Name">Achievement Holder:</label>
+    <input type="text" id="Domain" name="Name" placeholder='Holder Name' value={Name} required onChange={(e) => setName(e.target.value)}/>
     <label id='Label3' htmlFor="Date">Date:</label>
     <input type="date" id="Date" name="Date" placeholder='Date' value={Date} required onChange={(e) => setDate(e.target.value)}/>
-    <label id='Label4' htmlFor="Year">Catagory:</label>
-    <input type="text" id="Year" name="Year" placeholder='Catagory Of The Achievement' value={Year} onChange={(e) => setYear(e.target.value)}/>
+    <label id='Label4' htmlFor="Catagory">Catagory:</label>
+    <input type="text" id="Year" name="Catagory" placeholder='Catagory Of The Achievement' value={Catagory} onChange={(e) => setCatagory(e.target.value)}/>
     <label id='Label5' htmlFor="Description">Description:</label>
     <input type="text" id="Description" name="Description" placeholder='Description' value={Description} required onChange={(e) => setDescription(e.target.value)}/>
     <label id='Label6' htmlFor="mediaUpload">Upload Media:</label>

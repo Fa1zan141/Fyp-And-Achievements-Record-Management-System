@@ -33,7 +33,6 @@ function News() {
         try {
             const res = await axios.delete('http://localhost:3000/FYP/deletenewspostrecord/' + id);
             console.log(res);
-            window.location.reload();
         } catch (error) {
             console.log(error);
         }

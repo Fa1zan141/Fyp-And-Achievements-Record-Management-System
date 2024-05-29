@@ -5,7 +5,8 @@ const NewsorJobSchema = new mongoose.Schema({
   description: { type: String, required: true },
   type: { type: String, required: true },
   location: { type: String, required: true },
-  date: { type: Date, required: true }
+  date: { type: Date, required: true },
+  Upload: String
 });
 
 const NewsorJobRecordModel = mongoose.model('NewsorJobRecord', NewsorJobSchema);

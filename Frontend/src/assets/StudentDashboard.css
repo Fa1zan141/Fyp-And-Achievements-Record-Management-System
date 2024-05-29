@@ -159,6 +159,25 @@ font-family:lato, sans-serif;
     top: 0px;
     left: 10px;
 }
+#addnewsbtn{
+    height: 30px;
+    width: 200px;
+    border-radius: 50px;
+    background-color: #59C174;
+    position: absolute;
+    top: 460px;
+    left: 950px;
+}
+#addnewsbtn > :first-child {
+    position: absolute;
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+font-family:lato, sans-serif;
+    top: 0px;
+    left: 10px;
+}
 #achicon{
     position: absolute;
     text-align: center;
@@ -244,5 +263,26 @@ font-family:lato, sans-serif;
     font-weight: 700;
 font-family:lato, sans-serif;
     top: 0px;
+    left: 10px;
+}
+#Postbtn{
+    position: absolute;
+    height: 30px;
+    width: 150px;
+    border-radius: 50px;
+    background-color: #59C174;
+    position: absolute;
+    top: 460px;
+    left: 330px;
+}
+#Postbtn > :first-child {
+    position: absolute;
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    font-family:lato, sans-serif;
+    top: 0px;
+    margin-left: 10px;
     left: 10px;
 }

@@ -38,6 +38,8 @@ function FYPRecord() {
         try {
             await axios.delete('http://localhost:3000/FYP/deletefpyrecord/' + id);
             setFYPRecord(FYPRecord.filter(record => record._id !== id));
+
+            Navigate('/fyprecord')
         } catch (error) {
             console.log(error);
         }

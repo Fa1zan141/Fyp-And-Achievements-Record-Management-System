@@ -99,7 +99,7 @@ function Sidebar() {
           <br />
           <a href="/forallachievementrecord">Achievements</a>
           <br />
-          <a href="/news">News Or Jobs Post</a>
+          <a href="/allnews">News Or Jobs Post</a>
           <br />
           <a href="/alumniprofiles">Alumni Connect</a>
           <br />

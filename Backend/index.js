@@ -8,7 +8,7 @@ const dotenv = require('dotenv');
 const dbConnection = require('./Config/db');
 const userRouter = require('./Routes/routes');
 const socketio = require('socket.io');
-const { EmployeeModel } = require('./Models/Employee'); // Import the EmployeeModel
+const { EmployeeModel } = require('./Models/Employee'); 
 
 // Initialize environment variables
 dotenv.config({ path: './Config/.env' });
@@ -57,7 +57,7 @@ io.on('connection', socket => {
 
   socket.on('sendMessage', async ({ senderId, receiverId, message, conversationId }) => {
     try {
-      const user = await EmployeeModel.findById(senderId); // Retrieve user using EmployeeModel
+      const user = await EmployeeModel.findById(senderId); 
       console.log('sender :>> ', senderId, receiverId);
       
       if (!senderId || !receiverId) {

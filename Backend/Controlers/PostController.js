@@ -3,13 +3,20 @@ const { NewsorJobRecordModel } = require('../Models/NewsorJob');
 class PostRecord {
   async addPost(req, res) {
     try {
+      if (!req.file) {
+        return res.status(400).json({ error: 'No file uploaded' });
+      }
+      const filePath = req.file;
+  
       const newsDetails = await NewsorJobRecordModel.create({
         title: req.body.title,
         description: req.body.description,
         type: req.body.type,
         location: req.body.location,
-        date: req.body.date
+        date: req.body.date,
+        Upload: req.file.filename
       });
+  
       res.json({ status: 'success', message: 'Record added successfully', data: newsDetails });
     } catch (err) {
       console.error('Error adding post:', err);

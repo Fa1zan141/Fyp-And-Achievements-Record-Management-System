@@ -55,16 +55,16 @@ function AchievementsFullRecord() {
                         <p>{AchievementRecord.AchievementTitle}</p>
                     </div>
                     <div className="record-item">
-                        <h2>Domain</h2>
-                        <p>{AchievementRecord.Domain}</p>
+                        <h2>Achievement Holder</h2>
+                        <p>{AchievementRecord.Name}</p>
                     </div>
                     <div className="record-item">
                         <h2>Date Of Achievement</h2>
                         <p>{AchievementRecord.Date}</p>
                     </div>
                     <div className="record-item">
-                        <h2>Year Of Achievement</h2>
-                        <p>{AchievementRecord.Year}</p>
+                        <h2>Achievement Catagory</h2>
+                        <p>{AchievementRecord.Catagory}</p>
                     </div>
                     <div className="record-item">
                         <h2>Summary About Achievement</h2>
