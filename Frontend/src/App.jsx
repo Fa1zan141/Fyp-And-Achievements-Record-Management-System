@@ -101,9 +101,25 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route
+            path='/news?searchbar='
+            element={
+              <ProtectedRoute roles={['Admin']}>
+                <News />
+              </ProtectedRoute>
+            }
+          />
 
           <Route
             path='/fyprecord'
+            element={
+              <ProtectedRoute roles={['Admin']}>
+                <FYPRecord />
+              </ProtectedRoute>
+            }
+          />
+           <Route
+            path='/fyprecord?searchbar='
             element={
               <ProtectedRoute roles={['Admin']}>
                 <FYPRecord />
@@ -135,6 +151,15 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route
+            path='/achievementsrecord?searchbar='
+            element={
+              <ProtectedRoute roles={['Admin']}>
+                <AchievementsRecord />
+              </ProtectedRoute>
+            }
+          />
+
           <Route
             path='/addachievement'
             element={

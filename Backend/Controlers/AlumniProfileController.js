@@ -38,7 +38,7 @@ class AlumniProfileController {
     }
   }
 
-  async getAllProfiles(req, res) {
+  async viewAllProfiles(req, res) {
     try {
       const alumniProfiles = await AlumniProfile.find();
       res.json({ status: 'success', data: alumniProfiles });

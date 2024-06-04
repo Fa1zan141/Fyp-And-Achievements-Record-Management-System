@@ -141,8 +141,8 @@ function Home() {
 useEffect(() =>
   {
     AOS.init({
-      offset: 300,
-      duration: 2000,
+      offset: 200,
+      duration: 1000,
       easing: 'ease-in-out',
       delay: 50,
     })

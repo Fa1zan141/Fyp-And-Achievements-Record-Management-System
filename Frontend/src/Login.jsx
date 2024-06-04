@@ -7,6 +7,7 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Import eye icons
 import { useAuth } from './auth/auth';
 
 function Login() {
+
   const { setToken, setUser } = useAuth();
   const [email, setEmail] = useState('');
   const [role, setRole] = useState('Student');

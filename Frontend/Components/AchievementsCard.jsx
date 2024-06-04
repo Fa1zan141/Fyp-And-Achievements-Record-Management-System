@@ -35,7 +35,7 @@ function AchievementsCard({ Achievement }) {
         <div className="achievement-description">Title: {Achievement.AchievementTitle}</div>
         <div className="achievement-name"> {Achievement.Name}</div>
         <div className="achievement-catagory">{Achievement.Catagory}</div>
-        <a href="/achievementsrecord" className="achievement-button">View More</a>
+        <a href="/forallachievementrecord" className="achievement-button">View More</a>
       </div>
     </div>
   );

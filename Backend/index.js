@@ -8,12 +8,15 @@ const dotenv = require('dotenv');
 const dbConnection = require('./Config/db');
 const userRouter = require('./Routes/routes');
 const socketio = require('socket.io');
+
+
 const { EmployeeModel } = require('./Models/Employee'); 
 
 // Initialize environment variables
 dotenv.config({ path: './Config/.env' });
 
 // Connect to the database
+
 dbConnection();
 
 // Create Express app
@@ -31,7 +34,9 @@ app.use(cors({
 }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use('/FYP', userRouter);
+
 app.use('/uploads', express.static(__dirname + '/public/uploads'));
 
 // Socket.io setup

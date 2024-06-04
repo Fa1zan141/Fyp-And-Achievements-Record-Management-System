@@ -24,7 +24,7 @@ class PostRecord {
     }
   }
 
-  async getPosts(req, res) {
+  async viewPosts(req, res) {
     try {
       const newspostRecords = await NewsorJobRecordModel.find({});
       res.json(newspostRecords);

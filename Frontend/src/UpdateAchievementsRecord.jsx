@@ -98,7 +98,7 @@ const handleSubmit = async (e) => {
     <label id='Label4' htmlFor="Catagory">Catagory:</label>
     <input type="text" id="Year" name="Catagory" placeholder='Catagory Of The Achievement' value={Catagory} onChange={(e) => setCatagory(e.target.value)}/>
     <label id='Label5' htmlFor="Description">Description:</label>
-    <input type="text" id="Description" name="Description" placeholder='Description' value={Description} required onChange={(e) => setDescription(e.target.value)}/>
+    <textarea id="Description" name="Description" placeholder='Description'  value={Description} required onChange={(e) => setDescription(e.target.value)}></textarea>
     <label id='Label6' htmlFor="mediaUpload">Upload Media:</label>
     <input type="file" id="Upload" name="Upload" required accept="image/*,video/*" onChange={(e) => setUpload(e.target.files[0])}/>
     <div id="SubmitRecord"><button type="submit">Update Record</button></div>

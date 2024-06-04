@@ -6,7 +6,9 @@ import { useNavigate } from 'react-router-dom';
 import './assets/AdminProfile.css';
 
 function StudentProfile() {
+
     const { token, user } = useAuth();
+
     const [profilePicture, setProfilePicture] = useState(null);
     const [profileData, setProfileData] = useState({
         FirstName: '',
@@ -21,6 +23,7 @@ function StudentProfile() {
     const fileInputRef = useRef(null); // Ref for the file input
 
     const navigate = useNavigate();
+
 
     useEffect(() => {
         if (user) {
@@ -45,6 +48,7 @@ function StudentProfile() {
         };
     }, [user]);
 
+
     const handleFileChange = (e) => {
         if (profilePictureUrl.current) {
             URL.revokeObjectURL(profilePictureUrl.current);
@@ -54,6 +58,7 @@ function StudentProfile() {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
+        
         setProfileData({ ...profileData, [name]: value });
     };
 
@@ -128,7 +133,6 @@ function StudentProfile() {
                     <button id="UA" type="submit">Update Information</button>
                 </form>
             </div>
-            <div id="DA"><button>Delete Account</button></div>
         </>
     );
 }

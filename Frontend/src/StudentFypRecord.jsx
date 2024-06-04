@@ -10,7 +10,6 @@ function StudentFYPRecord() {
     const [FYPRecord, setFYPRecord] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [recordsPerPage] = useState(5);
-    const [searchQuery, setSearchQuery] = useState('');
     const [search, setSearch] = useState('');
 
     useEffect(() => {
@@ -84,7 +83,11 @@ function StudentFYPRecord() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {currentRecords.
+                            {currentRecords.length === 0 ? (
+                                    <tr>
+                                        <td colSpan="6">No records found</td>
+                                    </tr>
+                                ) : (currentRecords.
                                 filter(record =>
                                     record.Fyptitle.toLowerCase().includes(search.toLowerCase()) ||
                                     record.Supervisor.toLowerCase().includes(search.toLowerCase()) ||
@@ -107,7 +110,7 @@ function StudentFYPRecord() {
                                             </div>
                                         </td>
                                     </tr>
-                                ))}
+                                )))}
                             </tbody>
                         </table>
                     </div>

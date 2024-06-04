@@ -57,8 +57,8 @@ function StudentDashboard() {
       <div id="addachievementbtn"><button onClick={() => { Navigate("/addachievement") }}><p> Achievement <div id="achicon"><CiCirclePlus /></div></p></button></div>
       <div id="VLine3"></div>
       <div id="UpdateRecord"><p>Update Record</p></div>
-      <div id="Updaterecordbtn"><button onClick={() => { Navigate("/studentfyprecord") }}><p> FYP  <div id="Updateicon"><CiCirclePlus /></div></p></button></div>
-      <div id="Updateachievementbtn"><button onClick={() => { Navigate("/studentachievementrecord") }}><p> Achievement <div id="Updateachicon"><CiCirclePlus /></div></p></button></div>
+      <div id="Updaterecordbtn"><button onClick={() => { Navigate("/studentfyprecord") }}><p> FYP </p></button></div>
+      <div id="Updateachievementbtn"><button onClick={() => { Navigate("/studentachievementrecord") }}><p> Achievement</p></button></div>
     </>
   );
 }

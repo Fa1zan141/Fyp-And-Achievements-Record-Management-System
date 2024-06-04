@@ -96,7 +96,11 @@ function FYPRecord() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {currentRecords.
+                            {currentRecords.length === 0 ? (
+                                    <tr>
+                                        <td colSpan="6">No records found</td>
+                                    </tr>
+                                ) : (currentRecords.
                                  filter(record =>
                                     record.Fyptitle.toLowerCase().includes(search.toLowerCase()) ||
                                     record.Supervisor.toLowerCase().includes(search.toLowerCase()) ||
@@ -121,7 +125,7 @@ function FYPRecord() {
                                             </div>
                                         </td>
                                     </tr>
-                                ))}
+                                )))}
                             </tbody>
                         </table>
                     </div>

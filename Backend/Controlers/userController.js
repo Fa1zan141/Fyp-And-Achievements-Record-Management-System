@@ -6,6 +6,7 @@ const dotenv = require('dotenv');
 dotenv.config({ path: './Config/.env' });
 
 class userManagement {
+  
   async register(req, res) {
     try {
       const { FirstName, LastName, email, role, password } = req.body;
@@ -15,6 +16,7 @@ class userManagement {
       }
 
       const hash = await bcrypt.hash(password, 10);
+
       const user = await EmployeeModel.create({ FirstName, LastName, email, role, password: hash });
       res.status(201).json({ status: "OK", message: 'User registered successfully' });
     } catch (error) {
@@ -41,7 +43,9 @@ class userManagement {
       }
 
       const token = jwt.sign({ userId: user._id, email: user.email, role: user.role, profilePicture: user.profilePicture }, process.env.SECRET_KEY, { expiresIn: '2d' });
+
       res.cookie('token', token, { httpOnly: true, secure: process.env.NODE_ENV === 'production' });
+
       res.status(200).json({ status: 'OK', data: { role, token, user }, message: 'Login Successfully' });
     } catch (error) {
       console.error("Error logging in:", error.message);
@@ -63,6 +67,7 @@ class userManagement {
     try {
       // Verify token presence and decode user ID
       const token = req.headers.authorization?.split(' ')[1];
+      
       if (!token) {
           return res.status(401).json({ message: 'Token is missing' });
       }

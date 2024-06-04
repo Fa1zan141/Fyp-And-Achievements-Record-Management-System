@@ -122,12 +122,9 @@ tr:hover {
     color: #000;
 }
 .pagination {
-    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
-    top: 420px;
-    left: 500px;
   }
   
   .page-numbers {

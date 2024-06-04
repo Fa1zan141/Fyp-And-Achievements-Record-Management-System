@@ -80,7 +80,7 @@ function Addnews() {
           <label id="NLabel1" htmlFor="newsTitle">News Title:</label>
           <input type="text" id="newsTitle" name="newsTitle" placeholder="News Title" required onChange={(e) => setTitle(e.target.value)} />
           <label id="NLabel2" htmlFor="newsDescription">Description:</label>
-          <input type="text" id="newsdescription" name="newsDescription" placeholder="News Description" required onChange={(e) => setDescription(e.target.value)} />
+          <textarea id="newsdescription" name="newsdescription" placeholder='Post Description'required onChange={(e) => setDescription(e.target.value)}></textarea>
           <label id="NLabel3" htmlFor="newsType">News Type:</label>
           <input type="text" id="newsType" name="newsType" placeholder="Type Of News" required onChange={(e) => setType(e.target.value)} />
           <label id="NLabel4" htmlFor="Location">Location:</label>

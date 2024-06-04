@@ -27,31 +27,31 @@ router.delete('/deleteuser/:id', userController.deleteUser);
 router.put('/changepassword', userController.changePassword);
 router.get('/count/all-users', userController.getAllUserCount);
 router.get('/count/alumni-users', userController.getAllAlumniCount);
-
 router.get('/api/users/:userId',userController.getUsers );
+router.post('/api/change-password', userController.changePassword);
 
 router.post('/addfyp', upload.fields([{ name: 'Upload', maxCount: 1 }, { name: 'Logo', maxCount: 1 }]), FypController.addFyp);
 router.get('/', FypController.getAllFyp);
 router.get('/updaterecord/:id', FypController.getFypById);
 router.put('/updatedrecord/:id', upload.single("Upload"), FypController.updateFyp);
 router.delete('/deletefpyrecord/:id', FypController.deleteFyp);
-router.get('/fullrecord/:id', FypController.getFullRecord);
+router.get('/fullrecord/:id', FypController.viewFullRecord);
 
 router.post('/addachievement', upload.single("Upload"), AchievementController.addAchievement);
-router.get('/doneachievement', AchievementController.getAllAchievements);
+router.get('/doneachievement', AchievementController.viewAllAchievements);
 router.get('/updateachievement/:id', AchievementController.getAchievementById);
 router.put('/updateachievement/:id', upload.single("Upload"), AchievementController.updateAchievementRecord);
 router.delete('/deleteachievementrecord/:id', AchievementController.deleteAchievementRecord);
 router.get('/achievementfullrecord/:id', AchievementController.getFullAchievementRecord);
 
 router.post('/addnews',upload.single("Upload"), PostController.addPost);
-router.get('/newspostrecord', PostController.getPosts);
+router.get('/newspostrecord', PostController.viewPosts);
 router.delete('/deletenewspostrecord/:id', PostController.deletePost);
 router.get('/newsrecord/:id', PostController.getRecord);
 
 router.post('/addprofile', upload.fields([{ name: 'Uploadpic', maxCount: 1 }, { name: 'UploadVideo', maxCount: 1 }]), AlumniProfileController.addProfile);
 router.get('/profile/:id', AlumniProfileController.getProfileById);
-router.get('/profiles', AlumniProfileController.getAllProfiles);
+router.get('/profiles', AlumniProfileController.viewAllProfiles);
 router.put('/user/update', upload.single('profilePicture'), userController.updateprofile);
 router.delete('/deletealumni/:id', AlumniProfileController.deleteAlumniProfile);
 

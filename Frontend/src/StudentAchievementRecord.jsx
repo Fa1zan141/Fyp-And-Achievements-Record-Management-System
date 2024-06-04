@@ -9,7 +9,7 @@ function StudentAchievementRecord() {
     const [AchievementsRecord, setAchievementsRecord] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [recordsPerPage] = useState(5);
-    const [search,setSearch]= useState();
+    const [search, setSearch] = useState('');
 
     useEffect(() => {
         const fetchData = async () => {
@@ -65,9 +65,7 @@ function StudentAchievementRecord() {
             <div id="FYPRecord"><p>Achievements Record</p></div>
             <div id="forsearch">
                 <form action="">
-                    <input type="search" id="searchbar" name="searchbar" placeholder='Search' value={search} onChange={(e) => {
-                        setSearch(e.target.value)
-                    }} />
+                    <input type="search" id="searchbar" name="searchbar" placeholder='Search' value={search}  onChange={(e) => setSearch(e.target.value)} />
                     <div id="Sicon"><button type="submit"><FaSearch /></button></div>
                     <div id="table">
                         <table>
@@ -82,12 +80,16 @@ function StudentAchievementRecord() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {AchievementsRecord.filter(record =>
-                                record.AchievementTitle.toLowerCase().includes(search.toLowerCase()) ||
-                                record.Catagory.toLowerCase().icludes(search.toLowerCase) ||
-                                record.Date.toString().includes(search.toLowerCase)||
-                                record.Name.toLowerCase().icludes(search.toLowerCase)
-                                )
+                            {currentRecords.length === 0 ? (
+                                    <tr>
+                                        <td colSpan="6">No records found</td>
+                                    </tr>
+                                ) : (currentRecords.filter(record =>
+                                   record.AchievementTitle.toLowerCase().includes(search.toLowerCase()) ||
+                                   record.Name.toLowerCase().includes(search.toLowerCase()) ||
+                                   record.Date.toString().includes(search.toLowerCase()) ||
+                                   record.Catagory.toLowerCase().includes(search.toLowerCase())
+                               )
                                 .map((achievementsRecords, index) => (
                                     <tr key={achievementsRecords._id} className={index % 2 === 0 ? "even" : "odd"}>
                                         <td>{achievementsRecords.AchievementTitle}</td>
@@ -106,7 +108,7 @@ function StudentAchievementRecord() {
                                             </div>
                                         </td>
                                     </tr>
-                                ))}
+                                )))}
                             </tbody>
                         </table>
                     </div>

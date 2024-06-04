@@ -8,9 +8,9 @@ import axios from 'axios';
 function ForAllFypRecord() {
     const Navigate = useNavigate();
     const [FYPRecord, setFYPRecord] = useState([]);
+
     const [currentPage, setCurrentPage] = useState(1);
     const [recordsPerPage] = useState(5);
-    const [searchQuery, setSearchQuery] = useState('');
     const [search, setSearch] = useState('');
 
     useEffect(() => {
@@ -29,6 +29,7 @@ function ForAllFypRecord() {
     // Logic to get current records for the current page
     const indexOfLastRecord = currentPage * recordsPerPage;
     const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+    
     const currentRecords = FYPRecord.slice(indexOfFirstRecord, indexOfLastRecord);
 
     // Logic to calculate total number of pages
@@ -84,7 +85,11 @@ function ForAllFypRecord() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {currentRecords.
+                            {currentRecords.length === 0 ? (
+                                    <tr>
+                                        <td colSpan="6">No records found</td>
+                                    </tr>
+                                ) : (currentRecords.
                                 filter(record =>
                                     record.Fyptitle.toLowerCase().includes(search.toLowerCase()) ||
                                     record.Supervisor.toLowerCase().includes(search.toLowerCase()) ||
@@ -107,7 +112,7 @@ function ForAllFypRecord() {
                                             </div>
                                         </td>
                                     </tr>
-                                ))}
+                                )))}
                             </tbody>
                         </table>
                     </div>

@@ -1,12 +1,25 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Sidebar from '../Components/Sidebar';
+import ChangePassword from '../Components/ChangePassword';
 import { useAuth } from './auth/auth';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import './assets/AdminProfile.css';
 
 function AdminProfile() {
   const { token, user } = useAuth();
+  // State variable to manage the visibility of the ChangePassword component
+  const [isChangePasswordVisible, setIsChangePasswordVisible] = useState(false);
+
+  // Function to handle opening the ChangePassword component
+  const handleOpenChangePassword = () => {
+    setIsChangePasswordVisible(true);
+  };
+
+  // Function to handle closing the ChangePassword component
+  const handleCloseChangePassword = () => {
+    setIsChangePasswordVisible(false);
+  };
   
   const [profilePicture, setProfilePicture] = useState(null);
   const [profileData, setProfileData] = useState({
@@ -114,13 +127,19 @@ function AdminProfile() {
           <input type="email" id="accemail" name="email" value={profileData.email} onChange={handleChange} />
           <label id='Label4' htmlFor="role">Role:</label>
           <input type="text" id="role" name="role" value={profileData.role} onChange={handleChange} readOnly />
-          <label id='Label5' htmlFor="password">Password:</label>
-          <input type="password" id="dob" name="password" value={profileData.password} onChange={handleChange} />
           <input type="file" id="profilePicture" name="profilePicture" onChange={handleFileChange} ref={fileInputRef} style={{ display: 'none' }} />
           <button id="UA" type="submit">Update Information</button>
         </form>
       </div>
-      <div id="DA"><button>Delete Account</button></div>
+      <div id="DA" onClick={handleOpenChangePassword}>
+        <button>Change Password</button>
+      </div>
+      {/* Render ChangePassword component */}
+      <ChangePassword
+        isVisible={isChangePasswordVisible}
+        onClose={handleCloseChangePassword}
+        // Pass any other necessary props to ChangePassword component
+      />
     </>
   );
 }

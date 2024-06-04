@@ -79,7 +79,11 @@ function ForAllAchievementRecord() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {AchievementsRecord.filter(record =>
+                            {currentRecords.length === 0 ? (
+                                    <tr>
+                                        <td colSpan="6">No records found</td>
+                                    </tr>
+                                ) : (currentRecords.filter(record =>
                                    record.AchievementTitle.toLowerCase().includes(search.toLowerCase()) ||
                                    record.Name.toLowerCase().includes(search.toLowerCase()) ||
                                    record.Date.toString().includes(search.toLowerCase()) ||
@@ -101,7 +105,7 @@ function ForAllAchievementRecord() {
                                             </div>
                                         </td>
                                     </tr>
-                                ))}
+                                )))}
                             </tbody>
                         </table>
                     </div>

@@ -1,11 +1,13 @@
 const FypRecordModel = require('../Models/FypRecord');
 
 class FypRecord {
+
   async addFyp(req, res) {
+
     const { Fyptitle, Supervisor, Domain, Year, Shortsummary } = req.body;
     const Upload = req.files['Upload'] ? req.files['Upload'][0].filename : '';
     const Logo = req.files['Logo'] ? req.files['Logo'][0].filename : '';
-
+    
     try {
       const newFypRecord = new FypRecordModel({
         Fyptitle,
@@ -24,6 +26,7 @@ class FypRecord {
     }
   }
 
+  
   async getAllFyp(req, res) {
     try {
       const fypRecords = await FypRecordModel.find({});
@@ -93,7 +96,7 @@ class FypRecord {
     }
   }
 
-  async getFullRecord(req, res) {
+  async viewFullRecord(req, res) {
     try {
       const id = req.params.id;
       const fullRecord = await FypRecordModel.findById(id);

@@ -76,12 +76,12 @@ function Forallnews() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {NewsRecord.length === 0 ? (
+                                {currentRecords.length === 0 ? (
                                     <tr>
                                         <td colSpan="6">No records found</td>
                                     </tr>
                                 ) : (
-                                    NewsRecord.
+                                    currentRecords.
                                     filter(record =>
                                        record.title.toLowerCase().includes(search.toLowerCase()) ||
                                        record.type.toLowerCase().includes(search.toLowerCase()) ||

@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 function UpdateFypRecord() {
+
   const { id } = useParams();
   const [Fyptitle, setFyptitle] = useState('');
   const [Supervisor, setSupervisor] = useState('');
@@ -12,6 +13,7 @@ function UpdateFypRecord() {
   const [Year, setYear] = useState('');
   const [Shortsummary, setShortsummary] = useState('');
   const [Upload, setUpload] = useState(null);
+
   const [FYPRecord, setFYPRecord] = useState(null);
 
   useEffect(() => {
@@ -39,11 +41,13 @@ function UpdateFypRecord() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
+
     formData.append("Fyptitle", Fyptitle);
     formData.append("Supervisor", Supervisor);
     formData.append("Domain", Domain);
     formData.append("Year", Year);
     formData.append("Shortsummary", Shortsummary);
+    
     if (Upload) {
       formData.append("Upload", Upload);
     }
@@ -107,7 +111,7 @@ function UpdateFypRecord() {
           <label id='Label4' htmlFor="Year">Year:</label>
           <input type="text" id="Year" name="Year" placeholder='Year' value={Year} required onChange={(e) => setYear(e.target.value)} />
           <label id='Label5' htmlFor="Shortsummary">Short Summary:</label>
-          <input type="text" id="Description" name="Shortsummary" placeholder='Short summary' value={Shortsummary} required onChange={(e) => setShortsummary(e.target.value)} />
+          <textarea id="Description" name="Shortsummary" placeholder='Short summary' value={Shortsummary}  required onChange={(e) => setShortsummary(e.target.value)}></textarea>
           <label id='Label6' htmlFor="mediaUpload">Upload Media:</label>
           <input type="file" id="Upload" name="Upload" accept="application/pdf" onChange={(e) => setUpload(e.target.files[0])} />
           <div id="SubmitRecord"><button type="submit">Update Record</button></div>

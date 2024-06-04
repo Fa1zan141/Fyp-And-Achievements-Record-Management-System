@@ -12,6 +12,7 @@ function CurrentUserProfile() {
     const navigate = useNavigate();
 
     useEffect(() => {
+        
         const fetchUserProfile = async () => {
             try {
                 const response = await axios.get(`http://localhost:3000/FYP/userprofile/${id}`);

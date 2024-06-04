@@ -127,7 +127,6 @@ function TeachersProfile() {
                     <button id="UA" type="submit">Update Information</button>
                 </form>
             </div>
-            <div id="DA"><button>Delete Account</button></div>
         </>
     );
 }

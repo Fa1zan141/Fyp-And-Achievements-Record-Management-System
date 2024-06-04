@@ -33,7 +33,7 @@ function AddAchievementsRecord() {
       {
         headers: { "Content-Type": "multipart/form-data" },
       }
-    ).then(result => {
+    )
       console.log(result);
       if (result.data.status != "ok") {
       Toastify({
@@ -57,7 +57,6 @@ function AddAchievementsRecord() {
         },
       }).showToast();
     }
-  })
   };
 
 

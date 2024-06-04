@@ -186,108 +186,113 @@ html,body {
 }
 #NewsForm #NLabel1 {
     position: absolute;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 700;
     font-family:lato, sans-serif;
-    top: 250px;
+    top: 180px;
     left: 350px;
 }
 #NewsForm #newsTitle {
     position: absolute;
     font-size: 18px;
     color: black;
-    top: 250px;
-    left: 500px;
+    top: 210px;
+    left: 350px;
     background-color: rgb(241, 238, 238);
-    height: 30px;
-    border-radius: 10px;
+    height: 40px;
+    border-radius: 5px;
 }
 #NewsForm #NLabel2 {
     position: absolute;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 700;
     font-family:lato, sans-serif;
-    top: 290px;
+    top: 420px;
     left: 350px;
 }
 #NewsForm #newsdescription {
     position: absolute;
     font-size: 18px;
     color: black;
-    top: 290px;
-    left: 500px;
+    border: 1px solid rgb(20, 18, 18);
+    top: 450px;
+    left: 350px;
+    width: 800px;
     background-color: rgb(241, 238, 238);
-    height: 30px;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 #NewsForm #NLabel3 {
     position: absolute;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 700;
     font-family:lato, sans-serif;
-    top: 330px;
-    left: 350px;
+    top: 180px;
+    left: 850px;
 }
 #NewsForm #newsType {
     position: absolute;
     font-size: 18px;
     color: black;
-    top: 330px;
-    left: 500px;
+    top: 210px;
+    left: 850px;
     background-color: rgb(241, 238, 238);
-    height: 30px;
-    border-radius: 10px;}
+    height: 40px;
+    border-radius: 5px;
+}
 #NewsForm #NLabel4 {
-        position: absolute;
-        font-size: 18px;
-        font-weight: 700;
-        font-family:lato, sans-serif;
-        top: 370px;
-        left: 350px;
+    position: absolute;
+    font-size: 20px;
+    font-weight: 700;
+    font-family:lato, sans-serif;
+    top: 260px;
+    left: 350px;
     }
 #NewsForm #Location {
-        position: absolute;
-        font-size: 18px;
-        color: black;
-        top: 370px;
-        left: 500px;
-        background-color: rgb(241, 238, 238);
-        height: 30px;
-        border-radius: 10px;}
+    position: absolute;
+    font-size: 18px;
+    color: black;
+    top: 290px;
+    left: 350px;
+    background-color: rgb(241, 238, 238);
+    height: 40px;
+    border-radius: 5px;
+    }
 #NewsForm #NLabel5 {
-            position: absolute;
-            font-size: 18px;
-            font-weight: 700;
-            font-family:lato, sans-serif;
-            top: 410px;
-            left: 350px;
+    position: absolute;
+    font-size: 20px;
+    font-weight: 700;
+    font-family:lato, sans-serif;
+    top: 260px;
+    left: 850px;
         }
 #NewsForm #newsDate {
-            position: absolute;
-            font-size: 18px;
-            color: black;
-            top: 410px;
-            left: 500px;
-            background-color: rgb(241, 238, 238);
-            height: 30px;
-            border-radius: 10px;}
+    position: absolute;
+    font-size: 18px;
+    color: black;
+    top: 290px;
+    left: 850px;
+    background-color: rgb(241, 238, 238);
+    height: 40px;
+    border-radius: 5px;
+        }
 #NewsForm #NLabel6 {
-                position: absolute;
-                font-size: 18px;
-                font-weight: 700;
-                font-family:lato, sans-serif;
-                top: 460px;
-                left: 350px;
+    position: absolute;
+    font-size: 20px;
+    font-weight: 700;
+    font-family:lato, sans-serif;
+    top: 340px;
+    left: 350px;
             }
 #NewsForm #Upload {
-                position: absolute;
-                font-size: 18px;
-                color: black;
-                top: 450px;
-                left: 500px;
-                background-color: rgb(241, 238, 238);
-                height: 50px;
-                border-radius: 10px;}
+    position: absolute;
+    font-size: 18px;
+    color: black;
+    top: 370px;
+    left: 350px;
+    background-color: rgb(241, 238, 238);
+    height: 40px;
+    border-radius: 5px;
+            }
 #jobsubmit{
     height: 30px;
     width: 130px;
@@ -309,11 +314,11 @@ html,body {
 }
 #newssubmit{
     height: 30px;
-    width: 130px;
+    width: 110px;
     border-radius: 20px;
     background-color: #59C174;
     position: absolute;
-    top: 540px;
+    top: 560px;
     left: 500px;
 }
 #newssubmit > :first-child {

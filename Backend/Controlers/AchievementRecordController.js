@@ -21,7 +21,7 @@ class AchievementRecord {
         }
       }
     
-      async getAllAchievements(req, res) {
+      async viewAllAchievements(req, res) {
         try {
           const achievementsRecords = await AchievementsRecordModel.find({});
           res.json(achievementsRecords);

@@ -6,12 +6,14 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { IoEyeOutline } from "react-icons/io5";
 
 function Register() {
+
   const [FirstName, setFirstName] = useState('');
   const [LastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [role, setRole] = useState('Student');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {

@@ -17,6 +17,7 @@ function AddFypRecord() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const formData = new FormData();
     formData.append("Fyptitle", Fyptitle);
     formData.append("Supervisor", Supervisor);
@@ -25,18 +26,20 @@ function AddFypRecord() {
     formData.append("Shortsummary", Shortsummary);
     formData.append("Upload", Upload);
     formData.append("Logo", Logo);
-    console.log(Fyptitle, Supervisor, Domain, Year, Shortsummary, Upload,Logo);
+
+    console.log(Fyptitle, Supervisor, Domain, Year, Shortsummary, Upload, Logo);
 
     const result = await axios.post(
-      'http://localhost:3000/FYP/addfyp',
-      formData,
+
+      'http://localhost:3000/FYP/addfyp',formData,
       {
         headers: { "Content-Type": "multipart/form-data" },
       }
-    ).then(result => {
+    )
       console.log(result);
       if (result.data.status != "ok") {
       Toastify({
+        
         text: result.data.message,
         duration: 3000,
         gravity: "top",
@@ -57,7 +60,6 @@ function AddFypRecord() {
         },
       }).showToast();
     }
-  })
   };
   /*
     axios.post('http://localhost:3000/addfyp', { Fyptitle, Supervisor, Domain, Year, Shortsummary, Upload })
